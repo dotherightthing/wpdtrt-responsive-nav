@@ -41,8 +41,8 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
     $title = null;
     $after_title = null;
     $after_widget = null;
-    $number = null;
-    $enlargement = null;
+    $header_nav_id = null;
+    $footer_nav_id = null;
     $shortcode = 'wpdtrt_responsive_nav_shortcode';
 
     /**
@@ -51,8 +51,8 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
      */
     $atts = shortcode_atts(
       array(
-        'number' => '4',
-        'enlargement' => 'yes'
+        'header_nav_id' => 'main-nav',
+        'footer_nav_id' => 'footer-nav'
       ),
       $atts,
       $shortcode
@@ -61,16 +61,8 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
     // only overwrite predeclared variables
     extract( $atts, EXTR_IF_EXISTS );
 
-    if ( $enlargement === 'yes') {
-      $enlargement = '1';
-    }
-
-    if ( $enlargement === 'no') {
-      $enlargement = '0';
-    }
-
-    $wpdtrt_responsive_nav_options = get_option('wpdtrt_responsive_nav');
-    $wpdtrt_responsive_nav_data = $wpdtrt_responsive_nav_options['wpdtrt_responsive_nav_data'];
+    //$wpdtrt_responsive_nav_options = get_option('wpdtrt_responsive_nav');
+    //$wpdtrt_responsive_nav_data = $wpdtrt_responsive_nav_options['wpdtrt_responsive_nav_data'];
 
     /**
      * ob_start — Turn on output buffering

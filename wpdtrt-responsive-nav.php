@@ -83,13 +83,11 @@ if( ! defined( 'WPDTRT_RESPONSIVE_NAV_URL' ) ) {
 
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-api.php');
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-css.php');
-  require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-html.php');
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-js.php');
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-options.php');
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-shortcode.php');
-  require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-widget.php');
 
-  require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'vendor/tgm-plugin-activation/class-tgm-plugin-activation.php');
-  require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'config/tgm-plugin-activation.php');
+  //require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'vendor/tgm-plugin-activation/class-tgm-plugin-activation.php');
+  //require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'config/tgm-plugin-activation.php');
 
 ?>

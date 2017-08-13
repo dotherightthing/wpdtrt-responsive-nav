@@ -41,6 +41,10 @@ if ( !function_exists( 'wpdtrt_responsive_nav_css_frontend' ) ) {
    */
   function wpdtrt_responsive_nav_css_frontend() {
 
+    wp_enqueue_style( 'wpdtrt_responsive_nav_responsive_nav_css',
+      WPDTRT_RESPONSIVE_NAV_URL . 'vendor/bower_components/responsive-nav/responsive-nav.css'
+    );
+
     wp_enqueue_style( 'wpdtrt_responsive_nav_css_frontend',
       WPDTRT_RESPONSIVE_NAV_URL . 'css/wpdtrt-responsive-nav.css',
       array(),

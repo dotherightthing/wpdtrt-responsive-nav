@@ -16,14 +16,25 @@ if ( !function_exists( 'wpdtrt_responsive_nav_frontend_js' ) ) {
 
   /**
    * Attach JS for front-end widgets and shortcodes
-   *    Generate a configuration object which the JavaScript can access.
-   *    When an Ajax command is submitted, pass it to our function via the Admin Ajax page.
    *
    * @since       0.1.0
-   * @see         https://codex.wordpress.org/AJAX_in_Plugins
    * @see         https://codex.wordpress.org/Function_Reference/wp_localize_script
    */
   function wpdtrt_responsive_nav_frontend_js() {
+
+    wp_enqueue_script( 'wpdtrt_responsive_nav_enquire_js',
+      WPDTRT_RESPONSIVE_NAV_URL . 'vendor/bower_components/enquire/dist/enquire.min.js',
+      array(),
+      false,
+      true
+    );
+
+    wp_enqueue_script( 'wpdtrt_responsive_nav_responsive_nav_js',
+      WPDTRT_RESPONSIVE_NAV_URL . 'vendor/bower_components/responsive-nav/responsive-nav.min.js',
+      array(),
+      false,
+      true
+    );
 
     wp_enqueue_script( 'wpdtrt_responsive_nav_frontend_js',
       WPDTRT_RESPONSIVE_NAV_URL . 'js/wpdtrt-responsive-nav.js',
@@ -32,12 +43,13 @@ if ( !function_exists( 'wpdtrt_responsive_nav_frontend_js' ) ) {
       true
     );
 
-    wp_localize_script( 'wpdtrt_responsive_nav_frontend_js',
-      'wpdtrt_responsive_nav_config',
-      array(
-        'ajax_url' => admin_url( 'admin-ajax.php' ) // wpdtrt_responsive_nav_config.ajax_url
-      )
-    );
+    // Generate a configuration object which the JavaScript can access
+    //wp_localize_script( 'wpdtrt_responsive_nav_frontend_js',
+    //  'wpdtrt_responsive_nav_config',
+    //  array(
+    //    'ajax_url' => admin_url( 'admin-ajax.php' ) // wpdtrt_responsive_nav_config.ajax_url
+    //  )
+    //);
 
   }
 

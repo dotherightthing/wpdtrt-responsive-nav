@@ -23,16 +23,6 @@ A plugin wrapper for responsive-nav.js
 
 == Frequently Asked Questions ==
 
-= How do I use the widget? =
-
-One or more widgets can be displayed within one or more sidebars:
-
-1. Locate the widget: Appearance > Widgets > *DTRT Responsive Nav Widget*
-2. Drag and drop the widget into one of your sidebars
-3. Add a *Title*
-4. Specify *Number of blocks to display*
-5. Toggle *Link to enlargement?*
-
 = How do I use the shortcode? =
 
 ```
@@ -45,13 +35,20 @@ One or more widgets can be displayed within one or more sidebars:
 
 = Shortcode options =
 
-1. `Number of blocks to display="4"` (default) - number of blocks to display
-2. `enlargement="yes"` (default) - optionally link each block to a larger version
+1. `header_nav_id="main-nav"` (default) - HTML `id` of the main navigation
+2. `footer_nav_id="footer-nav"` (default) - HTML `id` of the footer navigation
 
-== Screenshots ==
+This plugin requires that there is a duplicate navigation menu at the footer of the page.
 
-1. The caption for ./assets/screenshot-1.(png|jpg|jpeg|gif)
-2. The caption for ./assets/screenshot-2.(png|jpg|jpeg|gif)
+When JavaScript is disabled:
+
+* the duplicate footer menu is shown
+* the responsive nav toggle button jumps the user to the footer menu.
+
+When JavaScript is enabled:
+
+* the duplicate footer menu is hidden
+* the responsive nav toggle button toggles the visibility of the header menu.
 
 == Changelog ==
 
