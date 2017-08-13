@@ -26,7 +26,9 @@ var wpdtrt_responsive_nav_ui = {
    * Responsive Navigation
    * When JS is enabled the menu toggle opens a menu below the toggle button
    * When JS is disabled the menu toggle jumps the user down to a duplicate nav in the footer of the page
-   * This implementation uses a custom_toggle, to support independent placement of the toggle button.
+   * This implementation:
+   * - uses a custom_toggle, to support independent placement of the toggle button
+   * - uses the dropdown branch of responsive-nav, to support sub-navigation menus
    *
    * @requires jQuery
    * @requires enquire.js (matchMedia)
@@ -74,6 +76,9 @@ var wpdtrt_responsive_nav_ui = {
       var custom_toggle_id = $custom_toggle.attr('id') || 'wpdtrt-responsive-nav-toggle';
       var $custom_toggle_text = $toggle_wrapper.find('.nav-toggle-text');
       var toggle_wrapper_active_class = $toggle_wrapper.data('active-class');
+
+      // show the menu toggle
+      $toggle_wrapper.removeAttr('aria-hidden').show();
 
       // remove the link behaviour from the nav toggle
       $custom_toggle.on('click', function(e) {
@@ -131,6 +136,9 @@ var wpdtrt_responsive_nav_ui = {
     }
     else {
 
+      // hide the menu toggle
+      $toggle_wrapper.attr('aria-hidden', true).hide();
+
       // show the footer nav
       // TODO - this should be controlled with media queries
       // so we don't see two navs on noscript desktop
@@ -187,6 +195,16 @@ jQuery(document).ready(function($) {
   "use strict";
 
   enquire.register("screen and (max-width:480px)", {
+
+    /**
+     * desktop-first state
+     * @see https://stackoverflow.com/a/24618131/6850747
+     * @see http://wicky.nillia.ms/enquire.js/#quick-start
+     */
+    setup: function() {
+      wpdtrt_responsive_nav_ui.mobile = false;
+      wpdtrt_responsive_nav_ui.update($);
+    },
 
     match: function() {
       wpdtrt_responsive_nav_ui.mobile = true;
