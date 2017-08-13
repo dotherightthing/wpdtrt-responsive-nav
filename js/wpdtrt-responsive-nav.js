@@ -26,6 +26,7 @@ var wpdtrt_responsive_nav_ui = {
    * Responsive Navigation
    * When JS is enabled the menu toggle opens a menu below the toggle button
    * When JS is disabled the menu toggle jumps the user down to a duplicate nav in the footer of the page
+   * This implementation uses a custom_toggle, to support independent placement of the toggle button.
    *
    * @requires jQuery
    * @requires enquire.js (matchMedia)
@@ -58,30 +59,29 @@ var wpdtrt_responsive_nav_ui = {
     var $footer_nav = $('#' + data_footer_nav_id);
 
     // if first run
-    if ( ! $('#main-nav-placeholder').length ) {
-      // inject a DOM placeholder for the original/desktop location
-      $header_nav.after('<div id="main-nav-placeholder"></div>');
-    }
+    //if ( ! $('#main-nav-placeholder').length ) {
+    //  // inject a DOM placeholder for the original/desktop location
+    //  $header_nav.after('<div id="main-nav-placeholder"></div>');
+    //}
 
-    var $header_nav_placeholder = $('#main-nav-placeholder');
+    //var $header_nav_placeholder = $('#main-nav-placeholder');
 
     if ( this.mobile ) {
 
       var $root = $('html');
       // var $alt_bar = $('.alt-bar .grid-nav'); // google translate language picker - Allo only
-      var $nav_toggle = $toggle_wrapper.find('.nav-toggle'); // noscript link to footer nav
-      var nav_toggle_id = $nav_toggle.attr('id') || 'wpdtrt-responsive-nav-toggle';
-      var $customToggle = $nav_toggle;
-      var $customToggleText = $toggle_wrapper.find('.nav-toggle-text');
+      var $custom_toggle = $toggle_wrapper.find('.nav-toggle'); // noscript link to footer nav
+      var custom_toggle_id = $custom_toggle.attr('id') || 'wpdtrt-responsive-nav-toggle';
+      var $custom_toggle_text = $toggle_wrapper.find('.nav-toggle-text');
       var toggle_wrapper_active_class = $toggle_wrapper.data('active-class');
 
       // remove the link behaviour from the nav toggle
-      // and indicate that setup is underway
-      $nav_toggle.on('click', function(e) {
+      $custom_toggle.on('click', function(e) {
         e.preventDefault();
        });
 
       // hide the footer nav
+      // this will not be shown again as it is the noscript fallback
       if ( $footer_nav.length ) {
         $footer_nav.attr('aria-hidden', 'true').hide();
       }
@@ -100,29 +100,29 @@ var wpdtrt_responsive_nav_ui = {
       // Init responsive nav
 
       this.responsive_navigation_element = responsiveNav('#' + data_header_nav_id, {
-        customToggle: '#' + nav_toggle_id, // Selector: Specify the ID of a custom toggle
+        customToggle: '#' + custom_toggle_id, // Selector: Specify the ID of a custom toggle
         enableFocus: true,
         enableDropdown: true,
         openDropdown: '<span class="screen-reader-text">Open sub menu</span>',
         closeDropdown: '<span class="screen-reader-text">Close sub menu</span>',
         //subMenu: 'sub-nav', // doesn't work, see DOM hooks at top
         init: function() {
-          $nav_toggle.removeClass('nav-toggle-loading');
+          $custom_toggle.removeClass('nav-toggle-loading');
         },
         open: function () {
-          $customToggleText.text('Close menu');
+          $custom_toggle_text.text('Close menu');
           $toggle_wrapper.addClass(toggle_wrapper_active_class);
         },
         close: function () {
-          $customToggleText.text('Open menu');
+          $custom_toggle_text.text('Open menu');
           $toggle_wrapper.removeClass(toggle_wrapper_active_class);
           window.scrollTo(0,0);
         },
         resizeMobile: function () {
-          $customToggle.attr('aria-controls', 'nav');
+          $custom_toggle.attr('aria-controls', 'nav'); // TODO fix target
         },
         resizeDesktop: function () {
-          $customToggle.removeAttr('aria-controls');
+          $custom_toggle.removeAttr('aria-controls');
         }
       });
 
@@ -132,9 +132,11 @@ var wpdtrt_responsive_nav_ui = {
     else {
 
       // show the footer nav
-      if ( $footer_nav.length ) {
-        $footer_nav.removeAttr('aria-hidden').show();
-      }
+      // TODO - this should be controlled with media queries
+      // so we don't see two navs on noscript desktop
+      //if ( $footer_nav.length ) {
+      //  $footer_nav.removeAttr('aria-hidden').show();
+      //}
 
       // check whether nav has already been set up
       if ( $header_nav.is('[data-responsive]') ) {
@@ -143,7 +145,7 @@ var wpdtrt_responsive_nav_ui = {
         this.responsive_navigation_element.destroy();
 
         // move the nav back to its original/desktop location
-        $header_nav_placeholder.append( $header_nav );
+        //$header_nav_placeholder.append( $header_nav );
 
         // the dropdowns branch of the responsive-nav menu
         // doesn't implement destroy() properly
