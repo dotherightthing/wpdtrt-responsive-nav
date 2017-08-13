@@ -44,41 +44,31 @@ var wpdtrt_responsive_nav_ui = {
     "use strict";
 
     // check for the shortcode HTML
-    var $toggle_wrapper = $('#wpdtrt-responsive-nav-toggle-wrapper');
+    var $custom_toggle_wrapper = $('#wpdtrt-responsive-nav-toggle-wrapper');
 
-    if ( ! $toggle_wrapper.length ) {
+    if ( ! $custom_toggle_wrapper.length ) {
       return;
     }
 
-    var data_header_nav_id = $toggle_wrapper.data('header-nav-id');
+    var data_header_nav_id = $custom_toggle_wrapper.data('header-nav-id');
     var $header_nav = $('#' + data_header_nav_id);
 
     if ( ! $header_nav.length ) {
       return;
     }
 
-    var data_footer_nav_id = $toggle_wrapper.data('footer-nav-id');
+    var data_footer_nav_id = $custom_toggle_wrapper.data('footer-nav-id');
     var $footer_nav = $('#' + data_footer_nav_id);
-
-    // if first run
-    //if ( ! $('#main-nav-placeholder').length ) {
-    //  // inject a DOM placeholder for the original/desktop location
-    //  $header_nav.after('<div id="main-nav-placeholder"></div>');
-    //}
-
-    //var $header_nav_placeholder = $('#main-nav-placeholder');
+    var $root = $('html');
+    var $custom_toggle = $custom_toggle_wrapper.find('.nav-toggle'); // noscript link to footer nav
+    var custom_toggle_id = $custom_toggle.attr('id') || 'wpdtrt-responsive-nav-toggle';
+    var $custom_toggle_text = $custom_toggle_wrapper.find('.nav-toggle-text');
+    var custom_toggle_wrapper_active_class = $custom_toggle_wrapper.data('active-class');
 
     if ( this.mobile ) {
 
-      var $root = $('html');
-      // var $alt_bar = $('.alt-bar .grid-nav'); // google translate language picker - Allo only
-      var $custom_toggle = $toggle_wrapper.find('.nav-toggle'); // noscript link to footer nav
-      var custom_toggle_id = $custom_toggle.attr('id') || 'wpdtrt-responsive-nav-toggle';
-      var $custom_toggle_text = $toggle_wrapper.find('.nav-toggle-text');
-      var toggle_wrapper_active_class = $toggle_wrapper.data('active-class');
-
       // show the menu toggle
-      $toggle_wrapper.removeAttr('aria-hidden').show();
+      $custom_toggle_wrapper.removeAttr('aria-hidden').show();
 
       // remove the link behaviour from the nav toggle
       $custom_toggle.on('click', function(e) {
@@ -99,9 +89,6 @@ var wpdtrt_responsive_nav_ui = {
       $header_nav.find('li.menu-item-has-children').addClass('dropdown');
       $header_nav.find('li.menu-item-has-children > a').addClass('has-dropdown');
 
-      // move the nav to a better mobile location
-      // $alt_bar.append( $header_nav ); Allo only
-
       // Init responsive nav
 
       this.responsive_navigation_element = responsiveNav('#' + data_header_nav_id, {
@@ -116,11 +103,11 @@ var wpdtrt_responsive_nav_ui = {
         },
         open: function () {
           $custom_toggle_text.text('Close menu');
-          $toggle_wrapper.addClass(toggle_wrapper_active_class);
+          $custom_toggle_wrapper.addClass(custom_toggle_wrapper_active_class);
         },
         close: function () {
           $custom_toggle_text.text('Open menu');
-          $toggle_wrapper.removeClass(toggle_wrapper_active_class);
+          $custom_toggle_wrapper.removeClass(custom_toggle_wrapper_active_class);
           window.scrollTo(0,0);
         },
         resizeMobile: function () {
@@ -137,7 +124,7 @@ var wpdtrt_responsive_nav_ui = {
     else {
 
       // hide the menu toggle
-      $toggle_wrapper.attr('aria-hidden', true).hide();
+      $custom_toggle_wrapper.attr('aria-hidden', true).hide();
 
       // show the footer nav
       // TODO - this should be controlled with media queries
@@ -151,9 +138,6 @@ var wpdtrt_responsive_nav_ui = {
 
         $header_nav.removeAttr('data-responsive');
         this.responsive_navigation_element.destroy();
-
-        // move the nav back to its original/desktop location
-        //$header_nav_placeholder.append( $header_nav );
 
         // the dropdowns branch of the responsive-nav menu
         // doesn't implement destroy() properly
