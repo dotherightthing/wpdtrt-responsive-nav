@@ -1,0 +1,24 @@
+{
+  "generator-wp-plugin-boilerplate": {
+    "name": "wpdtrt-responsive-nav",
+    "nameSafe": "wpdtrt_responsive_nav",
+    "nameFriendly": "DTRT Responsive Nav",
+    "nameFriendlySafe": "Wpdtrt_Responsive_Nav",
+    "nameAdminMenu": "DTRT Responsive Nav",
+    "urlAdminMenu": "wpdtrt-responsive-nav",
+    "description": "A plugin wrapper for responsive-nav.js",
+    "tags": "navigation, accessibility",
+    "homepage": "https://github.com/dotherightthing/wpdtrt-responsive-nav",
+    "license": "GPLv2 or later",
+    "licenseUrl": "http://www.gnu.org/licenses/gpl-2.0.html",
+    "donateUrl": "http://dotherightthing.co.nz",
+    "wpVersion": "4.8.1",
+    "authorName": "Dan Smith",
+    "authorWordPressName": "dotherightthingnz",
+    "authorEmail": "dev@dotherightthing.co.nz",
+    "authorUrl": "http://dotherightthing.co.nz",
+    "repositoryType": "git",
+    "repositoryUrl": "git@github.com:dotherightthing/wpdtrt-responsive-nav.git",
+    "version": "0.1.0"
+  }
+}
