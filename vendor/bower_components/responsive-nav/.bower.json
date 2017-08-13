@@ -1,0 +1,20 @@
+{
+  "name": "responsive-nav",
+  "main": [
+    "responsive-nav.css",
+    "responsive-nav.js"
+  ],
+  "ignore": [
+    "demos/"
+  ],
+  "homepage": "https://github.com/samikeijonen/responsive-nav.js",
+  "_release": "2927f73cc4",
+  "_resolution": {
+    "type": "branch",
+    "branch": "dropdowns",
+    "commit": "2927f73cc443f3c07a26c84548b4cddb22893f72"
+  },
+  "_source": "https://github.com/samikeijonen/responsive-nav.js.git",
+  "_target": "dropdowns",
+  "_originalSource": "https://github.com/samikeijonen/responsive-nav.js.git"
+}

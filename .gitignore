@@ -3,8 +3,7 @@ generators
 logs
 node_modules
 tests
-vendor
-!vendor/index.php
-!vendor/tgm-plugin-activation
+vendor/bower_components/WordPress-Admin-Style
+vendor/bower_components/wp-skeleton-plugin
 composer.phar
 .DS_Store
