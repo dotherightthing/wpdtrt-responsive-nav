@@ -37,6 +37,8 @@ A plugin wrapper for responsive-nav.js
 
 1. `header_nav_id="main-nav"` (default) - HTML `id` of the main navigation
 2. `footer_nav_id="footer-nav"` (default) - HTML `id` of the footer navigation
+3. `nav_toggle_class="navigation"` (default) - HTML `class` used for styling the menu toggle button
+4. `nav_toggle_class_active="navigation-active" (default) - HTML `class` used for styling the menu toggle button when it is depressed
 
 This plugin requires that there is a duplicate navigation menu at the footer of the page.
 

@@ -73,6 +73,7 @@ var wpdtrt_responsive_nav_ui = {
       var nav_toggle_id = $nav_toggle.attr('id') || 'wpdtrt-responsive-nav-toggle';
       var $customToggle = $nav_toggle;
       var $customToggleText = $toggle_wrapper.find('.nav-toggle-text');
+      var toggle_wrapper_active_class = $toggle_wrapper.data('active-class');
 
       // remove the link behaviour from the nav toggle
       // and indicate that setup is underway
@@ -110,9 +111,11 @@ var wpdtrt_responsive_nav_ui = {
         },
         open: function () {
           $customToggleText.text('Close menu');
+          $toggle_wrapper.addClass(toggle_wrapper_active_class);
         },
         close: function () {
           $customToggleText.text('Open menu');
+          $toggle_wrapper.removeClass(toggle_wrapper_active_class);
           window.scrollTo(0,0);
         },
         resizeMobile: function () {

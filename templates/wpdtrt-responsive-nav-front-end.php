@@ -19,7 +19,7 @@
   echo $before_title . $title . $after_title;
 ?>
 
-<p class="nav-toggle-wrapper" id="wpdtrt-responsive-nav-toggle-wrapper" data-header-nav-id="<?php echo $header_nav_id; ?>" data-footer-nav-id="<?php echo $footer_nav_id; ?>">
+<p class="nav-toggle-wrapper <?php echo $nav_toggle_class; ?>" id="wpdtrt-responsive-nav-toggle-wrapper" data-header-nav-id="<?php echo $header_nav_id; ?>" data-footer-nav-id="<?php echo $footer_nav_id; ?>" data-active-class="<?php echo $nav_toggle_class_active; ?>">
   <a href="#<?php echo $footer_nav_id; ?>" id="nav-toggle" class="nav-toggle nav-toggle-loading">
     <i class="nav-toggle-icon fa fa-bars" aria-hidden="true"></i>
     <span class="nav-toggle-text" id="nav-toggle-text">Open menu</span>

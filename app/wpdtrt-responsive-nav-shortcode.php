@@ -43,6 +43,8 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
     $after_widget = null;
     $header_nav_id = null;
     $footer_nav_id = null;
+    $nav_toggle_class = null;
+    $nav_toggle_class_active = null;
     $shortcode = 'wpdtrt_responsive_nav_shortcode';
 
     /**
@@ -52,7 +54,9 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
     $atts = shortcode_atts(
       array(
         'header_nav_id' => 'main-nav',
-        'footer_nav_id' => 'footer-nav'
+        'footer_nav_id' => 'footer-nav',
+        'nav_toggle_class' => 'navigation',
+        'nav_toggle_class_active' => 'navigation-active'
       ),
       $atts,
       $shortcode
