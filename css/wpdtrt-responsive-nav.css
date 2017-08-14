@@ -10,3 +10,10 @@
  * @subpackage  Wpdtrt_Responsive_Nav/views
  */
 
+/**
+ * hide the toggle as soon as html.wpdtrt-js is present
+ * i.e. before enquire.js kicks in
+ */
+.wpdtrt-js #wpdtrt-responsive-nav-toggle-wrapper {
+	display: none;
+}

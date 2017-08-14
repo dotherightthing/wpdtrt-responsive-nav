@@ -124,6 +124,7 @@ var wpdtrt_responsive_nav_ui = {
     else {
 
       // hide the menu toggle
+      // this complements the CSS hiding
       $custom_toggle_wrapper.attr('aria-hidden', true).hide();
 
       // show the footer nav
