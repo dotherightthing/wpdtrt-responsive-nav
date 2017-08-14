@@ -64,6 +64,7 @@ var wpdtrt_responsive_nav_ui = {
     var custom_toggle_id = $custom_toggle.attr('id') || 'wpdtrt-responsive-nav-toggle';
     var $custom_toggle_text = $custom_toggle_wrapper.find('.nav-toggle-text');
     var custom_toggle_wrapper_active_class = $custom_toggle_wrapper.data('active-class');
+    var slidedown = $custom_toggle_wrapper.data('slidedown');
 
     if ( this.mobile ) {
 
@@ -92,12 +93,26 @@ var wpdtrt_responsive_nav_ui = {
       // Init responsive nav
 
       this.responsive_navigation_element = responsiveNav('#' + data_header_nav_id, {
+        animate: slidedown, // true|false, use CSS3 transitions
+        transition: 284, // 284|custom, ms
+        label: 'Menu', // label for the built in navigation toggle
+        insert: 'before', // before|after
         customToggle: '#' + custom_toggle_id, // Selector: Specify the ID of a custom toggle
-        enableFocus: true,
-        enableDropdown: true,
-        openDropdown: '<span class="screen-reader-text">Open sub menu</span>',
-        closeDropdown: '<span class="screen-reader-text">Close sub menu</span>',
-        //subMenu: 'sub-nav', // doesn't work, see DOM hooks at top
+        closeOnNavClick: false, // default, when links are clicked
+        openPos: 'relative', // relative|static
+        navClass: 'nav-collapse', // default, change requires CSS edits
+        navActiveClass: 'js-nav-active', // js-nav-active|custom, applied to <html>
+        jsClass: 'wpdtrt-js', // js|custom, applied to <html>
+        /**
+         * Additional dropdown options:
+         * @see https://github.com/samikeijonen/responsive-nav.js/tree/dropdowns
+         */
+        enableFocus: true, // true|false
+        enableDropdown: true, // true|false
+        menuItems: 'menu-items', // menu-items|custom, applied to top <ul>
+        subMenu: 'sub-menu', // sub-menu|custom, applied to child <ul> - doesn't work, see DOM hooks above
+        openDropdown: '<span class="screen-reader-text">Open sub menu</span>', // Open sub menu|custom, label for opening sub menu
+        closeDropdown: '<span class="screen-reader-text">Close sub menu</span>', // Open sub menu|custom, label for closing sub menu
         init: function() {
           $custom_toggle.removeClass('nav-toggle-loading');
         },
