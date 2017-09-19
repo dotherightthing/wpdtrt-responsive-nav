@@ -38,18 +38,14 @@ if ( !function_exists( 'wpdtrt_responsive_nav_frontend_js' ) ) {
 
     wp_enqueue_script( 'wpdtrt_responsive_nav_frontend_js',
       WPDTRT_RESPONSIVE_NAV_URL . 'js/wpdtrt-responsive-nav.js',
-      array('jquery'),
+      array(
+        'jquery',
+        'wpdtrt_responsive_nav_enquire_js',
+        'wpdtrt_responsive_nav_responsive_nav_js'
+      ),
       WPDTRT_RESPONSIVE_NAV_VERSION,
       true
     );
-
-    // Generate a configuration object which the JavaScript can access
-    //wp_localize_script( 'wpdtrt_responsive_nav_frontend_js',
-    //  'wpdtrt_responsive_nav_config',
-    //  array(
-    //    'ajax_url' => admin_url( 'admin-ajax.php' ) // wpdtrt_responsive_nav_config.ajax_url
-    //  )
-    //);
 
   }
 

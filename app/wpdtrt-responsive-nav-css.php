@@ -11,27 +11,6 @@
  * @subpackage  Wpdtrt_Responsive_Nav/app
  */
 
-if ( !function_exists( 'wpdtrt_responsive_nav_css_backend' ) ) {
-
-  /**
-   * Attach CSS for Settings > DTRT Responsive Nav
-   *
-   * @since       0.1.0
-   */
-  function wpdtrt_responsive_nav_css_backend() {
-
-    wp_enqueue_style( 'wpdtrt_responsive_nav_css_backend',
-      WPDTRT_RESPONSIVE_NAV_URL . 'css/wpdtrt-responsive-nav-admin.css',
-      array(),
-      WPDTRT_RESPONSIVE_NAV_VERSION
-      //'all'
-    );
-  }
-
-  add_action( 'admin_head', 'wpdtrt_responsive_nav_css_backend' );
-
-}
-
 if ( !function_exists( 'wpdtrt_responsive_nav_css_frontend' ) ) {
 
   /**
@@ -41,15 +20,19 @@ if ( !function_exists( 'wpdtrt_responsive_nav_css_frontend' ) ) {
    */
   function wpdtrt_responsive_nav_css_frontend() {
 
+    $media = 'all';
+
     wp_enqueue_style( 'wpdtrt_responsive_nav_responsive_nav_css',
       WPDTRT_RESPONSIVE_NAV_URL . 'vendor/bower_components/responsive-nav/responsive-nav.css'
     );
 
     wp_enqueue_style( 'wpdtrt_responsive_nav_css_frontend',
       WPDTRT_RESPONSIVE_NAV_URL . 'css/wpdtrt-responsive-nav.css',
-      array(),
-      WPDTRT_RESPONSIVE_NAV_VERSION
-      //'all'
+      array(
+        'wpdtrt_responsive_nav_responsive_nav_css'
+      ),
+      WPDTRT_RESPONSIVE_NAV_VERSION,
+      $media
     );
 
   }
