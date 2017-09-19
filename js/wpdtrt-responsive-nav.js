@@ -86,9 +86,9 @@ var wpdtrt_responsive_nav_ui = {
       // currently these are safe to leave in for the desktop version
       $root.addClass('js');
       $header_nav.find('ul').eq(0).addClass('menu-items');
-      $header_nav.find('ul.sub-nav').addClass('sub-menu'); // fixes dropdowns
-      $header_nav.find('li.menu-item-has-children').addClass('dropdown');
-      $header_nav.find('li.menu-item-has-children > a').addClass('has-dropdown');
+      $header_nav.find('ul.children').addClass('sub-menu'); // fixes dropdowns
+      $header_nav.find('li.page_item_has_children').addClass('dropdown');
+      $header_nav.find('li.page_item_has_children > a').addClass('has-dropdown');
 
       // Init responsive nav
 
@@ -143,7 +143,7 @@ var wpdtrt_responsive_nav_ui = {
       $custom_toggle_wrapper.attr('aria-hidden', true).hide();
 
       // show the footer nav
-      // TODO - this should be controlled with media queries
+      // DONE - this should be controlled with media queries
       // so we don't see two navs on noscript desktop
       //if ( $footer_nav.length ) {
       //  $footer_nav.removeAttr('aria-hidden').show();
