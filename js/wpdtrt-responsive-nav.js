@@ -194,7 +194,7 @@ jQuery(document).ready(function($) {
 
   "use strict";
 
-  enquire.register("screen and (max-width:480px)", {
+  enquire.register('screen and (max-width:' + wpdtrt_responsive_nav_wp.responsive_breakpoint + ')', {
 
     /**
      * desktop-first state

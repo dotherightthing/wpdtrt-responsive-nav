@@ -41,7 +41,7 @@ Domain Path:  /languages
  * @link https://wordpress.stackexchange.com/questions/18268/i-want-to-get-a-plugin-version-number-dynamically
  */
 if( ! defined( 'WPDTRT_RESPONSIVE_NAV_VERSION' ) ) {
-  define( 'WPDTRT_RESPONSIVE_NAV_VERSION', '0.1' );
+  define( 'WPDTRT_RESPONSIVE_NAV_VERSION', '0.4.0' );
 }
 
 /**
@@ -81,8 +81,10 @@ if( ! defined( 'WPDTRT_RESPONSIVE_NAV_URL' ) ) {
  * Include plugin logic
  */
 
+  require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/class-wpdtrt-responsive-nav-template-loader.php');
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-css.php');
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-js.php');
-  require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-shortcode.php');
+  require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-menus.php');
+  require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-shortcodes.php');
 
 ?>

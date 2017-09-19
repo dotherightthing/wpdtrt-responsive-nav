@@ -22,31 +22,32 @@ if ( !function_exists( 'wpdtrt_responsive_nav_frontend_js' ) ) {
    */
   function wpdtrt_responsive_nav_frontend_js() {
 
-    wp_enqueue_script( 'wpdtrt_responsive_nav_enquire_js',
+    $attach_to_footer = true;
+
+    wp_enqueue_script( 'enquire',
       WPDTRT_RESPONSIVE_NAV_URL . 'vendor/bower_components/enquire/dist/enquire.min.js',
       array(),
-      false,
-      true
+      '2.1.6',
+      $attach_to_footer
     );
 
-    wp_enqueue_script( 'wpdtrt_responsive_nav_responsive_nav_js',
+    wp_enqueue_script( 'responsive_nav_dropdowns',
       WPDTRT_RESPONSIVE_NAV_URL . 'vendor/bower_components/responsive-nav/responsive-nav.min.js',
       array(),
-      false,
-      true
+      '1.0.39',
+      $attach_to_footer
     );
 
     wp_enqueue_script( 'wpdtrt_responsive_nav_frontend_js',
       WPDTRT_RESPONSIVE_NAV_URL . 'js/wpdtrt-responsive-nav.js',
       array(
         'jquery',
-        'wpdtrt_responsive_nav_enquire_js',
-        'wpdtrt_responsive_nav_responsive_nav_js'
+        'enquire',
+        'responsive_nav_dropdowns'
       ),
       WPDTRT_RESPONSIVE_NAV_VERSION,
-      true
+      $attach_to_footer
     );
-
   }
 
   add_action( 'wp_enqueue_scripts', 'wpdtrt_responsive_nav_frontend_js' );

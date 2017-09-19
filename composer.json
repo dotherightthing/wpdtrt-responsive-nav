@@ -1,0 +1,14 @@
+{
+    "name": "dotherightthingnz/wpdtrt-responsive-nav",
+    "description": "A WordPress plugin wrapper for responsive-nav.js",
+    "type": "library",
+    "require": {
+        "gamajo/template-loader": "^1.3.0"
+    },
+    "authors": [
+        {
+            "name": "Dan Smith",
+            "email": "dev@dotherightthing.co.nz"
+        }
+    ]
+}

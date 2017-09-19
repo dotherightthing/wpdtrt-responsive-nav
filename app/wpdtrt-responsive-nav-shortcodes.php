@@ -8,8 +8,8 @@
  * @link        https://generatewp.com/shortcodes/
  * @since       0.1.0
  *
- * @example     [wpdtrt_responsive_nav number="4" enlargement="yes"]
- * @example     do_shortcode( '[wpdtrt_responsive_nav number="4" enlargement="yes"]' );
+ * @example     [wpdtrt_responsive_nav location="header" header_nav_id="header-nav" footer_nav_id="footer-nav" slidedown="false"]
+ * @example     do_shortcode( '[wpdtrt_responsive_nav location="header" header_nav_id="header-nav" footer_nav_id="footer-nav" slidedown="false"]' );
  *
  * @package     Wpdtrt_Responsive_Nav
  * @subpackage  Wpdtrt_Responsive_Nav/app
@@ -36,16 +36,13 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
     global $post;
 
     // predeclare variables
-    $before_widget = null;
-    $before_title = null;
-    $title = null;
-    $after_title = null;
-    $after_widget = null;
+    $location = null;
     $header_nav_id = null;
     $footer_nav_id = null;
     $nav_toggle_class = null;
     $nav_toggle_class_active = null;
     $slidedown = null;
+    $responsive_breakpoint = null;
     $shortcode = 'wpdtrt_responsive_nav_shortcode';
 
     /**
@@ -54,11 +51,13 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
      */
     $atts = shortcode_atts(
       array(
+        'location' => 'header', // header|footer
         'header_nav_id' => 'main-nav',
         'footer_nav_id' => 'footer-nav',
         'nav_toggle_class' => 'navigation',
         'nav_toggle_class_active' => 'navigation-active',
         'slidedown' => 'true',
+        'responsive_breakpoint' => '480px'
       ),
       $atts,
       $shortcode
@@ -67,8 +66,37 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
     // only overwrite predeclared variables
     extract( $atts, EXTR_IF_EXISTS );
 
-    //$wpdtrt_responsive_nav_options = get_option('wpdtrt_responsive_nav');
-    //$wpdtrt_responsive_nav_data = $wpdtrt_responsive_nav_options['wpdtrt_responsive_nav_data'];
+    if ( $location === 'header' ) { // i.e. only do this once
+
+      // load mobile CSS
+      // TODO: calling this here causes it to be attached to the bottom of the <body>
+      wp_enqueue_style( 'wpdtrt_responsive_nav_css_frontend_mobile',
+        WPDTRT_RESPONSIVE_NAV_URL . 'css/wpdtrt-responsive-nav-mobile.css',
+        array(
+          'wpdtrt_responsive_nav_css_frontend'
+        ),
+        WPDTRT_RESPONSIVE_NAV_VERSION,
+        'screen and (max-width: ' . $responsive_breakpoint . ')'
+      );
+    }
+    else if ( $location === 'footer' ) { // i.e. only do this once
+
+      // configure mobile JS
+      wp_localize_script(
+        'wpdtrt_responsive_nav_frontend_js',
+        'wpdtrt_responsive_nav_wp',
+        array(
+          'responsive_breakpoint' => $responsive_breakpoint
+        )
+      );
+    }
+
+    // mimic WordPress template loading
+    // to allow authors to override loaded templates
+    $templates = new WPDTRT_Responsive_Nav_Template_Loader;
+
+    // pass shortcode options to get_template_part()
+    set_query_var( 'wpdtrt_responsive_nav_options', $atts );
 
     /**
      * ob_start — Turn on output buffering
@@ -78,7 +106,19 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
      */
     ob_start();
 
-    require(WPDTRT_RESPONSIVE_NAV_PATH . 'templates/wpdtrt-responsive-nav-front-end.php');
+    if ( ( $location === 'header' ) && ( has_nav_menu( 'wpdtrt-responsive-nav-header-menu' ) ) ):
+
+      echo '<div id="header-nav-wrapper">';
+      $templates->get_template_part( 'navigation', 'toggle' );
+      $templates->get_template_part( 'navigation', 'header' );
+      echo '</div>';
+
+    elseif ( ( $location === 'footer' ) && ( has_nav_menu( 'wpdtrt-responsive-nav-footer-menu' ) ) ):
+
+      $templates->get_template_part( 'navigation', 'footer' );
+
+    endif;
+
 
     /**
      * ob_get_clean — Get current buffer contents and delete current output buffer

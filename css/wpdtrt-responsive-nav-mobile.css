@@ -11,15 +11,15 @@
  */
 
 /**
- * Always hide the toggle on desktops
+ * Always show the toggle on mobile
  */
 .wpdtrt-responsive-nav-toggle-wrapper {
-	display: none;
+	display: block;
 }
 
 /**
- * Always hide the noscript footer fallback on desktops
+ * When JS is disabled, show the noscript footer fallback on mobile
  */
-.wpdtrt-responsive-nav-navigation-footer {
-	display: none;
+.wpdtrt-nojs .wpdtrt-responsive-nav-navigation-footer {
+	display: block;
 }

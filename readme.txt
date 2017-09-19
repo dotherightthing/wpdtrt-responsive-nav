@@ -15,11 +15,24 @@ A plugin wrapper for responsive-nav.js
 
 A plugin wrapper for responsive-nav.js
 
+= Features of responsive-nav.js: =
+
+* multi-tiered (nested menu items)
+* separate button-controls (allowing menu 'parents' to link to pages, rather than just toggle child menus)
+* keyboard accessible (usable by real people)
+* clean slide-down effect (optional)
+* lightweight and easy to customise for improved usability
+
+= Additional features of this implementation: =
+
+* noscript fallback, linking the menu button to a menu at the bottom of the page (for people with JavaScript disabled)
+* loading state (to indicate when the menu has been set up and can be used)
+* control of the point at which the responsive version kicks in (using enquire.js to implement CSS media queries in JavaScript)
+
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/wpdtrt-responsive-nav` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Use the Settings->Plugin Name screen to configure the plugin
 
 == Frequently Asked Questions ==
 
@@ -33,13 +46,15 @@ A plugin wrapper for responsive-nav.js
 <?php echo do_shortcode( '[wpdtrt_responsive_nav option="value"]' ); ?>
 ```
 
-= Shortcode options =
+= Basic usage =
 
-1. `header_nav_id="main-nav"` (default) - HTML `id` of the main navigation
-2. `footer_nav_id="footer-nav"` (default) - HTML `id` of the footer navigation
-3. `nav_toggle_class="navigation"` (default) - HTML `class` used for styling the menu toggle button
-4. `nav_toggle_class_active="navigation-active" (default) - HTML `class` used for styling the menu toggle button when it is depressed
-4. `slidedown="true" (default) - use a slide-down effect when the menu is opened (and up when it is closed)
+```
+[wpdtrt_responsive_nav location="header"]
+
+Some content
+
+[wpdtrt_responsive_nav location="footer"]
+```
 
 This plugin requires that there is a duplicate navigation menu at the footer of the page.
 
@@ -53,7 +68,31 @@ When JavaScript is enabled:
 * the duplicate footer menu is hidden
 * the responsive nav toggle button toggles the visibility of the header menu.
 
+= Advanced usage =
+
+The following default options may be added as required:
+
+1. `location="header"` - `header` for the header part, `footer` for the footer part
+2. `header_nav_id="main-nav"` - HTML `id` of the main navigation
+3. `footer_nav_id="footer-nav"` - HTML `id` of the footer navigation
+4. `nav_toggle_class="navigation"` - HTML `class` used for styling the menu toggle button
+5. `nav_toggle_class_active="navigation-active" - HTML `class` used for styling the menu toggle button when it is depressed
+6. `slidedown="true" - use a slide-down effect when the menu is opened (and up when it is closed)
+7. `responsive_breakpoint="480px"` - the point after which the mobile menu should be hidden
+
+The templates may be further customised as follows:
+
+1. Copy all files in `template-parts` to a `template-parts` folder in the root of your theme
+2. Edit your copies
+
 == Changelog ==
+
+= 0.4 =
+* Menus now registered by plugin
+* Shortcodes now load menu template partials
+* Added support for customisation of template partial
+* Removed redundant files
+* Improved documentation
 
 = 0.1 =
 * Initial version
