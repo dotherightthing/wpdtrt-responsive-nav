@@ -20,8 +20,9 @@ if ( ! function_exists('wpdtrt_responsive_nav_register_menus') ) {
 
 	/**
 	 * Register Menus
-	 * This sets the name that will appear at Appearance -> Menus.
-	 * Add locations to Menu settings > Display location, and the Manage Locations tab
+	 *
+	 * Adds locations to Appearance > Menus > Edit Menus tab > Menu settings > Display location,
+	 * Adds locations to Appearance > Menus > Manage Locations tab
 	 *
 	 * @see http://www.wpbeginner.com/wp-themes/how-to-add-custom-navigation-menus-in-wordpress-3-0-themes/
 	 * @see https://developer.wordpress.org/themes/functionality/navigation-menus/#register-menus
@@ -31,9 +32,9 @@ if ( ! function_exists('wpdtrt_responsive_nav_register_menus') ) {
 	function wpdtrt_responsive_nav_register_menus() {
 	  register_nav_menus(
 	    array(
-	    	// menu location slug => description
+	    	// Menu name set in wp_nav_menu => Display location / Theme Location
 	      	'wpdtrt-responsive-nav-header-menu' => __( 'Responsive Nav Header Menu', 'wpdtrt-responsive-nav' ),
-	      	'wpdtrt-responsive-nav-footer-menu' => __( 'Responsive Nav Footer Menu (mobile-first noscript fallback)', 'wpdtrt-responsive-nav' )
+	      	'wpdtrt-responsive-nav-footer-menu' => __( 'Responsive Nav Footer Menu (mobile noscript fallback)', 'wpdtrt-responsive-nav' )
 	    )
 	  );
 	}
