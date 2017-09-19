@@ -38,3 +38,8 @@ When JavaScript is enabled:
 
 * the duplicate footer menu is hidden
 * the responsive nav toggle button toggles the visibility of the header menu.
+
+
+### Demo
+
+This plugin is based on a manual WordPress integration for http://allotelecom.ca/.
