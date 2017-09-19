@@ -25,6 +25,7 @@ A plugin wrapper for responsive-nav.js
 
 = Additional features of this implementation: =
 
+* custom toggle button, to support independent placement of menu and toggle button
 * noscript fallback, linking the menu button to a menu at the bottom of the page (for people with JavaScript disabled)
 * loading state (to indicate when the menu has been set up and can be used)
 * control of the point at which the responsive version kicks in (using enquire.js to implement CSS media queries in JavaScript)
