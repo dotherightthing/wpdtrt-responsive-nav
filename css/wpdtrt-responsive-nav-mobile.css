@@ -89,6 +89,14 @@
 }
 
 /**
+ * Revert desktop styling
+ * So that 'open' nav height can be calculated via JS
+ */
+.wpdtrt-responsive-nav li {
+  float: none;
+}
+
+/**
  * When JS is disabled, show the noscript footer fallback on mobile
  */
 .wpdtrt-nojs .wpdtrt-responsive-nav-footer {
