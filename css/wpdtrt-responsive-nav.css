@@ -32,6 +32,12 @@
   word-wrap: normal !important;
 }
 
+.clear:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 /**
  * Styles for the public front-end, at the desktop breakpoint
  *
@@ -64,3 +70,78 @@
 /**
  * Mobile styles
  */
+.wpdtrt-responsive-nav {
+  background: #000;
+  position: relative;
+}
+
+.wpdtrt-responsive-nav ul {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wpdtrt-responsive-nav li {
+  border-left: 1px solid #222;
+  float: left;
+  position: relative;
+}
+
+.wpdtrt-responsive-nav li:last-child {
+  border-right: 1px solid #4a4a4a;
+}
+
+.wpdtrt-responsive-nav li:last-child a {
+  border-right: 1px solid #222;
+}
+
+.wpdtrt-responsive-nav li:hover .sub-nav {
+  display: block;
+}
+
+.wpdtrt-responsive-nav a {
+  border-left: 1px solid #4a4a4a;
+  color: #ddd;
+  display: block;
+  font-size: 16px;
+  font-size: 1rem;
+  padding: 0 15px;
+  padding: 0 0.9375rem;
+}
+
+.wpdtrt-responsive-nav a:hover {
+  background: rgba(74, 74, 74, 0.25);
+}
+
+.wpdtrt-responsive-nav .sub-nav {
+  display: none;
+  left: 0;
+  position: absolute;
+  top: 55px;
+  top: 3.4375rem;
+  z-index: 1;
+}
+
+.wpdtrt-responsive-nav .sub-nav li {
+  float: none;
+}
+
+.wpdtrt-responsive-nav .sub-nav li:last-child a {
+  border-left: none;
+  border-right: none;
+}
+
+.wpdtrt-responsive-nav .sub-nav a {
+  background: #3e3e3e;
+  border-bottom: 1px solid #222;
+  border-left: none;
+  border-top: 1px solid #555555;
+  font-size: 14px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.wpdtrt-responsive-nav .sub-nav a:hover {
+  background: #222;
+}

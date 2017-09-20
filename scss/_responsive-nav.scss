@@ -36,3 +36,81 @@
 .wpdtrt-responsive-nav-toggle-text {
   @extend .screen-reader-text;
 }
+
+.wpdtrt-responsive-nav {
+    background: #000;
+    position: relative;
+
+	ul {
+	    position: relative;
+	    //height: 55px;
+
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	li {
+	    border-left: 1px solid #222;
+	    float: left;
+	    position: relative;
+
+		&:last-child {
+		    border-right: 1px solid #4a4a4a;
+
+		    a {
+    			border-right: 1px solid #222;
+		    }
+		}
+
+
+		&:hover {
+			.sub-nav {
+		    	display: block;
+		    }
+		}
+	}
+
+	a {
+	    border-left: 1px solid #4a4a4a;
+	    color: #ddd;
+	    display: block;
+	    //line-height: 55px;
+	    font-size: 16px;
+	    padding: 0 15px;
+
+	    &:hover { // and li.active a
+    		background: rgba(74, 74, 74, 0.25);
+	    }
+	}
+
+	.sub-nav {
+	    display: none;
+	    left: 0;
+	    position: absolute;
+	    top: 55px;
+	    z-index: 1;
+
+		li {
+		    float: none;
+
+			&:last-child a {
+			    border-left: none;
+			    border-right: none;
+			}
+		}
+
+	    a {
+		    background: #3e3e3e;
+		    border-bottom: 1px solid #222;
+		    border-left: none;
+		    border-top: 1px solid #555555;
+		    font-size: 14px;
+		    white-space: nowrap;
+
+		    &:hover {
+				background: #222;
+		    }
+	    }
+	}
+}

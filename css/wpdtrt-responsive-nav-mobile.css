@@ -33,6 +33,12 @@
   word-wrap: normal !important;
 }
 
+.clear:after, #header-nav-wrapper:after, .wpdtrt-responsive-nav-toggle-wrapper:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 @font-face {
   font-family: 'icomoon';
   src: url("../icons/icomoon/fonts/icomoon.ttf?y334uy") format("truetype"), url("../icons/icomoon/fonts/icomoon.woff?y334uy") format("woff"), url("../icons/icomoon/fonts/icomoon.svg?y334uy#icomoon") format("svg");
@@ -95,15 +101,16 @@
  * This is a link, which jumps the user down to the footer clone
  * when JS is disabled
  */
-.nav-toggle-wrapper {
-  display: block;
-  float: right;
-  margin-top: 3px;
-  margin-top: 0.1875rem;
+.wpdtrt-responsive-nav-toggle-wrapper {
+  margin: 0 0 16px;
+  margin: 0 0 1rem;
 }
 
 .nav-toggle {
   display: block;
+  float: right;
+  margin-top: 3px;
+  margin-top: 0.1875rem;
   background: #e40100;
   background: -webkit-gradient(linear, left top, left bottom, from(#e40100), to(#b20000));
   background: linear-gradient(to bottom, #e40100 0%, #b20000 100%);
@@ -148,6 +155,7 @@
 }
 
 .nav-collapse li {
+  border-left: 0;
   border-top: 1px solid #4a4a4a;
 }
 
@@ -185,7 +193,6 @@
   position: absolute;
   display: none;
   overflow: hidden;
-  zoom: 1;
 }
 
 .js .nav-collapse.multiple-level-nav .sub-menu.toggled {
@@ -199,8 +206,9 @@
 }
 
 .nav-collapse .dropdown-toggle {
+  cursor: pointer;
   position: absolute;
-  top: 0.5em;
+  top: 1em;
   right: 5%;
   background: #222;
   color: #dddddd;
@@ -245,6 +253,18 @@
 
 .dropdown ul ul a,
 .menu-item-has-children ul ul a {
+  background: #2d353e;
+  padding-left: 15%;
+}
+
+.dropdown ul ul ul,
+.menu-item-has-children ul ul ul {
+  padding: 0;
+  border: 0;
+}
+
+.dropdown ul ul ul a,
+.menu-item-has-children ul ul ul a {
   background: #2d353e;
   padding-left: 15%;
 }

@@ -30,20 +30,36 @@
   display: block;
 }
 
+
+#header-nav-wrapper {
+  @extend .clear;
+}
+
+.wpdtrt-responsive-nav {
+
+  ul {
+    //height: auto;
+  }
+}
+
 /**
  * Nav toggle
  * The button which opens and closes the menu.
  * This is a link, which jumps the user down to the footer clone
  * when JS is disabled
  */
-.nav-toggle-wrapper {
-  display: block;
-  float: right;
-  margin-top: 3px; // 15px, just reveal the drop shadow
+
+.wpdtrt-responsive-nav-toggle-wrapper {
+  @extend .clear;
+  margin: 0 0 16px;
 }
 
 .nav-toggle {
   display: block;
+
+  float: right;
+  margin-top: 3px; // 15px, just reveal the drop shadow
+
   background: #e40100;
   background: -moz-linear-gradient(top, #e40100 0%, #b20000 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e40100), color-stop(100%, #b20000));
@@ -99,7 +115,7 @@
   border-bottom: 1px solid #4a4a4a;
 
   li {
-    //border-top: 1px solid #222;
+    border-left: 0;
     border-top: 1px solid #4a4a4a;
   }
 
@@ -142,7 +158,6 @@
       position: absolute;
       display: none; // This way you don't have focus on sub menu items unless you open the sub menu.
       overflow: hidden;
-      zoom: 1;
     }
 
     .sub-menu.toggled {
@@ -157,8 +172,9 @@
   }
 
   & .dropdown-toggle {
+    cursor: pointer;
     position: absolute;
-    top: 0.5em;
+    top: 1em;
     right: $responsive_grid_gutter_horz;
     background: #222;
     color: rgb(221, 221, 221);
@@ -207,6 +223,16 @@
       a {
         background: #2d353e;
         padding-left: ($responsive_grid_gutter_horz * 3);
+      }
+
+      ul {
+        padding: 0;
+        border: 0;
+
+        a {
+          background: #2d353e;
+          padding-left: ($responsive_grid_gutter_horz * 3);
+        }
       }
     }
   }

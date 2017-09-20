@@ -49,9 +49,9 @@ if ( is_array( $options ) ) {
             'menu' => 'wpdtrt-responsive-nav-footer-menu',
             'container' => 'div',
             'container_class' => 'wpdtrt-responsive-nav wpdtrt-responsive-nav-footer',
-            'container_id' => '',
+            'container_id' => $footer_nav_id,
             'menu_class' => 'navigation',
-            'menu_id' => $footer_nav_id,
+            'menu_id' => '',
             'echo' => true,
             /**
              * wp_page_menu() is sorted alphabetically

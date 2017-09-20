@@ -13,7 +13,8 @@
 // jshint
 /* globals $, enquire, responsiveNav */
 
-/** Create a global object
+/**
+ * Create a global object
  * This acts as a namespace for the UI functions, now methods of it.
  *
  * @since 1.2.0
@@ -200,10 +201,10 @@ jQuery(document).ready(function($) {
      * @see https://stackoverflow.com/a/24618131/6850747
      * @see http://wicky.nillia.ms/enquire.js/#quick-start
      */
-    setup: function() {
-      wpdtrt_responsive_nav_ui.mobile = false;
-      wpdtrt_responsive_nav_ui.update($);
-    },
+    //setup: function() {
+    //  wpdtrt_responsive_nav_ui.mobile = false;
+    //  wpdtrt_responsive_nav_ui.update($);
+    //},
 
     match: function() {
       wpdtrt_responsive_nav_ui.mobile = true;

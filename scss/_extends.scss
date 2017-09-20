@@ -17,3 +17,11 @@
 	// many screen reader and browser combinations announce broken words as they would appear visually
 	word-wrap: normal !important;
 }
+
+.clear {
+	&:after {
+	    content: "";
+	    display: block;
+	    clear: both;
+	}
+}

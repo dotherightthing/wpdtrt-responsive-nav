@@ -108,10 +108,8 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
 
     if ( ( $location === 'header' ) && ( has_nav_menu( 'wpdtrt-responsive-nav-header-menu' ) ) ):
 
-      echo '<div id="header-nav-wrapper">';
       $templates->get_template_part( 'navigation', 'toggle' );
       $templates->get_template_part( 'navigation', 'header' );
-      echo '</div>';
 
     elseif ( ( $location === 'footer' ) && ( has_nav_menu( 'wpdtrt-responsive-nav-footer-menu' ) ) ):
 
