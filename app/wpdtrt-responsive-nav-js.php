@@ -25,14 +25,14 @@ if ( !function_exists( 'wpdtrt_responsive_nav_frontend_js' ) ) {
     $attach_to_footer = true;
 
     wp_enqueue_script( 'enquire',
-      WPDTRT_RESPONSIVE_NAV_URL . 'vendor/bower_components/enquire/dist/enquire.js',
+      WPDTRT_RESPONSIVE_NAV_URL . 'vendor/enquire/dist/enquire.js',
       array(),
       '2.1.6',
       $attach_to_footer
     );
 
     wp_enqueue_script( 'responsive_nav_dropdowns',
-      WPDTRT_RESPONSIVE_NAV_URL . 'vendor/bower_components/responsive-nav/responsive-nav.js',
+      WPDTRT_RESPONSIVE_NAV_URL . 'vendor/responsive-nav/responsive-nav.js',
       array(),
       '1.0.39',
       $attach_to_footer

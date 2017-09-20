@@ -23,7 +23,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_css_frontend' ) ) {
     $media = 'all';
 
     wp_enqueue_style( 'wpdtrt_responsive_nav_responsive_nav_css',
-      WPDTRT_RESPONSIVE_NAV_URL . 'vendor/bower_components/responsive-nav/responsive-nav.css',
+      WPDTRT_RESPONSIVE_NAV_URL . 'vendor/responsive-nav/responsive-nav.css',
       array(),
       '1.0.39',
       $media

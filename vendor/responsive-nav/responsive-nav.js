@@ -754,6 +754,7 @@
       _calcHeight: function () {
         var savedHeight = 0;
         for (var i = 0; i < nav.inner.length; i++) {
+          console.log( nav.inner[i] );
           savedHeight += nav.inner[i].offsetHeight;
         }
 

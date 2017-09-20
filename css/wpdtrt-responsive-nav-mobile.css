@@ -35,7 +35,7 @@
 
 @font-face {
   font-family: 'icomoon';
-  src: url("../vendor/icomoon/fonts/icomoon.ttf?y334uy") format("truetype"), url("../vendor/icomoon/fonts/icomoon.woff?y334uy") format("woff"), url("../vendor/icomoon/fonts/icomoon.svg?y334uy#icomoon") format("svg");
+  src: url("../icons/icomoon/fonts/icomoon.ttf?y334uy") format("truetype"), url("../icons/icomoon/fonts/icomoon.woff?y334uy") format("woff"), url("../icons/icomoon/fonts/icomoon.svg?y334uy#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
