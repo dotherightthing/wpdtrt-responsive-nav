@@ -32,7 +32,7 @@
   word-wrap: normal !important;
 }
 
-.clear:after {
+.clear:after, .wpdtrt-responsive-nav:after {
   content: "";
   display: block;
   clear: both;
@@ -73,6 +73,7 @@
 .wpdtrt-responsive-nav {
   background: #000;
   position: relative;
+  font-family: sans-serif;
 }
 
 .wpdtrt-responsive-nav ul {
@@ -83,7 +84,6 @@
 }
 
 .wpdtrt-responsive-nav li {
-  border-left: 1px solid #222;
   float: left;
   position: relative;
 }
@@ -92,56 +92,54 @@
   border-right: 1px solid #4a4a4a;
 }
 
-.wpdtrt-responsive-nav li:last-child a {
-  border-right: 1px solid #222;
-}
-
-.wpdtrt-responsive-nav li:hover .sub-nav {
+.wpdtrt-responsive-nav li:hover .sub-menu {
   display: block;
 }
 
 .wpdtrt-responsive-nav a {
-  border-left: 1px solid #4a4a4a;
-  color: #ddd;
   display: block;
+  color: #ddd;
   font-size: 16px;
   font-size: 1rem;
+  line-height: 55px;
+  text-decoration: none;
   padding: 0 15px;
   padding: 0 0.9375rem;
+  border-left: 1px solid #4a4a4a;
 }
 
 .wpdtrt-responsive-nav a:hover {
-  background: rgba(74, 74, 74, 0.25);
+  background-color: #3e4853;
 }
 
-.wpdtrt-responsive-nav .sub-nav {
+.wpdtrt-responsive-nav .sub-menu {
   display: none;
-  left: 0;
   position: absolute;
+  left: 0;
   top: 55px;
   top: 3.4375rem;
   z-index: 1;
 }
 
-.wpdtrt-responsive-nav .sub-nav li {
+.wpdtrt-responsive-nav .sub-menu li {
   float: none;
 }
 
-.wpdtrt-responsive-nav .sub-nav li:last-child a {
+.wpdtrt-responsive-nav .sub-menu li:last-child a {
   border-left: none;
   border-right: none;
 }
 
-.wpdtrt-responsive-nav .sub-nav a {
+.wpdtrt-responsive-nav .sub-menu a {
   background: #3e3e3e;
-  border-bottom: 1px solid #222;
   border-left: none;
-  border-top: 1px solid #555555;
   font-size: 14px;
   font-size: 0.875rem;
   white-space: nowrap;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #4a4a4a;
 }
 
-.wpdtrt-responsive-nav .sub-nav a:hover {
+.wpdtrt-responsive-nav .sub-menu a:hover {
   background: #222;
 }

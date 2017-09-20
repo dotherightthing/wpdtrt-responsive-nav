@@ -40,6 +40,9 @@
 .wpdtrt-responsive-nav {
     background: #000;
     position: relative;
+    font-family: sans-serif;
+
+    @extend .clear;
 
 	ul {
 	    position: relative;
@@ -51,43 +54,39 @@
 	}
 
 	li {
-	    border-left: 1px solid #222;
 	    float: left;
 	    position: relative;
 
 		&:last-child {
 		    border-right: 1px solid #4a4a4a;
-
-		    a {
-    			border-right: 1px solid #222;
-		    }
 		}
 
 
 		&:hover {
-			.sub-nav {
+			.sub-menu {
 		    	display: block;
 		    }
 		}
 	}
 
 	a {
-	    border-left: 1px solid #4a4a4a;
-	    color: #ddd;
 	    display: block;
-	    //line-height: 55px;
+	    color: #ddd;
 	    font-size: 16px;
+	    line-height: 55px;
+	    text-decoration: none;
 	    padding: 0 15px;
+	    border-left: 1px solid #4a4a4a;
 
 	    &:hover { // and li.active a
-    		background: rgba(74, 74, 74, 0.25);
+    		background-color: #3e4853;
 	    }
 	}
 
-	.sub-nav {
+	.sub-menu {
 	    display: none;
-	    left: 0;
 	    position: absolute;
+	    left: 0;
 	    top: 55px;
 	    z-index: 1;
 
@@ -102,11 +101,11 @@
 
 	    a {
 		    background: #3e3e3e;
-		    border-bottom: 1px solid #222;
 		    border-left: none;
-		    border-top: 1px solid #555555;
 		    font-size: 14px;
 		    white-space: nowrap;
+		    border-top: 1px solid #222;
+		    border-bottom: 1px solid #4a4a4a;
 
 		    &:hover {
 				background: #222;

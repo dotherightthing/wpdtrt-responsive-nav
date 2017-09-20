@@ -143,7 +143,6 @@ var wpdtrt_responsive_nav_ui = {
       $custom_toggle_wrapper.attr('aria-hidden', true).hide();
 
       // show the footer nav
-      // DONE - this should be controlled with media queries
       // so we don't see two navs on noscript desktop
       //if ( $footer_nav.length ) {
       //  $footer_nav.removeAttr('aria-hidden').show();
@@ -201,10 +200,10 @@ jQuery(document).ready(function($) {
      * @see https://stackoverflow.com/a/24618131/6850747
      * @see http://wicky.nillia.ms/enquire.js/#quick-start
      */
-    //setup: function() {
-    //  wpdtrt_responsive_nav_ui.mobile = false;
-    //  wpdtrt_responsive_nav_ui.update($);
-    //},
+    setup: function() {
+      wpdtrt_responsive_nav_ui.mobile = false;
+      wpdtrt_responsive_nav_ui.update($);
+    },
 
     match: function() {
       wpdtrt_responsive_nav_ui.mobile = true;

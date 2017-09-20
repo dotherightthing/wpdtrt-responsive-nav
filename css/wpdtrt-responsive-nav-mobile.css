@@ -33,7 +33,7 @@
   word-wrap: normal !important;
 }
 
-.clear:after, #header-nav-wrapper:after, .wpdtrt-responsive-nav-toggle-wrapper:after {
+.clear:after, .wpdtrt-responsive-nav-toggle-wrapper:after {
   content: "";
   display: block;
   clear: both;
@@ -88,12 +88,27 @@
   display: none;
 }
 
-/**
- * Revert desktop styling
- * So that 'open' nav height can be calculated via JS
- */
+.wpdtrt-responsive-nav {
+  border-bottom: 1px solid #4a4a4a;
+}
+
 .wpdtrt-responsive-nav li {
   float: none;
+  border-left: 0;
+}
+
+.wpdtrt-responsive-nav a {
+  display: block;
+  color: #ddd;
+  line-height: normal;
+  padding: 1em 60px 1em 5%;
+  padding: 1em 3.75rem 1em 5%;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #4a4a4a;
+}
+
+.wpdtrt-responsive-nav li.focus > a {
+  background-color: #3e4853;
 }
 
 /**
@@ -166,28 +181,6 @@
   visibility: visible;
 }
 
-.wpdtrt-responsive-nav {
-  border-bottom: 1px solid #4a4a4a;
-}
-
-.wpdtrt-responsive-nav li {
-  border-left: 0;
-  border-top: 1px solid #4a4a4a;
-}
-
-.wpdtrt-responsive-nav a {
-  display: block;
-  color: #ddd;
-  text-decoration: none;
-  padding: 1em 60px 1em 5%;
-  padding: 1em 3.75rem 1em 5%;
-}
-
-.wpdtrt-responsive-nav a:hover,
-.wpdtrt-responsive-nav li.focus > a {
-  background-color: #3e4853;
-}
-
 /**
  * Nested sub menus
  */
@@ -196,10 +189,12 @@
 }
 
 .js .nav-collapse.multiple-level-nav .sub-menu {
+  display: none;
+  position: absolute;
+  left: auto;
+  top: auto;
   clip: rect(0 0 0 0);
   max-height: 0;
-  position: absolute;
-  display: none;
   overflow: hidden;
 }
 

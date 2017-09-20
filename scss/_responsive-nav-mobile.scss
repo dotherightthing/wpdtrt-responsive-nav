@@ -23,13 +23,27 @@
   display: none;
 }
 
-/**
- * Revert desktop styling
- * So that 'open' nav height can be calculated via JS
- */
 .wpdtrt-responsive-nav {
+  border-bottom: 1px solid #4a4a4a;
+
   li {
-    float: none;
+    float: none; // allow nav height to be calculated via JS
+    border-left: 0;
+  }
+
+  a {
+    display: block;
+    color: #ddd;
+    line-height: normal;
+    padding: 1em 60px 1em $responsive_grid_gutter_horz;
+
+    // i.e. not just sub menu:
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #4a4a4a;
+  }
+
+  li.focus > a {
+    background-color: #3e4853;
   }
 }
 
@@ -38,11 +52,6 @@
  */
 .wpdtrt-nojs .wpdtrt-responsive-nav-footer {
   display: block;
-}
-
-
-#header-nav-wrapper {
-  @extend .clear;
 }
 
 /**
@@ -125,28 +134,6 @@
 
 }
 
-.wpdtrt-responsive-nav {
-
-  border-bottom: 1px solid #4a4a4a;
-
-  li {
-    border-left: 0;
-    border-top: 1px solid #4a4a4a;
-  }
-
-  a {
-    display: block;
-    color: #ddd; // primary-nav a
-    text-decoration: none;
-    padding: 1em 60px 1em $responsive_grid_gutter_horz;
-  }
-
-  a:hover,
-  li.focus > a {
-    background-color: #3e4853;
-  }
-}
-
 /**
  * Nested sub menus
  */
@@ -160,10 +147,12 @@
   .js &.multiple-level-nav {
 
     .sub-menu {
+      display: none; // This way you don't have focus on sub menu items unless you open the sub menu.
+      position: absolute;
+      left: auto;
+      top: auto;
       clip: rect(0 0 0 0);
       max-height: 0;
-      position: absolute;
-      display: none; // This way you don't have focus on sub menu items unless you open the sub menu.
       overflow: hidden;
     }
 
