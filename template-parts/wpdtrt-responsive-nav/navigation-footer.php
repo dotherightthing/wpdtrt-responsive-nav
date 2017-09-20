@@ -70,6 +70,7 @@ if ( is_array( $options ) ) {
             /**
              * Theme location must be registered with register_nav_menu()
              * in order to be selectable by the user.
+             * Note: this is the menu slug, not the wp-admin display value.
              * @see app/wpdtrt-responsive-nav-menus.php
              */
             'theme_location' => 'wpdtrt-responsive-nav-footer-menu'
