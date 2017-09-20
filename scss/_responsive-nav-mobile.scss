@@ -1,0 +1,218 @@
+/**
+ * Styles for the public front-end, at the mobile breakpoint
+ *
+ * This file contains SCSS (CSS).
+ *
+ * @since       0.4.0
+ *
+ * @package     Wpdtrt_Responsive_Nav
+ * @subpackage  Wpdtrt_Responsive_Nav/scss
+ */
+
+/**
+ * Always show the toggle on mobile
+ */
+.wpdtrt-responsive-nav-toggle-wrapper {
+  display: block;
+}
+
+/**
+ * When JS is disabled, hide the toggled header nav on mobile
+ */
+.wpdtrt-nojs .wpdtrt-responsive-nav-header {
+  display: none;
+}
+
+/**
+ * When JS is disabled, show the noscript footer fallback on mobile
+ */
+.wpdtrt-nojs .wpdtrt-responsive-nav-footer {
+  display: block;
+}
+
+/**
+ * Nav toggle
+ * The button which opens and closes the menu.
+ * This is a link, which jumps the user down to the footer clone
+ * when JS is disabled
+ */
+.nav-toggle-wrapper {
+  display: block;
+  float: right;
+  margin-top: 3px; // 15px, just reveal the drop shadow
+}
+
+.nav-toggle {
+  display: block;
+  background: #e40100;
+  background: -moz-linear-gradient(top, #e40100 0%, #b20000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e40100), color-stop(100%, #b20000));
+  background: -webkit-linear-gradient(top, #e40100 0%, #b20000 100%);
+  background: -o-linear-gradient(top, #e40100 0%, #b20000 100%);
+  background: -ms-linear-gradient(top, #e40100 0%, #b20000 100%);
+  background: linear-gradient(to bottom, #e40100 0%, #b20000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e40100', endColorstr='#b20000',GradientType=0 );
+  color: #fff;
+  text-shadow: 0px -1px 0 rgba(0,0,0,.3);
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,.3);
+  font-size: 1.5em;
+  line-height: normal;
+  padding: .5em .65em;
+  border: 1px solid rgba(0, 0, 0,.5);
+  border-radius: 5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+
+  transition: all .1s ease;
+
+  // prevent collapse while the icon font is loading in
+  //min-width: 41px;
+  //min-height: 34px;
+  margin-right: 0; // 5px
+
+  &.nav-toggle-loading {
+    background: #333;
+    opacity: .5;
+  }
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    // .grad-primary
+    color: rgba(255,255,255,.9);
+    border-color: rgba(255,255,255,.5);
+  }
+
+  &.active {
+    background: #000;
+  }
+}
+
+/**
+ * Nav collapse
+ * The collapsed state of #main-nav
+ */
+.nav-collapse {
+
+  border-bottom: 1px solid #4a4a4a;
+
+  li {
+    //border-top: 1px solid #222;
+    border-top: 1px solid #4a4a4a;
+  }
+
+  a {
+    display: block;
+    color: #ddd; // primary-nav a
+    text-decoration: none;
+    padding: 1em 60px 1em $responsive_grid_gutter_horz;
+  }
+
+  a:hover,
+  li.focus > a {
+    background-color: #3e4853;
+  }
+
+  .js & {
+    visibility: hidden;
+  }
+
+  .js &.opened {
+    visibility: visible;
+  }
+}
+
+/**
+ * Nested sub menus
+ */
+.nav-collapse {
+
+  // Enable active class to let the navigation expand over the calculated max height.
+  .js &.multiple-level-nav.opened.dropdown-active {
+    max-height: 9999px !important;
+  }
+
+  .js &.multiple-level-nav {
+
+    .sub-menu {
+      clip: rect(0 0 0 0);
+      max-height: 0;
+      position: absolute;
+      display: none; // This way you don't have focus on sub menu items unless you open the sub menu.
+      overflow: hidden;
+      zoom: 1;
+    }
+
+    .sub-menu.toggled {
+      display: block;
+      max-height: 9999px;
+      position: relative;
+    }
+  }
+
+  .js & li {
+    position: relative;
+  }
+
+  & .dropdown-toggle {
+    position: absolute;
+    top: 0.5em;
+    right: $responsive_grid_gutter_horz;
+    background: #222;
+    color: rgb(221, 221, 221);
+    line-height: .3;
+    content: "";
+    height: 2em;
+    width: 2em;
+    padding: 0;
+    border: 1px solid #666;
+    border-radius: 5px;
+    margin: 0;
+    box-shadow: 0px 1px 0px 1px rgba(0,0,0,.4);
+
+    &:hover,
+    &:focus,
+    &:active  {
+      background-color: #282e34;
+      color: rgb(221, 221, 221);
+    }
+
+    &:after {
+      content: "+";
+      font-size: 20px;
+    }
+
+    &.toggled:after {
+      content: "-";
+    }
+  }
+}
+
+.dropdown,
+.menu-item-has-children {
+
+  ul {
+
+    a {
+      background: #282e34;
+      padding-left: ($responsive_grid_gutter_horz * 2);
+    }
+
+    ul {
+      padding: 0;
+      border: 0;
+
+      a {
+        background: #2d353e;
+        padding-left: ($responsive_grid_gutter_horz * 3);
+      }
+    }
+  }
+
+  .dropdown.opened .has-dropdown {
+    background: #9c2c12;
+  }
+
+}

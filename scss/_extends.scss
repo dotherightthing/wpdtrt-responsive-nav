@@ -1,0 +1,19 @@
+/**
+ * SCSS @extends
+ *
+ * @since       0.4.0
+ *
+ * @package     Wpdtrt_Responsive_Nav
+ * @subpackage  Wpdtrt_Responsive_Nav/scss
+ */
+
+// twentysixteen/style.css
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px;
+	// many screen reader and browser combinations announce broken words as they would appear visually
+	word-wrap: normal !important;
+}

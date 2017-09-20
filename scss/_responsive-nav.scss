@@ -1,38 +1,4 @@
 /**
- * Styles for the public front-end
- *
- * This file contains CSS.
- *
- * @link        https://github.com/dotherightthing/wpdtrt-responsive-nav
- * @since       0.1.0
- *
- * @package     Wpdtrt_Responsive_Nav
- * @subpackage  Wpdtrt_Responsive_Nav/css
- */
-/**
- * Variables
- *
- * @since 1.2.0
- * @author Dan Smith <dev@dotherightthing.co.nz>
- */
-/**
- * SCSS @extends
- *
- * @since       0.4.0
- *
- * @package     Wpdtrt_Responsive_Nav
- * @subpackage  Wpdtrt_Responsive_Nav/scss
- */
-.screen-reader-text, .wpdtrt-responsive-nav-toggle-text {
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  overflow: hidden;
-  position: absolute !important;
-  width: 1px;
-  word-wrap: normal !important;
-}
-
-/**
  * Styles for the public front-end, at the desktop breakpoint
  *
  * This file contains SCSS (CSS) and is a combination of:
@@ -47,6 +13,7 @@
  * @package     Wpdtrt_Responsive_Nav
  * @subpackage  Wpdtrt_Responsive_Nav/scss
  */
+
 /**
  * Always hide the toggle on desktops
  */
@@ -64,3 +31,8 @@
 /**
  * Mobile styles
  */
+
+// You may not @extend an outer selector from within @media.
+.wpdtrt-responsive-nav-toggle-text {
+  @extend .screen-reader-text;
+}

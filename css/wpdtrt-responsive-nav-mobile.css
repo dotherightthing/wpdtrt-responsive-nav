@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * Styles for the public front-end
  *
@@ -9,17 +10,246 @@
  * @package     Wpdtrt_Responsive_Nav
  * @subpackage  Wpdtrt_Responsive_Nav/css
  */
+/**
+ * Variables
+ *
+ * @since 1.2.0
+ * @author Dan Smith <dev@dotherightthing.co.nz>
+ */
+/**
+ * SCSS @extends
+ *
+ * @since       0.4.0
+ *
+ * @package     Wpdtrt_Responsive_Nav
+ * @subpackage  Wpdtrt_Responsive_Nav/scss
+ */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
 
+@font-face {
+  font-family: 'icomoon';
+  src: url("../vendor/icomoon/fonts/icomoon.ttf?y334uy") format("truetype"), url("../vendor/icomoon/fonts/icomoon.woff?y334uy") format("woff"), url("../vendor/icomoon/fonts/icomoon.svg?y334uy#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bars:before {
+  content: "";
+}
+
+/**
+ * Styles for the public front-end, at the mobile breakpoint
+ *
+ * This file contains SCSS (CSS).
+ *
+ * @since       0.4.0
+ *
+ * @package     Wpdtrt_Responsive_Nav
+ * @subpackage  Wpdtrt_Responsive_Nav/scss
+ */
 /**
  * Always show the toggle on mobile
  */
 .wpdtrt-responsive-nav-toggle-wrapper {
-	display: block;
+  display: block;
+}
+
+/**
+ * When JS is disabled, hide the toggled header nav on mobile
+ */
+.wpdtrt-nojs .wpdtrt-responsive-nav-header {
+  display: none;
 }
 
 /**
  * When JS is disabled, show the noscript footer fallback on mobile
  */
-.wpdtrt-nojs .wpdtrt-responsive-nav-navigation-footer {
-	display: block;
+.wpdtrt-nojs .wpdtrt-responsive-nav-footer {
+  display: block;
+}
+
+/**
+ * Nav toggle
+ * The button which opens and closes the menu.
+ * This is a link, which jumps the user down to the footer clone
+ * when JS is disabled
+ */
+.nav-toggle-wrapper {
+  display: block;
+  float: right;
+  margin-top: 3px;
+  margin-top: 0.1875rem;
+}
+
+.nav-toggle {
+  display: block;
+  background: #e40100;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e40100), to(#b20000));
+  background: linear-gradient(to bottom, #e40100 0%, #b20000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e40100', endColorstr='#b20000',GradientType=0 );
+  color: #fff;
+  text-shadow: 0px -1px 0 rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.3);
+  font-size: 1.5em;
+  line-height: normal;
+  padding: .5em .65em;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+  -webkit-transition: all .1s ease;
+  transition: all .1s ease;
+  margin-right: 0;
+}
+
+.nav-toggle.nav-toggle-loading {
+  background: #333;
+  opacity: .5;
+}
+
+.nav-toggle:hover, .nav-toggle:focus, .nav-toggle:active, .nav-toggle.active {
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.nav-toggle.active {
+  background: #000;
+}
+
+/**
+ * Nav collapse
+ * The collapsed state of #main-nav
+ */
+.nav-collapse {
+  border-bottom: 1px solid #4a4a4a;
+}
+
+.nav-collapse li {
+  border-top: 1px solid #4a4a4a;
+}
+
+.nav-collapse a {
+  display: block;
+  color: #ddd;
+  text-decoration: none;
+  padding: 1em 60px 1em 5%;
+  padding: 1em 3.75rem 1em 5%;
+}
+
+.nav-collapse a:hover,
+.nav-collapse li.focus > a {
+  background-color: #3e4853;
+}
+
+.js .nav-collapse {
+  visibility: hidden;
+}
+
+.js .nav-collapse.opened {
+  visibility: visible;
+}
+
+/**
+ * Nested sub menus
+ */
+.js .nav-collapse.multiple-level-nav.opened.dropdown-active {
+  max-height: 9999px !important;
+}
+
+.js .nav-collapse.multiple-level-nav .sub-menu {
+  clip: rect(0 0 0 0);
+  max-height: 0;
+  position: absolute;
+  display: none;
+  overflow: hidden;
+  zoom: 1;
+}
+
+.js .nav-collapse.multiple-level-nav .sub-menu.toggled {
+  display: block;
+  max-height: 9999px;
+  position: relative;
+}
+
+.js .nav-collapse li {
+  position: relative;
+}
+
+.nav-collapse .dropdown-toggle {
+  position: absolute;
+  top: 0.5em;
+  right: 5%;
+  background: #222;
+  color: #dddddd;
+  line-height: .3;
+  content: "";
+  height: 2em;
+  width: 2em;
+  padding: 0;
+  border: 1px solid #666;
+  border-radius: 5px;
+  margin: 0;
+  -webkit-box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.4);
+}
+
+.nav-collapse .dropdown-toggle:hover, .nav-collapse .dropdown-toggle:focus, .nav-collapse .dropdown-toggle:active {
+  background-color: #282e34;
+  color: #dddddd;
+}
+
+.nav-collapse .dropdown-toggle:after {
+  content: "+";
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+
+.nav-collapse .dropdown-toggle.toggled:after {
+  content: "-";
+}
+
+.dropdown ul a,
+.menu-item-has-children ul a {
+  background: #282e34;
+  padding-left: 10%;
+}
+
+.dropdown ul ul,
+.menu-item-has-children ul ul {
+  padding: 0;
+  border: 0;
+}
+
+.dropdown ul ul a,
+.menu-item-has-children ul ul a {
+  background: #2d353e;
+  padding-left: 15%;
+}
+
+.dropdown .dropdown.opened .has-dropdown,
+.menu-item-has-children .dropdown.opened .has-dropdown {
+  background: #9c2c12;
 }

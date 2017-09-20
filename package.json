@@ -9,9 +9,15 @@
     "url": "http://dotherightthing.co.nz"
   },
   "devDependencies": {
-    "generator-wp-plugin-boilerplate": "git+https://github.com/dotherightthing/generator-wp-plugin-boilerplate.git",
+    "generator-wp-theme-boilerplate": "git+https://github.com/dotherightthing/generator-wp-theme-boilerplate.git",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-importjs": "^0.1.8",
     "gulp-phplint": "^0.3.4",
-    "gulp-phpunit": "^0.22.2"
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "postcss-pxtorem": "^4.0.1"
   },
   "scripts": {
     "postinstall": "node_modules/.bin/bower install && composer install"
