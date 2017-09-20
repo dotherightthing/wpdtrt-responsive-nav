@@ -38,6 +38,56 @@ if ( !function_exists( 'wpdtrt_responsive_nav_menu' ) ) {
 }
 
 /**
+ * Create the default plugin options
+ *  This is called when the plugin is activated,
+ *  so that it is available to all functions including shortcodes.
+ */
+function wpdtrt_responsive_nav_options_create() {
+
+  /**
+   * Set option defaults
+   */
+  $wpdtrt_responsive_nav_options_default = array(
+    'wpdtrt_responsive_nav_menu_open_label'         => __('Open menu', 'wpdtrt-responsive-nav'),
+    'wpdtrt_responsive_nav_menu_close_label'        => __('Close menu', 'wpdtrt-responsive-nav'),
+    'wpdtrt_responsive_nav_dropdown_expand_label'   => __('Open sub menu', 'wpdtrt-responsive-nav'),
+    'wpdtrt_responsive_nav_dropdown_collapse_label' => __('Close sub menu', 'wpdtrt-responsive-nav'),
+    'wpdtrt_responsive_nav_header_nav_id'           => 'main-nav',
+    'wpdtrt_responsive_nav_footer_nav_id'           => 'footer-nav',
+    'wpdtrt_responsive_nav_toggle_class'            => 'navigation',
+    'wpdtrt_responsive_nav_toggle_class_active'     => 'navigation-active',
+    'wpdtrt_responsive_nav_slidedown'               => 'true',
+    'wpdtrt_responsive_nav_responsive_breakpoint'   => '480px',
+  );
+
+  /**
+   * Load any existing options, falling back to an empty array if they don't exist yet
+   * @see https://developer.wordpress.org/reference/functions/get_option/#parameters
+   */
+  $wpdtrt_responsive_nav_options = get_option( 'wpdtrt_responsive_nav', array() );
+
+  /**
+   * Merge defaults with existing options
+   * This overwrites the defaults with any user specified values
+   */
+  $wpdtrt_responsive_nav_options_combined = array_merge ( $wpdtrt_responsive_nav_options_default, $wpdtrt_responsive_nav_options );
+
+  /**
+   * Save options objectback to database
+   *
+   * Update the plugin data stored in the WP Options table
+   * This function may be used in place of add_option, although it is not as flexible.
+   * update_option will check to see if the option already exists.
+   * If it does not, it will be added with add_option('option_name', 'option_value').
+   * Unless you need to specify the optional arguments of add_option(),
+   * update_option() is a useful catch-all for both adding and updating options.
+   * @example update_option( string $option, mixed $value, string|bool $autoload = null )
+   * @see https://codex.wordpress.org/Function_Reference/update_option
+   */
+  update_option( 'wpdtrt_responsive_nav', $wpdtrt_responsive_nav_options_combined, null );
+}
+
+/**
  * Create the plugin options page
  */
 if ( !function_exists( 'wpdtrt_responsive_nav_options_page' ) ) {
@@ -65,44 +115,29 @@ if ( !function_exists( 'wpdtrt_responsive_nav_options_page' ) ) {
      */
     global $wpdtrt_responsive_nav_options;
 
-    // default state
     if ( ! isset( $_POST['wpdtrt_responsive_nav_form_submitted'] ) ) {
 
-      // Default options
-      $wpdtrt_responsive_nav_defaults = array(
-        'wpdtrt_responsive_nav_menu_open_label'         => __('Open menu', 'wpdtrt-responsive-nav'),
-        'wpdtrt_responsive_nav_menu_close_label'        => __('Close menu', 'wpdtrt-responsive-nav'),
-        'wpdtrt_responsive_nav_dropdown_expand_label'   => __('Open sub menu', 'wpdtrt-responsive-nav'),
-        'wpdtrt_responsive_nav_dropdown_collapse_label' => __('Close sub menu', 'wpdtrt-responsive-nav')
-      );
-
       /**
-       * Load existing options, providing the defaults as a fallback if the option does not exist
-       * @see https://developer.wordpress.org/reference/functions/get_option/#parameters
-      */
-      $wpdtrt_responsive_nav_options = get_option( 'wpdtrt_responsive_nav', $wpdtrt_responsive_nav_defaults );
+       * Load existing options
+       */
+      $wpdtrt_responsive_nav_options = get_option( 'wpdtrt_responsive_nav' );
 
       // Create variables
       $wpdtrt_responsive_nav_menu_open_label = null;
       $wpdtrt_responsive_nav_menu_close_label = null;
       $wpdtrt_responsive_nav_dropdown_expand_label = null;
       $wpdtrt_responsive_nav_dropdown_collapse_label = null;
+      $wpdtrt_responsive_nav_header_nav_id = null;
+      $wpdtrt_responsive_nav_footer_nav_id = null;
+      $wpdtrt_responsive_nav_toggle_class = null;
+      $wpdtrt_responsive_nav_toggle_class_active = null;
+      $wpdtrt_responsive_nav_slidedown = null;
+      $wpdtrt_responsive_nav_responsive_breakpoint = null;
 
       // Assign values to variables
       extract( $wpdtrt_responsive_nav_options, EXTR_IF_EXISTS );
 
-      /**
-       * Save options object to database
-       *
-       * Update the plugin data stored in the WP Options table
-       * This function may be used in place of add_option, although it is not as flexible.
-       * update_option will check to see if the option already exists.
-       * If it does not, it will be added with add_option('option_name', 'option_value').
-       * Unless you need to specify the optional arguments of add_option(),
-       * update_option() is a useful catch-all for both adding and updating options.
-       * @example update_option( string $option, mixed $value, string|bool $autoload = null )
-       * @see https://codex.wordpress.org/Function_Reference/update_option
-       */
+
       update_option( 'wpdtrt_responsive_nav', $wpdtrt_responsive_nav_options, null );
     }
     else {
@@ -134,7 +169,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_options_page' ) ) {
     }
 
     /**
-     * 4. Load the HTML template
+     * Load the HTML template
      * This function's variables will be available to this template.
      */
     require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'templates/wpdtrt-responsive-nav-options.php');
@@ -142,7 +177,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_options_page' ) ) {
 
 }
 
-function wpdtrt_responsive_nav_options_page_textfield( $label, $name ) {
+function wpdtrt_responsive_nav_options_page_textfield( $name, $label, $tip=null ) {
 
   /**
    * Load options array

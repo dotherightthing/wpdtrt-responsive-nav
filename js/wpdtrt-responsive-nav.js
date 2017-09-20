@@ -43,6 +43,12 @@ var wpdtrt_responsive_nav_ui = {
 
     "use strict";
 
+    // WordPress plugin configuration object
+    if ( typeof wpdtrt_responsive_nav_wp !== 'object' ) {
+      console.warn("DTRT Responsive Nav cannot be initialised: JavaScript config object missing");
+      return;
+    }
+
     // check for the shortcode HTML
     var $custom_toggle_wrapper = $('#wpdtrt-responsive-nav-toggle-wrapper');
 
@@ -50,21 +56,18 @@ var wpdtrt_responsive_nav_ui = {
       return;
     }
 
-    var data_header_nav_id = $custom_toggle_wrapper.data('header-nav-id');
-    var $header_nav = $('#' + data_header_nav_id);
+    var $header_nav = $('#' + wpdtrt_responsive_nav_wp.header_nav_id);
 
     if ( ! $header_nav.length ) {
       return;
     }
 
-    var data_footer_nav_id = $custom_toggle_wrapper.data('footer-nav-id');
-    var $footer_nav = $('#' + data_footer_nav_id);
+    var $footer_nav = $('#' + wpdtrt_responsive_nav_wp.footer_nav_id );
     var $root = $('html');
     var $custom_toggle = $custom_toggle_wrapper.find('.nav-toggle'); // noscript link to footer nav
     var custom_toggle_id = $custom_toggle.attr('id') || 'wpdtrt-responsive-nav-toggle';
     var $custom_toggle_text = $custom_toggle_wrapper.find('.wpdtrt-responsive-nav-toggle-text');
-    var custom_toggle_wrapper_active_class = $custom_toggle_wrapper.data('active-class');
-    var slidedown = $custom_toggle_wrapper.data('slidedown');
+    var custom_toggle_wrapper_active_class = wpdtrt_responsive_nav_wp.toggle_class_active;
 
     if ( this.mobile ) {
 
@@ -92,8 +95,8 @@ var wpdtrt_responsive_nav_ui = {
 
       // Init responsive nav
 
-      this.responsive_navigation_element = responsiveNav('#' + data_header_nav_id, {
-        animate: slidedown, // true|false, use CSS3 transitions
+      this.responsive_navigation_element = responsiveNav('#' + wpdtrt_responsive_nav_wp.header_nav_id, {
+        animate: wpdtrt_responsive_nav_wp.slidedown === 'true' ? true : false, // true|false, use CSS3 transitions
         transition: 284, // 284|custom, ms
         label: 'Menu', // label for the built in navigation toggle
         insert: 'before', // before|after
@@ -111,17 +114,17 @@ var wpdtrt_responsive_nav_ui = {
         enableDropdown: true, // true|false
         menuItems: 'menu-items', // menu-items|custom, applied to top <ul>
         subMenu: 'sub-menu', // sub-menu|custom, applied to child <ul> - doesn't work, see DOM hooks above
-        openDropdown: '<span class="screen-reader-text">Open sub menu</span>', // Open sub menu|custom, label for opening sub menu
-        closeDropdown: '<span class="screen-reader-text">Close sub menu</span>', // Open sub menu|custom, label for closing sub menu
+        openDropdown: '<span class="screen-reader-text">' + wpdtrt_responsive_nav_wp.dropdown_expand_label + '</span>', // Open sub menu|custom, label for opening sub menu
+        closeDropdown: '<span class="screen-reader-text">' + wpdtrt_responsive_nav_wp.dropdown_collapse_label + '</span>', // Open sub menu|custom, label for closing sub menu
         init: function() {
           $custom_toggle.removeClass('nav-toggle-loading');
         },
         open: function () {
-          $custom_toggle_text.text('Close menu');
+          $custom_toggle_text.text( wpdtrt_responsive_nav_wp.menu_close_label );
           $custom_toggle_wrapper.addClass(custom_toggle_wrapper_active_class);
         },
         close: function () {
-          $custom_toggle_text.text('Open menu');
+          $custom_toggle_text.text( wpdtrt_responsive_nav_wp.menu_open_label );
           $custom_toggle_wrapper.removeClass(custom_toggle_wrapper_active_class);
           window.scrollTo(0,0);
         },

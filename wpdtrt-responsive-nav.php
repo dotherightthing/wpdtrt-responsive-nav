@@ -90,4 +90,30 @@ if( ! defined( 'WPDTRT_RESPONSIVE_NAV_URL' ) ) {
 
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'config/tgm-plugin-activation.php');
 
+/**
+ * The register_activation_hook function registers a plugin function
+ * to be run when the plugin is activated.
+ * @see https://codex.wordpress.org/Function_Reference/register_activation_hook
+ */
+
+  register_activation_hook(__FILE__, 'wpdtrt_responsive_nav_activate');
+
+  function wpdtrt_responsive_nav_activate() {
+    //wpdtrt_responsive_nav_rewrite_rules();
+    //flush_rewrite_rules();
+    wpdtrt_responsive_nav_options_create();
+  }
+
+/**
+ * The function register_deactivation_hook (introduced in WordPress 2.0) registers a plugin function
+ * to be run when the plugin is deactivated.
+ * @see https://codex.wordpress.org/Function_Reference/register_deactivation_hook
+ */
+
+  register_deactivation_hook(__FILE__, 'wpdtrt_responsive_nav_deactivate');
+
+  function wpdtrt_responsive_nav_deactivate() {
+    //flush_rewrite_rules();
+  }
+
 ?>

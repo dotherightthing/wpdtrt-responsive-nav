@@ -10,7 +10,7 @@
  * @version 0.1.0
  */
 
-$options = get_query_var( 'wpdtrt_responsive_nav_options' );
+$options = get_query_var( 'wpdtrt_responsive_nav_options_all' );
 
 if ( is_array( $options ) ) {
 
@@ -19,11 +19,16 @@ if ( is_array( $options ) ) {
    * @see http://kb.dotherightthing.dan/php/wordpress/extract/
    */
     $location = null;
-    $header_nav_id = null;
-    $footer_nav_id = null;
-    $nav_toggle_class = null;
-    $nav_toggle_class_active = null;
-    $slidedown = null;
+    $wpdtrt_responsive_nav_menu_open_label = null;
+    $wpdtrt_responsive_nav_menu_close_label = null;
+    $wpdtrt_responsive_nav_dropdown_expand_label = null;
+    $wpdtrt_responsive_nav_dropdown_collapse_label = null;
+    $wpdtrt_responsive_nav_header_nav_id = null;
+    $wpdtrt_responsive_nav_footer_nav_id = null;
+    $wpdtrt_responsive_nav_toggle_class = null;
+    $wpdtrt_responsive_nav_toggle_class_active = null;
+    $wpdtrt_responsive_nav_slidedown = null;
+    $wpdtrt_responsive_nav_responsive_breakpoint = null;
 
   /**
    * only overwrite the predeclared variables
@@ -47,8 +52,8 @@ if ( is_array( $options ) ) {
             'menu' => 'wpdtrt-responsive-nav-header-menu',
             'container' => 'div',
             'container_class' => 'wpdtrt-responsive-nav wpdtrt-responsive-nav-header',
-            'container_id' => $header_nav_id,
-            'menu_class' => 'navigation',
+            'container_id' => $wpdtrt_responsive_nav_header_nav_id,
+            'menu_class' => $wpdtrt_responsive_nav_toggle_class,
             'menu_id' => '',
             'echo' => true,
             /**

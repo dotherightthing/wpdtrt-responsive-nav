@@ -35,14 +35,8 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
     // post object to get info about the post in which the shortcode appears
     global $post;
 
-    // predeclare variables
+    // predeclare shortcode option variables
     $location = null;
-    $header_nav_id = null;
-    $footer_nav_id = null;
-    $nav_toggle_class = null;
-    $nav_toggle_class_active = null;
-    $slidedown = null;
-    $responsive_breakpoint = null;
     $shortcode = 'wpdtrt_responsive_nav_shortcode';
 
     /**
@@ -52,12 +46,6 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
     $atts = shortcode_atts(
       array(
         'location' => 'header', // header|footer
-        'header_nav_id' => 'main-nav',
-        'footer_nav_id' => 'footer-nav',
-        'nav_toggle_class' => 'navigation',
-        'nav_toggle_class_active' => 'navigation-active',
-        'slidedown' => 'true',
-        'responsive_breakpoint' => '480px'
       ),
       $atts,
       $shortcode
@@ -65,6 +53,26 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
 
     // only overwrite predeclared variables
     extract( $atts, EXTR_IF_EXISTS );
+
+    /**
+     * Get plugin options
+     */
+    $wpdtrt_responsive_nav_options = get_option( 'wpdtrt_responsive_nav' );
+
+    // predeclare options variables
+    $wpdtrt_responsive_nav_menu_open_label = null;
+    $wpdtrt_responsive_nav_menu_close_label = null;
+    $wpdtrt_responsive_nav_dropdown_expand_label = null;
+    $wpdtrt_responsive_nav_dropdown_collapse_label = null;
+    $wpdtrt_responsive_nav_header_nav_id = null;
+    $wpdtrt_responsive_nav_footer_nav_id = null;
+    $wpdtrt_responsive_nav_toggle_class = null;
+    $wpdtrt_responsive_nav_toggle_class_active = null;
+    $wpdtrt_responsive_nav_slidedown = null;
+    $wpdtrt_responsive_nav_responsive_breakpoint = null;
+
+    // only overwrite predeclared variables
+    extract( $wpdtrt_responsive_nav_options, EXTR_IF_EXISTS );
 
     if ( $location === 'header' ) { // i.e. only do this once
 
@@ -76,7 +84,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
           'wpdtrt_responsive_nav_css_frontend'
         ),
         WPDTRT_RESPONSIVE_NAV_VERSION,
-        'screen and (max-width: ' . $responsive_breakpoint . ')'
+        'screen and (max-width: ' . $wpdtrt_responsive_nav_responsive_breakpoint . ')'
       );
     }
     else if ( $location === 'footer' ) { // i.e. only do this once
@@ -86,7 +94,16 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
         'wpdtrt_responsive_nav_frontend_js',
         'wpdtrt_responsive_nav_wp',
         array(
-          'responsive_breakpoint' => $responsive_breakpoint
+          'menu_open_label' => $wpdtrt_responsive_nav_menu_open_label,
+          'menu_close_label' => $wpdtrt_responsive_nav_menu_close_label,
+          'dropdown_expand_label' => $wpdtrt_responsive_nav_dropdown_expand_label,
+          'dropdown_collapse_label' => $wpdtrt_responsive_nav_dropdown_expand_label,
+          'header_nav_id' => $wpdtrt_responsive_nav_header_nav_id,
+          'footer_nav_id' => $wpdtrt_responsive_nav_footer_nav_id,
+          'toggle_class' => $wpdtrt_responsive_nav_toggle_class,
+          'toggle_class_active' => $wpdtrt_responsive_nav_toggle_class_active,
+          'slidedown' => $wpdtrt_responsive_nav_slidedown,
+          'responsive_breakpoint' => $wpdtrt_responsive_nav_responsive_breakpoint
         )
       );
     }
@@ -95,8 +112,9 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
     // to allow authors to override loaded templates
     $templates = new WPDTRT_Responsive_Nav_Template_Loader;
 
-    // pass shortcode options to get_template_part()
-    set_query_var( 'wpdtrt_responsive_nav_options', $atts );
+    // pass options to get_template_part()
+    $wpdtrt_responsive_nav_options_all = array_merge( $atts, $wpdtrt_responsive_nav_options );
+    set_query_var( 'wpdtrt_responsive_nav_options_all', $wpdtrt_responsive_nav_options_all );
 
     /**
      * ob_start — Turn on output buffering

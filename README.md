@@ -21,6 +21,7 @@ A WordPress plugin wrapper for responsive-nav.js
 
 1. Upload the plugin files to the `/wp-content/plugins/wpdtrt-responsive-nav` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
+3. Use the Settings->DTRT Responsive Nav screen to configure the plugin
 
 ## Frequently Asked Questions
 
@@ -60,15 +61,11 @@ When JavaScript is enabled:
 
 #### Advanced usage
 
-The following default options may be added as required:
+Use the Settings->DTRT Responsive Nav screen to configure the plugin.
+
+The following default shortcode options may be added as required:
 
 1. `location="header"` - `header` for the header part, `footer` for the footer part
-2. `header_nav_id="main-nav"` - HTML `id` of the main navigation
-3. `footer_nav_id="footer-nav"` - HTML `id` of the footer navigation
-4. `nav_toggle_class="navigation"` - HTML `class` used for styling the menu toggle button
-5. `nav_toggle_class_active="navigation-active"` - HTML `class` used for styling the menu toggle button when it is depressed
-6. `slidedown="true"` - use a slide-down effect when the menu is opened (and up when it is closed)
-7. `responsive_breakpoint="480px"` - the point after which the mobile menu should be hidden
 
 The templates may be further customised as follows:
 
@@ -76,6 +73,11 @@ The templates may be further customised as follows:
 2. Edit your copies
 
 ## Changelog
+
+### 0.5.0
+* Transferred most shortcode options to an options page
+* JavaScript configuration now uses these options rather than HTML data attributes
+* Updated documentation
 
 ### 0.4.0
 * Menus now registered by plugin

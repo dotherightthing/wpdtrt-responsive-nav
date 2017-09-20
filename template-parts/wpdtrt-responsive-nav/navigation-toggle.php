@@ -12,7 +12,7 @@
  * @subpackage  Wpdtrt_Responsive_Nav/template-parts
  */
 
-$options = get_query_var( 'wpdtrt_responsive_nav_options' );
+$options = get_query_var( 'wpdtrt_responsive_nav_options_all' );
 
 if ( is_array( $options ) ) {
 
@@ -21,11 +21,16 @@ if ( is_array( $options ) ) {
    * @see http://kb.dotherightthing.dan/php/wordpress/extract/
    */
     $location = null;
-    $header_nav_id = null;
-    $footer_nav_id = null;
-    $nav_toggle_class = null;
-    $nav_toggle_class_active = null;
-    $slidedown = null;
+    $wpdtrt_responsive_nav_menu_open_label = null;
+    $wpdtrt_responsive_nav_menu_close_label = null;
+    $wpdtrt_responsive_nav_dropdown_expand_label = null;
+    $wpdtrt_responsive_nav_dropdown_collapse_label = null;
+    $wpdtrt_responsive_nav_header_nav_id = null;
+    $wpdtrt_responsive_nav_footer_nav_id = null;
+    $wpdtrt_responsive_nav_toggle_class = null;
+    $wpdtrt_responsive_nav_toggle_class_active = null;
+    $wpdtrt_responsive_nav_slidedown = null;
+    $wpdtrt_responsive_nav_responsive_breakpoint = null;
 
   /**
    * only overwrite the predeclared variables
@@ -35,9 +40,9 @@ if ( is_array( $options ) ) {
 }
 
 ?>
-<p class="nav-toggle-wrapper wpdtrt-responsive-nav-toggle-wrapper <?php echo $nav_toggle_class; ?>" id="wpdtrt-responsive-nav-toggle-wrapper" data-header-nav-id="<?php echo $header_nav_id; ?>" data-footer-nav-id="<?php echo $footer_nav_id; ?>" data-active-class="<?php echo $nav_toggle_class_active; ?>" data-slidedown="<?php echo $slidedown; ?>">
-  <a href="#<?php echo $footer_nav_id; ?>" id="nav-toggle" class="nav-toggle nav-toggle-loading">
+<p class="nav-toggle-wrapper wpdtrt-responsive-nav-toggle-wrapper <?php echo $wpdtrt_responsive_nav_toggle_class; ?>" id="wpdtrt-responsive-nav-toggle-wrapper">
+  <a href="#<?php echo $wpdtrt_responsive_nav_footer_nav_id; ?>" id="nav-toggle" class="nav-toggle nav-toggle-loading">
     <i class="nav-toggle-icon icon icon-bars" aria-hidden="true"></i>
-    <span class="wpdtrt-responsive-nav-toggle-text" id="wpdtrt-responsive-nav-toggle-text">Open menu</span>
+    <span class="wpdtrt-responsive-nav-toggle-text" id="wpdtrt-responsive-nav-toggle-text"><?php echo $wpdtrt_responsive_nav_menu_open_label; ?></span>
   </a>
 </p>

@@ -2,7 +2,7 @@
 /**
  * Form field partial for Admin Options page: Textfield
  *
- * This file contains PHP, and HTML
+ * This file contains PHP and HTML
  *
  * @since       0.5.0
  *
@@ -17,5 +17,8 @@
 	</th>
 	<td>
 		<input type="text" name="<?php echo $name; ?>" id="<?php echo $name; ?>" value="<?php echo $value; ?>">
+		<?php if ( isset($tip) ): ?>
+		<p class="tip"><?php echo $tip; ?></p>
+		<?php endif; ?>
 	</td>
 </tr>
