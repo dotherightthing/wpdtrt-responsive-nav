@@ -7,10 +7,6 @@
     "Dan Smith <dev@dotherightthing.co.nz>"
   ],
   "devDependencies": {
-    "WordPress-Admin-Style": "https://github.com/bueltge/WordPress-Admin-Style.git#^1.4.1",
-    "wp-skeleton-plugin": "https://github.com/ptahdunbar/wp-skeleton-plugin.git"
-  },
-  "dependencies": {
     "enquire": "^2.1.6",
     "responsive-nav": "https://github.com/samikeijonen/responsive-nav.js.git#dropdowns"
   },

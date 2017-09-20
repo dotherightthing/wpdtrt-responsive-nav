@@ -87,4 +87,6 @@ if( ! defined( 'WPDTRT_RESPONSIVE_NAV_URL' ) ) {
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-menus.php');
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-shortcodes.php');
 
+  require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'config/tgm-plugin-activation.php');
+
 ?>
