@@ -46,7 +46,7 @@ if ( is_array( $options ) ) {
              */
             'menu' => 'wpdtrt-responsive-nav-header-menu',
             'container' => 'div',
-            'container_class' => 'wpdtrt-responsive-nav-navigation-header',
+            'container_class' => 'wpdtrt-responsive-nav wpdtrt-responsive-nav-header',
             'container_id' => '',
             'menu_class' => 'navigation',
             'menu_id' => $header_nav_id,
@@ -68,8 +68,9 @@ if ( is_array( $options ) ) {
             /**
              * Theme location must be registered with register_nav_menu()
              * in order to be selectable by the user.
+             * Note: this the menu slug, not the wp-admin display value
              */
-            'theme_location' => 'Responsive Nav Header Menu',
+            'theme_location' => 'wpdtrt-responsive-nav-header-menu'
          ) );
     ?>
 </nav>

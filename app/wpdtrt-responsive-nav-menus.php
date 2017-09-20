@@ -32,7 +32,7 @@ if ( ! function_exists('wpdtrt_responsive_nav_register_menus') ) {
 	function wpdtrt_responsive_nav_register_menus() {
 	  register_nav_menus(
 	    array(
-	    	// Menu name set in wp_nav_menu => Display location / Theme Location
+	    	// Menu name set in wp_nav_menu => wp-admin Display location / Theme Location
 	      	'wpdtrt-responsive-nav-header-menu' => __( 'Responsive Nav Header Menu', 'wpdtrt-responsive-nav' ),
 	      	'wpdtrt-responsive-nav-footer-menu' => __( 'Responsive Nav Footer Menu (mobile noscript fallback)', 'wpdtrt-responsive-nav' )
 	    )

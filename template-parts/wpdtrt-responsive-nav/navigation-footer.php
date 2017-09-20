@@ -46,9 +46,9 @@ if ( is_array( $options ) ) {
              * Apply Appearance > Menus > Menu Structure
              * otherwise fallback_cb is used
              */
-            'menu' => 'wpdtrt-responsive-nav-header-menu', // intentional duplicate to use same source TODO
+            'menu' => 'wpdtrt-responsive-nav-footer-menu',
             'container' => 'div',
-            'container_class' => 'wpdtrt-responsive-nav-navigation-footer',
+            'container_class' => 'wpdtrt-responsive-nav wpdtrt-responsive-nav-footer',
             'container_id' => '',
             'menu_class' => 'navigation',
             'menu_id' => $footer_nav_id,
@@ -72,7 +72,7 @@ if ( is_array( $options ) ) {
              * in order to be selectable by the user.
              * @see app/wpdtrt-responsive-nav-menus.php
              */
-            'theme_location' => 'Responsive Nav Footer Menu',
+            'theme_location' => 'wpdtrt-responsive-nav-footer-menu'
          ) );
     ?>
 </nav>

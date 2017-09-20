@@ -4,11 +4,10 @@
  * This file contains JavaScript.
  *    PHP variables are provided in wpdtrt_soundcloud_pages_config.
  *
- * @link        https://github.com/dotherightthing/wpdtrt-responsive-nav
  * @since       0.1.0
  *
  * @package     Wpdtrt_Responsive_Nav
- * @subpackage  Wpdtrt_Responsive_Nav/views
+ * @subpackage  Wpdtrt_Responsive_Nav/js
  */
 
 // jshint
@@ -62,7 +61,7 @@ var wpdtrt_responsive_nav_ui = {
     var $root = $('html');
     var $custom_toggle = $custom_toggle_wrapper.find('.nav-toggle'); // noscript link to footer nav
     var custom_toggle_id = $custom_toggle.attr('id') || 'wpdtrt-responsive-nav-toggle';
-    var $custom_toggle_text = $custom_toggle_wrapper.find('.nav-toggle-text');
+    var $custom_toggle_text = $custom_toggle_wrapper.find('.wpdtrt-responsive-nav-toggle-text');
     var custom_toggle_wrapper_active_class = $custom_toggle_wrapper.data('active-class');
     var slidedown = $custom_toggle_wrapper.data('slidedown');
 
