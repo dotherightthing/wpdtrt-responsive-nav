@@ -77,8 +77,8 @@ The following default options may be added as required:
 2. `header_nav_id="main-nav"` - HTML `id` of the main navigation
 3. `footer_nav_id="footer-nav"` - HTML `id` of the footer navigation
 4. `nav_toggle_class="navigation"` - HTML `class` used for styling the menu toggle button
-5. `nav_toggle_class_active="navigation-active" - HTML `class` used for styling the menu toggle button when it is depressed
-6. `slidedown="true" - use a slide-down effect when the menu is opened (and up when it is closed)
+5. `nav_toggle_class_active="navigation-active"` - HTML `class` used for styling the menu toggle button when it is depressed
+6. `slidedown="true"` - use a slide-down effect when the menu is opened (and up when it is closed)
 7. `responsive_breakpoint="480px"` - the point after which the mobile menu should be hidden
 
 The templates may be further customised as follows:
@@ -88,10 +88,14 @@ The templates may be further customised as follows:
 
 == Changelog ==
 
-= 0.4 =
+= 0.4.0 =
 * Menus now registered by plugin
 * Shortcodes now load menu template partials
 * Added support for customisation of template partial
+* Added support for customisation of breakpoint
+* Added styling
+* Fixed output of custom menu structure
+* Moved Bower dependencies to root of `vendor` folder
 * Removed redundant files
 * Improved documentation
 
