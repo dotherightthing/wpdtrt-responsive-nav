@@ -4,17 +4,41 @@ A WordPress plugin wrapper for responsive-nav.js
 
 ## Features of responsive-nav.js:
 
+### Summary
+
 * multi-tiered (nested menu items)
 * separate button-controls (allowing menu 'parents' to link to pages, rather than just toggle child menus)
 * keyboard accessible (usable by real people)
 * clean slide-down effect (optional)
 * lightweight and easy to customise for improved usability
 
-## Additional features of this implementation:
+### [Original responsive-nav.js by Viljami Salminen](https://github.com/viljamis/responsive-nav.js)
+
+* It’s lightweight.
+* Doesn’t require any external Javascript library like jQuery.
+* Works without Javascript too.
+* Removes the 300 ms delay between a physical tap and the click event.
+* Have been tested and works in all major desktop and mobile browsers, even IE 6.
+* Have CSS3 transition build in.
+
+### [Fork of responsive-nav.js by Sami Keijonenn](https://github.com/samikeijonen/responsive-nav.js/tree/dropdowns)
+
+* Better support for keyboard users.
+* Better support for screen reader users.
+* Using buttons instead of links for toggling.
+* Try to remove 300 ms delay on dropdown buttons also.
+* Demonstrate that we don’t always need hamburger icon.
+* Use more ARIA markup.
+* Still works without Javascript.
+* Still doesn’t require any external Javascript libraries.
+
+Read more: [Accessible multi-level dropdown navigation](https://foxland.fi/accessible-multi-level-dropdown-navigation/)
+
+### Additional features of this implementation:
 
 * custom toggle button, to support independent placement of menu and toggle button
 * noscript fallback, linking the menu button to a menu at the bottom of the page (for people with JavaScript disabled)
-* loading state (to indicate when the menu has been set up and can be used)
+* loading state (to indicate when the menu has been set up and is ready to use)
 * control of the point at which the responsive version kicks in (using enquire.js to implement CSS media queries in JavaScript)
 
 ## Installation
@@ -25,52 +49,97 @@ A WordPress plugin wrapper for responsive-nav.js
 
 ## Frequently Asked Questions
 
-### How do I use the menu?
+### How do I create the menu items?
 
-Please use the provided shortcodes:
+1. *WP Admin > Appearance > Menus > Create a new menu*
+2. *Menu Structure*: Create items, drag to nest as desired
+3. *Menu Settings > Display location*
+	* *Responsive Nav Header Menu*: Check
+	* *Responsive Nav Footer Menu (mobile noscript fallback)*: Check
+
+### How do I add the menu to my templates?
 
 ```
-<!-- within the editor -->
-[wpdtrt_responsive_nav location="header"]
-
-// in a PHP template, as a template tag
+// header.php
 <?php echo do_shortcode( '[wpdtrt_responsive_nav location="header"]' ); ?>
 ```
 
-#### Basic usage
-
 ```
-[wpdtrt_responsive_nav location="header"]
-
-Some content
-
-[wpdtrt_responsive_nav location="footer"]
+// footer.php
+<?php echo do_shortcode( '[wpdtrt_responsive_nav location="footer"]' ); ?>
 ```
 
-This plugin requires that there is a duplicate navigation menu at the footer of the page.
+### Why are there two menus?
 
-When JavaScript is disabled:
+Progressive enhancement:
 
-* the duplicate footer menu is shown
-* the responsive nav toggle button jumps the user to the footer menu.
+|                     | Mobile  | Desktop |
+|---------------------|---------|---------|
+| JavaScript disabled | `MJ N2` | `N1`    |
+| JavaScript enabled  | `MT N1` | `N1`    |
 
-When JavaScript is enabled:
+* `N1` = nav 1 visible (header)
+* `N2` = nav 2 visible (footer)
+* `MJ` = menu button visible, works as a jump link
+* `MT` = menu button visible, works as a nav toggle
 
-* the duplicate footer menu is hidden
-* the responsive nav toggle button toggles the visibility of the header menu.
+### What can I customise?
 
-#### Advanced usage
+1. __Text labels__
+	* All buttons have accessible text alternatives (*Settings > DTRT Responsive Nav*)
+2. __JavaScript hooks__
+	* HTML `id` and `class` attributes are used to configure wire the toggle button and sub/menus together (*Settings > DTRT Responsive Nav*)
+3. __Styling hooks__
+	* HTML `id` and `class` attributes are used to style the toggle button and sub/menus (*Settings > DTRT Responsive Nav*)
+4. __HTML templates__
+	1. Copy all files in `template-parts` to a `template-parts` folder in the root of your theme
+	2. Edit your copies
+5. __Responsive breakpoint__
+	* The page width at which the responsive version changes to the desktop version (*Settings > DTRT Responsive Nav*)
+6. __Skin__
 
-Use the Settings->DTRT Responsive Nav screen to configure the plugin.
+	To remove the plugin styles and add your own:
 
-The following default shortcode options may be added as required:
+	```
+	// functions.php
 
-1. `location="header"` - `header` for the header part, `footer` for the footer part
+	/**
+	 * Remove wpdtrt-responsive-nav styles
+	 */
+	function yourTheme_dequeue_style() {
+	    wp_dequeue_style( 'wpdtrt_responsive_nav_css_frontend' );
+	}
 
-The templates may be further customised as follows:
+	add_action( 'wp_enqueue_scripts', 'yourTheme_dequeue_style', 100 );
 
-1. Copy all files in `template-parts` to a `template-parts` folder in the root of your theme
-2. Edit your copies
+	/**
+	 * Add your own styles after the responsive-nav.js CSS dependency:
+	 */
+	wp_enqueue_style( 'yourTheme_css_frontend',
+	  'path/to/yourTheme.css',
+	  array(
+	  	// dependencies to load first:
+	    'wpdtrt_responsive_nav_responsive_nav_css'
+	  )
+	);
+	```
+
+	To add your customisations on top of what's there:
+
+	```
+	// functions.php
+
+	/**
+	 * Add your own styles after the wpdtrt-responsive-nav styles:
+	 */
+	wp_enqueue_style( 'yourTheme_css_frontend',
+	  'path/to/yourTheme.css',
+	  array(
+	  	// dependencies to load first:
+	    'wpdtrt_responsive_nav_css_frontend'
+	  )
+	);
+```
 
 ## Changelog
 
