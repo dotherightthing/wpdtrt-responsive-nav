@@ -35,7 +35,7 @@
     display: block;
     color: #ddd;
     line-height: normal;
-    padding: 1em 60px 1em $responsive_grid_gutter_horz;
+    padding: 1em 60px 1em $responsive_nav_item_indent;
 
     // i.e. not just sub menu:
     border-top: 1px solid #222;
@@ -171,7 +171,7 @@
     cursor: pointer;
     position: absolute;
     top: 1em;
-    right: $responsive_grid_gutter_horz;
+    right: $responsive_nav_item_indent;
     background: #222;
     color: rgb(221, 221, 221);
     line-height: .3;
@@ -209,7 +209,7 @@
 
     a {
       background: #282e34;
-      padding-left: ($responsive_grid_gutter_horz * 2);
+      padding-left: ($responsive_nav_item_indent * 2);
     }
 
     ul {
@@ -218,7 +218,7 @@
 
       a {
         background: #2d353e;
-        padding-left: ($responsive_grid_gutter_horz * 3);
+        padding-left: ($responsive_nav_item_indent * 3);
       }
 
       ul {
@@ -227,7 +227,7 @@
 
         a {
           background: #2d353e;
-          padding-left: ($responsive_grid_gutter_horz * 3);
+          padding-left: ($responsive_nav_item_indent * 3);
         }
       }
     }
