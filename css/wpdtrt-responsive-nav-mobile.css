@@ -45,6 +45,12 @@
   margin: 0;
 }
 
+.text-sharpen {
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @font-face {
   font-family: 'icomoon';
   src: url("../icons/icomoon/fonts/icomoon.ttf?y334uy") format("truetype"), url("../icons/icomoon/fonts/icomoon.woff?y334uy") format("woff"), url("../icons/icomoon/fonts/icomoon.svg?y334uy#icomoon") format("svg");
@@ -94,29 +100,6 @@
   display: none;
 }
 
-.wpdtrt-responsive-nav {
-  border-bottom: 1px solid #4a4a4a;
-}
-
-.wpdtrt-responsive-nav li {
-  float: none;
-  border-left: 0;
-}
-
-.wpdtrt-responsive-nav a {
-  display: block;
-  color: #ddd;
-  line-height: normal;
-  padding: 1em 60px 1em 5%;
-  padding: 1em 3.75rem 1em 5%;
-  border-top: 1px solid #222;
-  border-bottom: 1px solid #4a4a4a;
-}
-
-.wpdtrt-responsive-nav li.focus > a {
-  background-color: #3e4853;
-}
-
 /**
  * When JS is disabled, show the noscript footer fallback on mobile
  */
@@ -138,7 +121,7 @@
 .nav-toggle {
   display: block;
   float: right;
-  background-color: #e40100;
+  background-color: #156915;
   color: #fff;
   text-shadow: 0px -1px 0 rgba(0, 0, 0, 0.3);
   padding: 8px 10px;
@@ -165,6 +148,28 @@
 }
 
 /**
+ * Nav
+ */
+.wpdtrt-responsive-nav li {
+  float: none;
+  border-left: 0;
+}
+
+.wpdtrt-responsive-nav li.focus a {
+  background-color: #262626;
+}
+
+.wpdtrt-responsive-nav a {
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: normal;
+  padding: 1em 60px 1em 5%;
+  padding: 1em 3.75rem 1em 5%;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #4d4d4d;
+}
+
+/**
  * Nav collapse
  * The collapsed state of #main-nav
  */
@@ -179,6 +184,13 @@
 /**
  * Nested sub menus
  */
+.nav-collapse {
+  /**
+ * Dropdown toggle
+ * The injected buttons which open and closes the sub menus
+ */
+}
+
 .js .nav-collapse.multiple-level-nav.opened.dropdown-active {
   max-height: 9999px !important;
 }
@@ -202,8 +214,8 @@
   top: 14px;
   top: 0.875rem;
   right: 5%;
-  background-color: #222;
-  color: #dddddd;
+  background-color: #000;
+  color: rgba(255, 255, 255, 0.9);
   line-height: 0;
   height: 2em;
   width: 2em;
@@ -216,8 +228,7 @@
 }
 
 .nav-collapse .dropdown-toggle:hover, .nav-collapse .dropdown-toggle:focus, .nav-collapse .dropdown-toggle:active {
-  background-color: #282e34;
-  color: #dddddd;
+  background-color: #262626;
 }
 
 .nav-collapse .dropdown-toggle:after {
@@ -230,25 +241,24 @@
   content: "-";
 }
 
+.dropdown,
+.menu-item-has-children {
+  /**
+   * .wpdtrt-responsive-nav.opened
+   */
+}
+
 .dropdown ul a,
 .menu-item-has-children ul a {
-  background-color: #282e34;
-  padding-left: 10%;
+  padding-left: 7.5%;
 }
 
 .dropdown ul ul a,
 .menu-item-has-children ul ul a {
-  background-color: #2d353e;
-  padding-left: 15%;
+  padding-left: 10%;
 }
 
 .dropdown ul ul ul a,
 .menu-item-has-children ul ul ul a {
-  background-color: #2d353e;
-  padding-left: 15%;
-}
-
-.dropdown .dropdown.opened .has-dropdown,
-.menu-item-has-children .dropdown.opened .has-dropdown {
-  background-color: #9c2c12;
+  padding-left: 12.5%;
 }

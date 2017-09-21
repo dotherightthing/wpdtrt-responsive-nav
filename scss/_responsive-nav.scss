@@ -37,11 +37,11 @@
     background-color: $responsive_nav_background_color_level_1;
     position: relative;
     font-family: sans-serif;
-
+	@extend .text-sharpen;
     @extend .clear;
 
 	ul {
-	    position: relative;
+	    position: relative; // AP
 		@extend .list-reset;
 	}
 
@@ -89,8 +89,8 @@
 			    background-color: $responsive_nav_background_color_level_2;
 			    font-size: 14px;
 			    white-space: nowrap;
-			    border-top: 1px solid $responsive_nav_shadow_color_level_1;
-			    border-bottom: 1px solid $responsive_nav_divider_color_level_1;
+			    border-top: 1px solid $responsive_nav_shadow_color_level_2;
+			    border-bottom: 1px solid $responsive_nav_divider_color_level_2;
 			    border-left: none;
 
 			    &:hover,

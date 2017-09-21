@@ -23,30 +23,6 @@
   display: none;
 }
 
-.wpdtrt-responsive-nav {
-  border-bottom: 1px solid #4a4a4a;
-
-  li {
-    float: none; // allow nav height to be calculated via JS
-    border-left: 0;
-  }
-
-  a {
-    display: block;
-    color: #ddd;
-    line-height: normal;
-    padding: 1em 60px 1em $responsive_nav_item_indent;
-
-    // i.e. not just sub menu:
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #4a4a4a;
-  }
-
-  li.focus > a {
-    background-color: #3e4853;
-  }
-}
-
 /**
  * When JS is disabled, show the noscript footer fallback on mobile
  */
@@ -70,11 +46,11 @@
   display: block;
   float: right;
 
-  background-color: #e40100;
+  background-color: $responsive_nav_toggle_background_color;
   color: #fff;
-  text-shadow: 0px -1px 0 rgba(0,0,0,.3);
+  text-shadow: 0px -1px 0 rgba(0, 0, 0, .3);
   padding: 8px 10px;
-  border: 1px solid rgba(0, 0, 0,.5);
+  border: 1px solid rgba(0, 0, 0, .5);
   border-radius: 5px;
   text-decoration: none;
 
@@ -89,13 +65,43 @@
   &:focus,
   &:active,
   &.active {
-    color: rgba(255,255,255,.9);
-    border-color: rgba(255,255,255,.5);
+    color: rgba(255, 255, 255, .9);
+    border-color: rgba(255, 255, 255, .5);
   }
 
   &.active {
-    background-color: #000;
+    background-color: $responsive_nav_background_color_level_1;
   }
+}
+
+/**
+ * Nav
+ */
+.wpdtrt-responsive-nav {
+
+  li {
+    float: none; // allow nav height to be calculated via JS
+    border-left: 0;
+
+    &.focus {
+      a {
+        background-color: $responsive_nav_hover_color_level_1;
+      }
+    }
+  }
+
+  a {
+    display: block;
+    color: rgba(255, 255, 255, .9);
+    line-height: normal;
+    // right pad creates space for dropdown buttons
+    padding: 1em 60px 1em $responsive_nav_item_indent;
+
+    // i.e. not just sub menu:
+    border-top: 1px solid $responsive_nav_shadow_color_level_1;
+    border-bottom: 1px solid $responsive_nav_divider_color_level_1;
+  }
+
 }
 
 /**
@@ -140,13 +146,17 @@
     position: relative;
   }
 
+/**
+ * Dropdown toggle
+ * The injected buttons which open and closes the sub menus
+ */
   .dropdown-toggle {
     cursor: pointer;
     position: absolute;
     top: 14px;
     right: $responsive_nav_item_indent;
-    background-color: #222;
-    color: rgb(221, 221, 221);
+    background-color: $responsive_nav_background_color_level_1;
+    color: rgba(255, 255, 255, .9);
     line-height: 0;
     height: 2em;
     width: 2em;
@@ -154,13 +164,12 @@
     border: 1px solid #666;
     border-radius: 5px;
     margin: 0;
-    box-shadow: 0px 1px 0px 1px rgba(0,0,0,.4);
+    box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, .4);
 
     &:hover,
     &:focus,
     &:active  {
-      background-color: #282e34;
-      color: rgb(221, 221, 221);
+      background-color: $responsive_nav_hover_color_level_1;
     }
 
     &:after {
@@ -180,29 +189,29 @@
   ul {
 
     a {
-      background-color: #282e34;
-      padding-left: ($responsive_nav_item_indent * 2);
+      padding-left: ($responsive_nav_item_indent * 1.5);
     }
 
     ul {
 
       a {
-        background-color: #2d353e;
-        padding-left: ($responsive_nav_item_indent * 3);
+        padding-left: ($responsive_nav_item_indent * 2);
       }
 
       ul {
 
         a {
-          background-color: #2d353e;
-          padding-left: ($responsive_nav_item_indent * 3);
+          padding-left: ($responsive_nav_item_indent * 2.5);
         }
       }
     }
   }
 
-  .dropdown.opened .has-dropdown {
-    background-color: #9c2c12;
-  }
+  /**
+   * .wpdtrt-responsive-nav.opened
+   */
+  //&.opened .has-dropdown {
+  //  background-color: #9c2c12;
+  //}
 
 }

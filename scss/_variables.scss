@@ -7,12 +7,19 @@
 
 $responsive_nav_item_indent: 5%;
 
+$responsive_nav_toggle_background_color: #156915; // mid green
+
 $responsive_nav_background_color_level_1: #000;
 $responsive_nav_background_color_level_2: lighten( $responsive_nav_background_color_level_1, 7% );
+
 $responsive_nav_divider_color_level_1: lighten( $responsive_nav_background_color_level_1, 30% );
+$responsive_nav_divider_color_level_2: lighten( $responsive_nav_background_color_level_1, 30% );
+
 $responsive_nav_hover_color_level_1: lighten( $responsive_nav_background_color_level_1, 15% );
-$responsive_nav_shadow_color_level_1: lighten( $responsive_nav_background_color_level_1, 10% );
 $responsive_nav_hover_color_level_2: lighten( $responsive_nav_background_color_level_1, 20% );
+
+$responsive_nav_shadow_color_level_1: lighten( $responsive_nav_background_color_level_1, 10% );
+$responsive_nav_shadow_color_level_2: lighten( $responsive_nav_background_color_level_1, 15% );
 
 // path relative to css folder
 $icomoon-font-path: "../icons/icomoon/fonts";

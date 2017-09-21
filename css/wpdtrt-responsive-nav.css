@@ -44,6 +44,12 @@
   margin: 0;
 }
 
+.text-sharpen, .wpdtrt-responsive-nav {
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /**
  * Styles for the public front-end, at the desktop breakpoint
  *
@@ -128,7 +134,7 @@
   font-size: 14px;
   font-size: 0.875rem;
   white-space: nowrap;
-  border-top: 1px solid #1a1a1a;
+  border-top: 1px solid #262626;
   border-bottom: 1px solid #4d4d4d;
   border-left: none;
 }
