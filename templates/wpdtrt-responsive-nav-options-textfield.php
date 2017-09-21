@@ -11,8 +11,8 @@
  */
 ?>
 
-<tr>
-	<th>
+<tr valign="top">
+	<td scope="row">
 		<label for="<?php echo $name; ?>"><?php echo $label; ?>:</label>
 	</th>
 	<td>

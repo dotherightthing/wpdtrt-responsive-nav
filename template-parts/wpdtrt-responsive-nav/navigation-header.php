@@ -35,6 +35,8 @@ if ( is_array( $options ) ) {
    * @see http://kb.dotherightthing.dan/php/wordpress/extract/
    */
   extract($options, EXTR_IF_EXISTS);
+
+  $wpdtrt_responsive_nav_label_class = ( $wpdtrt_responsive_nav_reveal_labels === '1' ? ' wpdtrt-responsive-nav-reveal-labels' : '' );
 }
 
 ?>
@@ -51,7 +53,7 @@ if ( is_array( $options ) ) {
              */
             'menu' => 'wpdtrt-responsive-nav-header-menu',
             'container' => 'div',
-            'container_class' => 'wpdtrt-responsive-nav wpdtrt-responsive-nav-header',
+            'container_class' => 'wpdtrt-responsive-nav wpdtrt-responsive-nav-header' . $wpdtrt_responsive_nav_label_class,
             'container_id' => $wpdtrt_responsive_nav_header_nav_id,
             'menu_class' => $wpdtrt_responsive_nav_toggle_class,
             'menu_id' => '',

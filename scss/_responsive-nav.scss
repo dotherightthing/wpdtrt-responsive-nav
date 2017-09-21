@@ -28,16 +28,15 @@
  	display: none;
 }
 
-// You may not @extend an outer selector from within @media.
-.wpdtrt-responsive-nav-toggle-text {
- 	@extend .screen-reader-text;
+.wpdtrt-responsive-nav,
+.nav-toggle {
+    font-family: sans-serif;
+	@extend .text-sharpen;
 }
 
 .wpdtrt-responsive-nav {
     background-color: $responsive_nav_background_color_level_1;
     position: relative;
-    font-family: sans-serif;
-	@extend .text-sharpen;
     @extend .clear;
 
 	ul {

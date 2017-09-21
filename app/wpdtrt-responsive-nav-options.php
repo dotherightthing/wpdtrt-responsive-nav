@@ -57,6 +57,7 @@ function wpdtrt_responsive_nav_options_create() {
     'wpdtrt_responsive_nav_toggle_class'            => 'navigation',
     'wpdtrt_responsive_nav_toggle_class_active'     => 'navigation-active',
     'wpdtrt_responsive_nav_slidedown'               => '1',
+    'wpdtrt_responsive_nav_reveal_labels'           => '',
     'wpdtrt_responsive_nav_responsive_breakpoint'   => '480px',
   );
 
@@ -132,6 +133,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_options_page' ) ) {
       $wpdtrt_responsive_nav_toggle_class = null;
       $wpdtrt_responsive_nav_toggle_class_active = null;
       $wpdtrt_responsive_nav_slidedown = null;
+      $wpdtrt_responsive_nav_reveal_labels = null;
       $wpdtrt_responsive_nav_responsive_breakpoint = null;
 
       // Assign values to variables
@@ -163,7 +165,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_options_page' ) ) {
           }
           else {
             // if a checkbox
-            if ( $key === 'wpdtrt_responsive_nav_slidedown' ) {
+            if ( ( $key === 'wpdtrt_responsive_nav_slidedown' ) || ( $key == 'wpdtrt_responsive_nav_reveal_labels') ) {
               // also overwrite the existing value
               $wpdtrt_responsive_nav_options[ $key ] = $_POST[ $key ];
             }

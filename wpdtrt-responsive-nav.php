@@ -82,6 +82,7 @@ if( ! defined( 'WPDTRT_RESPONSIVE_NAV_URL' ) ) {
  */
 
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/class-wpdtrt-responsive-nav-template-loader.php');
+  require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-admin-notices.php');
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-css.php');
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-js.php');
   require_once(WPDTRT_RESPONSIVE_NAV_PATH . 'app/wpdtrt-responsive-nav-menus.php');

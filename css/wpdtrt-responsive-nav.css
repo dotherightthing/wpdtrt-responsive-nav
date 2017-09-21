@@ -23,7 +23,7 @@
  * @package     Wpdtrt_Responsive_Nav
  * @subpackage  Wpdtrt_Responsive_Nav/scss
  */
-.screen-reader-text, .wpdtrt-responsive-nav-toggle-text {
+.screen-reader-text {
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
   overflow: hidden;
@@ -44,7 +44,8 @@
   margin: 0;
 }
 
-.text-sharpen, .wpdtrt-responsive-nav {
+.text-sharpen, .wpdtrt-responsive-nav,
+.nav-toggle {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -79,10 +80,14 @@
   display: none;
 }
 
+.wpdtrt-responsive-nav,
+.nav-toggle {
+  font-family: sans-serif;
+}
+
 .wpdtrt-responsive-nav {
   background-color: #000;
   position: relative;
-  font-family: sans-serif;
 }
 
 .wpdtrt-responsive-nav ul {

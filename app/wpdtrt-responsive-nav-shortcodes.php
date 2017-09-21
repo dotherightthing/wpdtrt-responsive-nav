@@ -69,6 +69,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
     $wpdtrt_responsive_nav_toggle_class = null;
     $wpdtrt_responsive_nav_toggle_class_active = null;
     $wpdtrt_responsive_nav_slidedown = null;
+    $wpdtrt_responsive_nav_reveal_labels = null;
     $wpdtrt_responsive_nav_responsive_breakpoint = null;
 
     // only overwrite predeclared variables
@@ -92,7 +93,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
       // configure mobile JS
       wp_localize_script(
         'wpdtrt_responsive_nav_frontend_js',
-        'wpdtrt_responsive_nav_wp',
+        'wpdtrt_responsive_nav_options',
         array(
           'menu_open_label' => $wpdtrt_responsive_nav_menu_open_label,
           'menu_close_label' => $wpdtrt_responsive_nav_menu_close_label,
@@ -103,6 +104,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
           'toggle_class' => $wpdtrt_responsive_nav_toggle_class,
           'toggle_class_active' => $wpdtrt_responsive_nav_toggle_class_active,
           'slidedown' => $wpdtrt_responsive_nav_slidedown,
+          'reveal_labels' => $wpdtrt_responsive_nav_reveal_labels,
           'responsive_breakpoint' => $wpdtrt_responsive_nav_responsive_breakpoint
         )
       );
