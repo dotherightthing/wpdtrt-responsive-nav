@@ -11,14 +11,14 @@
  */
 ?>
 
-<tr valign="top">
-	<td scope="row">
+<tr>
+	<th scope="row">
 		<label for="<?php echo $name; ?>"><?php echo $label; ?>:</label>
-	</td>
+	</th>
 	<td>
 		<input type="checkbox" name="<?php echo $name; ?>" id="<?php echo $name; ?>" value="1" <?php checked( $value, '1', true ); ?>>
 		<?php if ( isset($tip) ): ?>
-		<p class="tip"><?php echo $tip; ?></p>
+		<p class="description"><?php echo $tip; ?></p>
 		<?php endif; ?>
 	</td>
 </tr>

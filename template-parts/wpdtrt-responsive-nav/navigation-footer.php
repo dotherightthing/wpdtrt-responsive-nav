@@ -21,8 +21,10 @@ if ( is_array( $options ) ) {
    * @see http://kb.dotherightthing.dan/php/wordpress/extract/
    */
     $location = null;
+    $wpdtrt_responsive_nav_menu_label = null;
     $wpdtrt_responsive_nav_menu_open_label = null;
     $wpdtrt_responsive_nav_menu_close_label = null;
+    $wpdtrt_responsive_nav_reveal_labels = null;
     $wpdtrt_responsive_nav_dropdown_expand_label = null;
     $wpdtrt_responsive_nav_dropdown_collapse_label = null;
     $wpdtrt_responsive_nav_header_nav_id = null;
@@ -38,7 +40,7 @@ if ( is_array( $options ) ) {
    */
   extract($options, EXTR_IF_EXISTS);
 
-  $wpdtrt_responsive_nav_label_class = ( $wpdtrt_responsive_nav_reveal_labels === '1' ? ' wpdtrt-responsive-nav-reveal-labels' : '' );
+  $wpdtrt_responsive_nav_label_class = ( $wpdtrt_responsive_nav_reveal_labels === '1' ? 'wpdtrt-responsive-nav-show-labels' : 'wpdtrt-responsive-nav-hide-labels' );
 }
 
 ?>
@@ -55,7 +57,7 @@ if ( is_array( $options ) ) {
              */
             'menu' => 'wpdtrt-responsive-nav-footer-menu',
             'container' => 'div',
-            'container_class' => 'wpdtrt-responsive-nav wpdtrt-responsive-nav-footer' . $wpdtrt_responsive_nav_label_class,
+            'container_class' => 'wpdtrt-responsive-nav wpdtrt-responsive-nav-footer ' . $wpdtrt_responsive_nav_label_class,
             'container_id' => $wpdtrt_responsive_nav_footer_nav_id,
             'menu_class' => $wpdtrt_responsive_nav_toggle_class,
             'menu_id' => '',

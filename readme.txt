@@ -96,12 +96,9 @@ Progressive enhancement:
 
 = What can I customise? =
 
-1. __Text labels__
-	* All buttons have accessible text alternatives (*Settings > DTRT Responsive Nav*)
-2. __JavaScript hooks__
-	* HTML `id` and `class` attributes are used to configure wire the toggle button and sub/menus together (*Settings > DTRT Responsive Nav*)
-3. __Styling hooks__
-	* HTML `id` and `class` attributes are used to style the toggle button and sub/menus (*Settings > DTRT Responsive Nav*)
+1. __Text labels__ (*Settings > DTRT Responsive Nav*)
+2. __JavaScript hooks__ (*Settings > DTRT Responsive Nav*)
+3. __Styling hooks__ (*Settings > DTRT Responsive Nav*)
 4. __HTML templates__
 	1. Copy all files in `template-parts` to a `template-parts` folder in the root of your theme
 	2. Edit your copies

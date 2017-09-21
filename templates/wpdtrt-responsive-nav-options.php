@@ -17,162 +17,153 @@
 <div class="wrap">
 
   <div id="icon-options-general" class="icon32"></div>
-  <h1><?php esc_attr_e( 'DTRT Responsive Nav', 'wp_admin_style' ); ?></h1>
+  <h1>
+    <?php esc_attr_e( 'DTRT Responsive Nav', 'wpdtrt-responsive-nav' ); ?>
+    <span class="wpdtrt-responsive-nav-version"><?php echo WPDTRT_RESPONSIVE_NAV_VERSION; ?></span>
+  </h1>
 
-  <div id="poststuff">
+  <form name="wpdtrt_responsive_nav_data_form" method="post" action="">
 
-    <div id="post-body" class="metabox-holder columns-2">
+    <input type="hidden" name="wpdtrt_responsive_nav_form_submitted" value="Y" />
 
-      <!-- main content -->
-      <div id="post-body-content">
+    <h2 class="title"><?php esc_attr_e('Label Settings', 'wpdtrt-responsive-nav'); ?></h2>
+    <p><?php _e('All buttons have accessible text alternatives.', 'wpdtrt-responsive-nav'); ?></p>
 
-        <div class="meta-box-sortables ui-sortable">
+    <fieldset>
+      <legend class="screen-reader-text">
+        <span><?php esc_attr_e('Label Settings', 'wpdtrt-responsive-nav'); ?></span>
+      </legend>
+      <table class="form-table">
+        <tbody>
+          <?php
+            echo wpdtrt_responsive_nav_options_page_field(
+              'textfield',
+              'wpdtrt_responsive_nav_menu_label',
+              __('Label for default menu button', 'wpdtrt-responsive-nav')
+            );
 
-          <div class="postbox">
+            echo wpdtrt_responsive_nav_options_page_field(
+              'textfield',
+              'wpdtrt_responsive_nav_menu_open_label',
+              __('Label for menu open button', 'wpdtrt-responsive-nav'),
+              __('Displayed when the menu is closed', 'wpdtrt-responsive-nav')
+            );
 
-            <h2>
-              <span>
-                <?php esc_attr_e( 'DTRT Responsive Nav Options', 'wpdtrt-responsive-nav' ); ?>
-              </span>
-            </h2>
+            echo wpdtrt_responsive_nav_options_page_field(
+              'textfield',
+              'wpdtrt_responsive_nav_menu_close_label',
+              __('Label for menu close button', 'wpdtrt-responsive-nav'),
+              __('Displayed when the menu is open', 'wpdtrt-responsive-nav')
+            );
 
-            <div class="inside">
+            echo wpdtrt_responsive_nav_options_page_field(
+              'textfield',
+              'wpdtrt_responsive_nav_dropdown_expand_label',
+              __('Label for sub-menu open button', 'wpdtrt-responsive-nav'),
+              __('Displayed when the sub-menu is closed', 'wpdtrt-responsive-nav')
+            );
 
-              <form name="wpdtrt_responsive_nav_data_form" method="post" action="">
+            echo wpdtrt_responsive_nav_options_page_field(
+              'textfield',
+              'wpdtrt_responsive_nav_dropdown_collapse_label',
+              __('Label for sub-menu close button', 'wpdtrt-responsive-nav'),
+              __('Displayed when the sub-menu is open', 'wpdtrt-responsive-nav')
+            );
 
-                <input type="hidden" name="wpdtrt_responsive_nav_form_submitted" value="Y" />
+            echo wpdtrt_responsive_nav_options_page_field(
+              'checkbox',
+              'wpdtrt_responsive_nav_reveal_labels',
+              __('Reveal accessible labels', 'wpdtrt-responsive-nav'),
+              __('Display to everybody', 'wpdtrt-responsive-nav')
+            );
+          ?>
+        </tbody>
+      </table>
+    </fieldset>
 
-                <fieldset>
-                  <legend>Labels</legend>
-                  <table class="form-table">
-                    <tr>
-                      <th class="row-title"><?php esc_attr_e( 'Option', 'wpdtrt-responsive-nav' ); ?></th>
-                      <th><?php esc_attr_e( 'Value', 'wpdtrt-responsive-nav' ); ?></th>
-                    </tr>
-                    <?php
-                      echo wpdtrt_responsive_nav_options_page_field(
-                        'textfield',
-                        'wpdtrt_responsive_nav_menu_open_label',
-                        __('Label for menu open button', 'wpdtrt-responsive-nav')
-                      );
+    <h2 class="title"><?php esc_attr_e('Attribute Settings', 'wpdtrt-responsive-nav'); ?></h2>
+    <p><?php _e('HTML <code>id</code> and <code>class</code> attributes are used to style the toggle button and sub/menus, and wire the toggle button and sub/menus together.', 'wpdtrt-responsive-nav'); ?></p>
 
-                      echo wpdtrt_responsive_nav_options_page_field(
-                        'textfield',
-                        'wpdtrt_responsive_nav_menu_close_label',
-                        __('Label for menu close button', 'wpdtrt-responsive-nav')
-                      );
+    <fieldset>
+      <legend class="screen-reader-text">
+        <span><?php esc_attr_e('Attribute Settings', 'wpdtrt-responsive-nav'); ?></span>
+      </legend>
+      <table class="form-table">
+        <tbody>
+          <?php
+            echo wpdtrt_responsive_nav_options_page_field(
+              'textfield',
+              'wpdtrt_responsive_nav_header_nav_id',
+              __('Header nav ID', 'wpdtrt-responsive-nav'),
+              __('HTML <code>id</code> of the top navigation bar', 'wpdtrt-responsive-nav')
+            );
 
-                      echo wpdtrt_responsive_nav_options_page_field(
-                        'textfield',
-                        'wpdtrt_responsive_nav_dropdown_expand_label',
-                        __('Label for dropdown expand button', 'wpdtrt-responsive-nav')
-                      );
+            echo wpdtrt_responsive_nav_options_page_field(
+              'textfield',
+              'wpdtrt_responsive_nav_footer_nav_id',
+              __('Footer nav ID', 'wpdtrt-responsive-nav'),
+              __('HTML <code>id</code> of the bottom navigation bar', 'wpdtrt-responsive-nav')
+            );
 
-                      echo wpdtrt_responsive_nav_options_page_field(
-                        'textfield',
-                        'wpdtrt_responsive_nav_dropdown_collapse_label',
-                        __('Label for dropdown collapse button', 'wpdtrt-responsive-nav')
-                      );
+            echo wpdtrt_responsive_nav_options_page_field(
+              'textfield',
+              'wpdtrt_responsive_nav_toggle_class',
+              __('Menu button class', 'wpdtrt-responsive-nav'),
+              __('HTML <code>class</code> used to style the menu toggle button', 'wpdtrt-responsive-nav')
+            );
 
-                      echo wpdtrt_responsive_nav_options_page_field(
-                        'checkbox',
-                        'wpdtrt_responsive_nav_reveal_labels',
-                        __('Reveal accessible labels', 'wpdtrt-responsive-nav'),
-                        __('Display to everybody', 'wpdtrt-responsive-nav')
-                      );
-                    ?>
-                  </table>
-                </fieldset>
-                <fieldset>
-                  <legend>Other</legend>
-                  <table class="form-table">
-                    <tr>
-                      <th class="row-title"><?php esc_attr_e( 'Option', 'wpdtrt-responsive-nav' ); ?></th>
-                      <th><?php esc_attr_e( 'Value', 'wpdtrt-responsive-nav' ); ?></th>
-                    </tr>
-                    <?php
-                      echo wpdtrt_responsive_nav_options_page_field(
-                        'textfield',
-                        'wpdtrt_responsive_nav_header_nav_id',
-                        __('Header nav ID', 'wpdtrt-responsive-nav'),
-                        __('HTML <code>id</code> of the top navigation bar', 'wpdtrt-responsive-nav')
-                      );
+            echo wpdtrt_responsive_nav_options_page_field(
+              'textfield',
+              'wpdtrt_responsive_nav_toggle_class_active',
+              __('Active menu button class', 'wpdtrt-responsive-nav'),
+              __('HTML <code>class</code> used to style the menu toggle button when it is depressed', 'wpdtrt-responsive-nav')
+            );
+          ?>
+        </tbody>
+      </table>
+    </fieldset>
 
-                      echo wpdtrt_responsive_nav_options_page_field(
-                        'textfield',
-                        'wpdtrt_responsive_nav_footer_nav_id',
-                        __('Footer nav ID', 'wpdtrt-responsive-nav'),
-                        __('HTML <code>id</code> of the bottom navigation bar', 'wpdtrt-responsive-nav')
-                      );
+    <h2 class="title"><?php esc_attr_e('Transition Settings', 'wpdtrt-responsive-nav'); ?></h2>
+    <p><?php _e('Change is inevitable.', 'wpdtrt-responsive-nav'); ?></p>
 
-                      echo wpdtrt_responsive_nav_options_page_field(
-                        'textfield',
-                        'wpdtrt_responsive_nav_toggle_class',
-                        __('Menu button class', 'wpdtrt-responsive-nav'),
-                        __('HTML <code>class</code> used to style the menu toggle button', 'wpdtrt-responsive-nav')
-                      );
+    <fieldset>
+      <legend class="screen-reader-text">
+        <span><?php esc_attr_e('Transition Settings', 'wpdtrt-responsive-nav'); ?></span>
+      </legend>
+      <table class="form-table">
+        <tbody>
+          <?php
+            echo wpdtrt_responsive_nav_options_page_field(
+              'checkbox',
+              'wpdtrt_responsive_nav_slidedown',
+              __('Slidedown effect', 'wpdtrt-responsive-nav'),
+              __('Use a slide-down effect when the menu is opened (and up when it is closed)', 'wpdtrt-responsive-nav')
+            );
 
-                      echo wpdtrt_responsive_nav_options_page_field(
-                        'textfield',
-                        'wpdtrt_responsive_nav_toggle_class_active',
-                        __('Active menu button class', 'wpdtrt-responsive-nav'),
-                        __('HTML <code>class</code> used to style the menu toggle button when it is depressed', 'wpdtrt-responsive-nav')
-                      );
+            echo wpdtrt_responsive_nav_options_page_field(
+              'textfield',
+              'wpdtrt_responsive_nav_responsive_breakpoint',
+              __('Responsive breakpoint', 'wpdtrt-responsive-nav'),
+              __('The point after which the mobile menu should be hidden', 'wpdtrt-responsive-nav')
+            );
+          ?>
+        </tbody>
+      </table>
+    <fieldset>
 
-                      echo wpdtrt_responsive_nav_options_page_field(
-                        'checkbox',
-                        'wpdtrt_responsive_nav_slidedown',
-                        __('Slidedown effect', 'wpdtrt-responsive-nav'),
-                        __('Use a slide-down effect when the menu is opened (and up when it is closed)', 'wpdtrt-responsive-nav')
-                      );
+    <?php
+    /**
+     * submit_button( string $text = null, string $type = 'primary', string $name = 'submit', bool $wrap = true, array|string $other_attributes = null )
+     */
+      submit_button(
+        $text = __('Save Changes', 'wpdtrt-responsive-nav'),
+        $type = 'primary',
+        $name = 'wpdtrt_responsive_nav_submit',
+        $wrap = true,
+        $other_attributes = null
+      );
+    ?>
 
-                      echo wpdtrt_responsive_nav_options_page_field(
-                        'textfield',
-                        'wpdtrt_responsive_nav_responsive_breakpoint',
-                        __('Responsive breakpoint', 'wpdtrt-responsive-nav'),
-                        __('The point after which the mobile menu should be hidden', 'wpdtrt-responsive-nav')
-                      );
-                    ?>
-                  </table>
-                <fieldset>
-
-                <?php
-                /**
-                 * submit_button( string $text = null, string $type = 'primary', string $name = 'submit', bool $wrap = true, array|string $other_attributes = null )
-                 */
-                  submit_button(
-                    $text = 'Save',
-                    $type = 'primary',
-                    $name = 'wpdtrt_responsive_nav_submit',
-                    $wrap = true,
-                    $other_attributes = null
-                  );
-                ?>
-
-              </form>
-            </div>
-            <!-- .inside -->
-
-          </div>
-          <!-- .postbox -->
-
-        </div>
-        <!-- .meta-box-sortables .ui-sortable -->
-
-      </div>
-      <!-- post-body-content -->
-
-      <!-- sidebar -->
-      <div id="postbox-container-1" class="postbox-container">
-        <p>Support info</p>
-      </div>
-      <!-- #postbox-container-1 .postbox-container -->
-
-    </div>
-    <!-- #post-body .metabox-holder .columns-2 -->
-
-    <br class="clear">
-  </div>
-  <!-- #poststuff -->
+  </form>
 
 </div> <!-- .wrap -->

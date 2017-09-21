@@ -60,6 +60,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
     $wpdtrt_responsive_nav_options = get_option( 'wpdtrt_responsive_nav' );
 
     // predeclare options variables
+    $wpdtrt_responsive_nav_menu_label = null;
     $wpdtrt_responsive_nav_menu_open_label = null;
     $wpdtrt_responsive_nav_menu_close_label = null;
     $wpdtrt_responsive_nav_dropdown_expand_label = null;
@@ -95,6 +96,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
         'wpdtrt_responsive_nav_frontend_js',
         'wpdtrt_responsive_nav_options',
         array(
+          'menu_label' => $wpdtrt_responsive_nav_menu_label,
           'menu_open_label' => $wpdtrt_responsive_nav_menu_open_label,
           'menu_close_label' => $wpdtrt_responsive_nav_menu_close_label,
           'dropdown_expand_label' => $wpdtrt_responsive_nav_dropdown_expand_label,

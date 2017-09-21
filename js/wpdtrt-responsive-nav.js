@@ -93,15 +93,15 @@ var wpdtrt_responsive_nav_ui = {
       $header_nav.find('li.page_item_has_children').addClass('dropdown');
       $header_nav.find('li.page_item_has_children > a').addClass('has-dropdown');
 
-      var label_start = wpdtrt_responsive_nav_options.reveal_labels ? '' : '<span class="screen-reader-text">';
-      var label_end = wpdtrt_responsive_nav_options.reveal_labels ? '' : '</span>';
+      var label_start = '<span class="wpdtrt-responsive-nav-dropdown-button-text">';
+      var label_end = '</span>';
 
       // Init responsive nav
 
       this.responsive_navigation_element = responsiveNav('#' + wpdtrt_responsive_nav_options.header_nav_id, {
         animate: wpdtrt_responsive_nav_options.slidedown === '1' ? true : false, // true|false, use CSS3 transitions
         transition: 284, // 284|custom, ms
-        label: 'Menu', // label for the built in navigation toggle
+        label: wpdtrt_responsive_nav_options.menu_label, // label for the built in navigation toggle
         insert: 'before', // before|after
         customToggle: '#' + custom_toggle_id, // Selector: Specify the ID of a custom toggle
         closeOnNavClick: false, // default, when links are clicked

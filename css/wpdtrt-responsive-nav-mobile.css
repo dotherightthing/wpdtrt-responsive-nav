@@ -24,7 +24,7 @@
  * @package     Wpdtrt_Responsive_Nav
  * @subpackage  Wpdtrt_Responsive_Nav/scss
  */
-.screen-reader-text {
+.screen-reader-text, .wpdtrt-responsive-nav-hide-labels .wpdtrt-responsive-nav-toggle-text, .wpdtrt-responsive-nav-hide-labels .wpdtrt-responsive-nav-dropdown-button-text {
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
   overflow: hidden;
@@ -147,6 +147,10 @@
   background-color: #000;
 }
 
+.wpdtrt-responsive-nav-show-labels .nav-toggle-icon {
+  display: none;
+}
+
 /**
  * Nav
  */
@@ -163,10 +167,14 @@
   display: block;
   color: rgba(255, 255, 255, 0.9);
   line-height: normal;
-  padding: 1em 60px 1em 5%;
-  padding: 1em 3.75rem 1em 5%;
+  padding: 1em 5%;
   border-top: 1px solid #1a1a1a;
   border-bottom: 1px solid #4d4d4d;
+}
+
+.wpdtrt-responsive-nav-hide-labels .wpdtrt-responsive-nav a {
+  padding-right: 60px;
+  padding-right: 3.75rem;
 }
 
 /**
@@ -216,10 +224,6 @@
   right: 5%;
   background-color: #000;
   color: rgba(255, 255, 255, 0.9);
-  line-height: 0;
-  height: 2em;
-  width: 2em;
-  padding: 0;
   border: 1px solid #666;
   border-radius: 5px;
   margin: 0;
@@ -239,6 +243,28 @@
 
 .nav-collapse .dropdown-toggle.toggled:after {
   content: "-";
+}
+
+.nav-collapse.wpdtrt-responsive-nav-show-labels .dropdown-toggle {
+  max-width: 70px;
+  max-width: 4.375rem;
+  padding: 5px;
+  padding: 0.3125rem;
+}
+
+.nav-collapse.wpdtrt-responsive-nav-show-labels .dropdown-toggle:after {
+  display: none;
+}
+
+.nav-collapse.wpdtrt-responsive-nav-show-labels .dropdown-toggle.toggled:after {
+  display: none;
+}
+
+.nav-collapse.wpdtrt-responsive-nav-hide-labels .dropdown-toggle {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  line-height: 0;
 }
 
 .dropdown,

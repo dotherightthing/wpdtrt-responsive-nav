@@ -11,6 +11,29 @@
  * @subpackage  Wpdtrt_Responsive_Nav/app
  */
 
+if ( !function_exists( 'wpdtrt_responsive_nav_css_backend' ) ) {
+
+  /**
+   * Attach CSS for Settings > DTRT Responsive Nav
+   *
+   * @since       0.1.0
+   */
+  function wpdtrt_responsive_nav_css_backend() {
+
+     $media = 'all';
+
+    wp_enqueue_style( 'wpdtrt_responsive_nav_css_backend',
+      WPDTRT_RESPONSIVE_NAV_URL . 'css/wpdtrt-responsive-nav-admin.css',
+      array(),
+      WPDTRT_RESPONSIVE_NAV_VERSION,
+      $media
+    );
+  }
+
+  add_action( 'admin_head', 'wpdtrt_responsive_nav_css_backend' );
+
+}
+
 if ( !function_exists( 'wpdtrt_responsive_nav_css_frontend' ) ) {
 
   /**

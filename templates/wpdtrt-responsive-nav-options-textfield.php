@@ -11,14 +11,14 @@
  */
 ?>
 
-<tr valign="top">
-	<td scope="row">
+<tr>
+	<th scope="row">
 		<label for="<?php echo $name; ?>"><?php echo $label; ?>:</label>
 	</th>
 	<td>
-		<input type="text" name="<?php echo $name; ?>" id="<?php echo $name; ?>" value="<?php echo $value; ?>">
+		<input type="text" name="<?php echo $name; ?>" id="<?php echo $name; ?>" value="<?php echo $value; ?>" class="regular-text">
 		<?php if ( isset($tip) ): ?>
-		<p class="tip"><?php echo $tip; ?></p>
+		<p class="description"><?php echo $tip; ?></p>
 		<?php endif; ?>
 	</td>
 </tr>

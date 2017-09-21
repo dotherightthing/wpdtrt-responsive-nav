@@ -21,16 +21,17 @@ if ( is_array( $options ) ) {
    * @see http://kb.dotherightthing.dan/php/wordpress/extract/
    */
     $location = null;
+    $wpdtrt_responsive_nav_menu_label = null;
     $wpdtrt_responsive_nav_menu_open_label = null;
     $wpdtrt_responsive_nav_menu_close_label = null;
     $wpdtrt_responsive_nav_dropdown_expand_label = null;
     $wpdtrt_responsive_nav_dropdown_collapse_label = null;
+    $wpdtrt_responsive_nav_reveal_labels = null;
     $wpdtrt_responsive_nav_header_nav_id = null;
     $wpdtrt_responsive_nav_footer_nav_id = null;
     $wpdtrt_responsive_nav_toggle_class = null;
     $wpdtrt_responsive_nav_toggle_class_active = null;
     $wpdtrt_responsive_nav_slidedown = null;
-    $wpdtrt_responsive_nav_reveal_labels = null;
     $wpdtrt_responsive_nav_responsive_breakpoint = null;
 
   /**
@@ -39,13 +40,15 @@ if ( is_array( $options ) ) {
    */
   extract($options, EXTR_IF_EXISTS);
 
-  $wpdtrt_responsive_nav_toggle_label_class = ( $wpdtrt_responsive_nav_reveal_labels === '1' ? '' : ' screen-reader-text' );
+  $wpdtrt_responsive_nav_label_class = ( $wpdtrt_responsive_nav_reveal_labels === '1' ? 'wpdtrt-responsive-nav-show-labels' : 'wpdtrt-responsive-nav-hide-labels' );
 }
 
 ?>
-<p class="nav-toggle-wrapper wpdtrt-responsive-nav-toggle-wrapper <?php echo $wpdtrt_responsive_nav_toggle_class; ?>" id="wpdtrt-responsive-nav-toggle-wrapper">
+<p class="nav-toggle-wrapper wpdtrt-responsive-nav-toggle-wrapper <?php echo $wpdtrt_responsive_nav_toggle_class . ' ' . $wpdtrt_responsive_nav_label_class; ?>" id="wpdtrt-responsive-nav-toggle-wrapper">
   <a href="#<?php echo $wpdtrt_responsive_nav_footer_nav_id; ?>" id="nav-toggle" class="nav-toggle nav-toggle-loading">
     <i class="nav-toggle-icon icon icon-bars" aria-hidden="true"></i>
-    <span class="wpdtrt-responsive-nav-toggle-text<?php echo $wpdtrt_responsive_nav_toggle_label_class; ?>" id="wpdtrt-responsive-nav-toggle-text"><?php echo $wpdtrt_responsive_nav_menu_open_label; ?></span>
+    <span class="wpdtrt-responsive-nav-toggle-text" id="wpdtrt-responsive-nav-toggle-text">
+      <?php echo $wpdtrt_responsive_nav_menu_label; ?>
+    </span>
   </a>
 </p>

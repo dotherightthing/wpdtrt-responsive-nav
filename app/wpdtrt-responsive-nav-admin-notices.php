@@ -19,13 +19,19 @@ add_action('admin_notices', 'wpdtrt_responsive_nav_admin_notice_settings_updated
 
 function wpdtrt_responsive_nav_admin_notice_settings_updated() {
 
-	if ( isset( $_POST['wpdtrt_responsive_nav_form_submitted'] ) ):
+	$screen = get_current_screen();
+
+	if ($screen->id === 'settings_page_wpdtrt-responsive-nav'):
+
+		if ( isset( $_POST['wpdtrt_responsive_nav_form_submitted'] ) ):
 ?>
 
-	<div class="notice notice-success is-dismissible">
-		<p><?php _e('Responsive Nav settings successfully updated', 'wpdtrt-responsive-nav'); ?></p>
-	</div>
+			<div class="notice notice-success is-dismissible">
+				<p><?php _e('Responsive Nav settings successfully updated', 'wpdtrt-responsive-nav'); ?></p>
+			</div>
+
 <?php
+		endif;
 	endif;
 }
 ?>

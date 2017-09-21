@@ -42,6 +42,18 @@
   margin: 0 0 16px;
 }
 
+.wpdtrt-responsive-nav-toggle-text {
+  .wpdtrt-responsive-nav-hide-labels & {
+    @extend .screen-reader-text;
+  }
+}
+
+.wpdtrt-responsive-nav-dropdown-button-text {
+  .wpdtrt-responsive-nav-hide-labels & {
+    @extend .screen-reader-text;
+  }
+}
+
 .nav-toggle {
   display: block;
   float: right;
@@ -74,6 +86,12 @@
   }
 }
 
+.nav-toggle-icon {
+  .wpdtrt-responsive-nav-show-labels & {
+    display: none;
+  }
+}
+
 /**
  * Nav
  */
@@ -94,12 +112,15 @@
     display: block;
     color: rgba(255, 255, 255, .9);
     line-height: normal;
-    // right pad creates space for dropdown buttons
-    padding: 1em 60px 1em $responsive_nav_item_indent;
+    padding: 1em $responsive_nav_item_indent;
 
     // i.e. not just sub menu:
     border-top: 1px solid $responsive_nav_shadow_color_level_1;
     border-bottom: 1px solid $responsive_nav_divider_color_level_1;
+
+    .wpdtrt-responsive-nav-hide-labels & {
+      padding-right: 60px; // create space for fixed width dropdown buttons
+    }
   }
 
 }
@@ -152,15 +173,13 @@
  */
   .dropdown-toggle {
     cursor: pointer;
+
     position: absolute;
     top: 14px;
     right: $responsive_nav_item_indent;
+
     background-color: $responsive_nav_background_color_level_1;
     color: rgba(255, 255, 255, .9);
-    line-height: 0;
-    height: 2em;
-    width: 2em;
-    padding: 0;
     border: 1px solid #666;
     border-radius: 5px;
     margin: 0;
@@ -179,6 +198,31 @@
 
     &.toggled:after {
       content: "-";
+    }
+  }
+
+  &.wpdtrt-responsive-nav-show-labels {
+
+    .dropdown-toggle {
+      max-width: 70px;
+      padding: 5px;
+    }
+
+    .dropdown-toggle:after {
+      display: none;
+    }
+
+    .dropdown-toggle.toggled:after {
+      display: none;
+    }
+  }
+
+  &.wpdtrt-responsive-nav-hide-labels {
+    .dropdown-toggle {
+      width: 22px;
+      height: 22px;
+      padding: 0;
+      line-height: 0;
     }
   }
 }
