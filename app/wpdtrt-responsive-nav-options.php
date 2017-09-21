@@ -56,7 +56,7 @@ function wpdtrt_responsive_nav_options_create() {
     'wpdtrt_responsive_nav_footer_nav_id'           => 'footer-nav',
     'wpdtrt_responsive_nav_toggle_class'            => 'navigation',
     'wpdtrt_responsive_nav_toggle_class_active'     => 'navigation-active',
-    'wpdtrt_responsive_nav_slidedown'               => 'true',
+    'wpdtrt_responsive_nav_slidedown'               => '1',
     'wpdtrt_responsive_nav_responsive_breakpoint'   => '480px',
   );
 
@@ -161,6 +161,13 @@ if ( !function_exists( 'wpdtrt_responsive_nav_options_page' ) ) {
             // overwrite the existing value
             $wpdtrt_responsive_nav_options[ $key ] = $_POST[ $key ];
           }
+          else {
+            // if a checkbox
+            if ( $key === 'wpdtrt_responsive_nav_slidedown' ) {
+              // also overwrite the existing value
+              $wpdtrt_responsive_nav_options[ $key ] = $_POST[ $key ];
+            }
+          }
         }
 
         // Update options object in database
@@ -177,7 +184,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_options_page' ) ) {
 
 }
 
-function wpdtrt_responsive_nav_options_page_textfield( $name, $label, $tip=null ) {
+function wpdtrt_responsive_nav_options_page_field( $type, $name, $label, $tip=null ) {
 
   /**
    * Load options array
@@ -209,7 +216,7 @@ function wpdtrt_responsive_nav_options_page_textfield( $name, $label, $tip=null 
    */
   ob_start();
 
-  require(WPDTRT_RESPONSIVE_NAV_PATH . 'templates/wpdtrt-responsive-nav-options-textfield.php');
+  require(WPDTRT_RESPONSIVE_NAV_PATH . 'templates/wpdtrt-responsive-nav-options-' . $type . '.php');
 
   /**
    * ob_get_clean — Get current buffer contents and delete current output buffer

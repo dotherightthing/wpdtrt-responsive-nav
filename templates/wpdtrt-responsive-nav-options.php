@@ -44,57 +44,67 @@
 
                 <table class="form-table">
                   <?php
-                    echo wpdtrt_responsive_nav_options_page_textfield(
+                    echo wpdtrt_responsive_nav_options_page_field(
+                      'textfield',
                       'wpdtrt_responsive_nav_menu_open_label',
                       __('Label for menu open button', 'wpdtrt-responsive-nav')
                     );
 
-                    echo wpdtrt_responsive_nav_options_page_textfield(
+                    echo wpdtrt_responsive_nav_options_page_field(
+                      'textfield',
                       'wpdtrt_responsive_nav_menu_close_label',
                       __('Label for menu close button', 'wpdtrt-responsive-nav')
                     );
 
-                    echo wpdtrt_responsive_nav_options_page_textfield(
+                    echo wpdtrt_responsive_nav_options_page_field(
+                      'textfield',
                       'wpdtrt_responsive_nav_dropdown_expand_label',
                       __('Label for dropdown expand button', 'wpdtrt-responsive-nav')
                     );
 
-                    echo wpdtrt_responsive_nav_options_page_textfield(
+                    echo wpdtrt_responsive_nav_options_page_field(
+                      'textfield',
                       'wpdtrt_responsive_nav_dropdown_collapse_label',
                       __('Label for dropdown collapse button', 'wpdtrt-responsive-nav')
                     );
 
-                    echo wpdtrt_responsive_nav_options_page_textfield(
+                    echo wpdtrt_responsive_nav_options_page_field(
+                      'textfield',
                       'wpdtrt_responsive_nav_header_nav_id',
                       __('Header nav ID', 'wpdtrt-responsive-nav'),
                       __('HTML <code>id</code> of the top navigation bar', 'wpdtrt-responsive-nav')
                     );
 
-                    echo wpdtrt_responsive_nav_options_page_textfield(
+                    echo wpdtrt_responsive_nav_options_page_field(
+                      'textfield',
                       'wpdtrt_responsive_nav_footer_nav_id',
                       __('Footer nav ID', 'wpdtrt-responsive-nav'),
                       __('HTML <code>id</code> of the bottom navigation bar', 'wpdtrt-responsive-nav')
                     );
 
-                    echo wpdtrt_responsive_nav_options_page_textfield(
+                    echo wpdtrt_responsive_nav_options_page_field(
+                      'textfield',
                       'wpdtrt_responsive_nav_toggle_class',
                       __('Menu button class', 'wpdtrt-responsive-nav'),
                       __('HTML <code>class</code> used to style the menu toggle button', 'wpdtrt-responsive-nav')
                     );
 
-                    echo wpdtrt_responsive_nav_options_page_textfield(
+                    echo wpdtrt_responsive_nav_options_page_field(
+                      'textfield',
                       'wpdtrt_responsive_nav_toggle_class_active',
                       __('Active menu button class', 'wpdtrt-responsive-nav'),
                       __('HTML <code>class</code> used to style the menu toggle button when it is depressed', 'wpdtrt-responsive-nav')
                     );
 
-                    echo wpdtrt_responsive_nav_options_page_textfield(
+                    echo wpdtrt_responsive_nav_options_page_field(
+                      'checkbox',
                       'wpdtrt_responsive_nav_slidedown',
                       __('Slidedown effect', 'wpdtrt-responsive-nav'),
                       __('Use a slide-down effect when the menu is opened (and up when it is closed)', 'wpdtrt-responsive-nav')
                     );
 
-                    echo wpdtrt_responsive_nav_options_page_textfield(
+                    echo wpdtrt_responsive_nav_options_page_field(
+                      'textfield',
                       'wpdtrt_responsive_nav_responsive_breakpoint',
                       __('Responsive breakpoint', 'wpdtrt-responsive-nav'),
                       __('The point after which the mobile menu should be hidden', 'wpdtrt-responsive-nav')

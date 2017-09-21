@@ -96,7 +96,7 @@ var wpdtrt_responsive_nav_ui = {
       // Init responsive nav
 
       this.responsive_navigation_element = responsiveNav('#' + wpdtrt_responsive_nav_wp.header_nav_id, {
-        animate: wpdtrt_responsive_nav_wp.slidedown === 'true' ? true : false, // true|false, use CSS3 transitions
+        animate: wpdtrt_responsive_nav_wp.slidedown === '1' ? true : false, // true|false, use CSS3 transitions
         transition: 284, // 284|custom, ms
         label: 'Menu', // label for the built in navigation toggle
         insert: 'before', // before|after
