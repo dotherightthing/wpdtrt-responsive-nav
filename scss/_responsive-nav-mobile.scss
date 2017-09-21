@@ -68,39 +68,20 @@
 
 .nav-toggle {
   display: block;
-
   float: right;
-  margin-top: 3px; // 15px, just reveal the drop shadow
 
-  background: #e40100;
-  background: -moz-linear-gradient(top, #e40100 0%, #b20000 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e40100), color-stop(100%, #b20000));
-  background: -webkit-linear-gradient(top, #e40100 0%, #b20000 100%);
-  background: -o-linear-gradient(top, #e40100 0%, #b20000 100%);
-  background: -ms-linear-gradient(top, #e40100 0%, #b20000 100%);
-  background: linear-gradient(to bottom, #e40100 0%, #b20000 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e40100', endColorstr='#b20000',GradientType=0 );
+  background-color: #e40100;
   color: #fff;
   text-shadow: 0px -1px 0 rgba(0,0,0,.3);
-  box-shadow: 0px 0px 0px 0px rgba(0,0,0,.3);
-  font-size: 1.5em;
-  line-height: normal;
-  padding: .5em .65em;
+  padding: 8px 10px;
   border: 1px solid rgba(0, 0, 0,.5);
   border-radius: 5px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-decoration: none;
 
   transition: all .1s ease;
 
-  // prevent collapse while the icon font is loading in
-  //min-width: 41px;
-  //min-height: 34px;
-  margin-right: 0; // 5px
-
   &.nav-toggle-loading {
-    background: #333;
+    background-color: #333;
     opacity: .5;
   }
 
@@ -108,13 +89,12 @@
   &:focus,
   &:active,
   &.active {
-    // .grad-primary
     color: rgba(255,255,255,.9);
     border-color: rgba(255,255,255,.5);
   }
 
   &.active {
-    background: #000;
+    background-color: #000;
   }
 }
 
@@ -147,19 +127,12 @@
   .js &.multiple-level-nav {
 
     .sub-menu {
-      display: none; // This way you don't have focus on sub menu items unless you open the sub menu.
-      position: absolute;
-      left: auto;
-      top: auto;
-      clip: rect(0 0 0 0);
-      max-height: 0;
-      overflow: hidden;
-    }
+      display: none; // prevents focus on items within closed sub menu
 
-    .sub-menu.toggled {
-      display: block;
-      max-height: 9999px;
-      position: relative;
+      &.toggled {
+        display: block;
+        position: relative; // overrides desktop
+      }
     }
   }
 
@@ -167,15 +140,14 @@
     position: relative;
   }
 
-  & .dropdown-toggle {
+  .dropdown-toggle {
     cursor: pointer;
     position: absolute;
-    top: 1em;
+    top: 14px;
     right: $responsive_nav_item_indent;
-    background: #222;
+    background-color: #222;
     color: rgb(221, 221, 221);
-    line-height: .3;
-    content: "";
+    line-height: 0;
     height: 2em;
     width: 2em;
     padding: 0;
@@ -208,25 +180,21 @@
   ul {
 
     a {
-      background: #282e34;
+      background-color: #282e34;
       padding-left: ($responsive_nav_item_indent * 2);
     }
 
     ul {
-      padding: 0;
-      border: 0;
 
       a {
-        background: #2d353e;
+        background-color: #2d353e;
         padding-left: ($responsive_nav_item_indent * 3);
       }
 
       ul {
-        padding: 0;
-        border: 0;
 
         a {
-          background: #2d353e;
+          background-color: #2d353e;
           padding-left: ($responsive_nav_item_indent * 3);
         }
       }
@@ -234,7 +202,7 @@
   }
 
   .dropdown.opened .has-dropdown {
-    background: #9c2c12;
+    background-color: #9c2c12;
   }
 
 }

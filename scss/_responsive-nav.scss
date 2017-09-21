@@ -18,27 +18,23 @@
  * Always hide the toggle on desktops
  */
 .wpdtrt-responsive-nav-toggle-wrapper {
-  display: none;
+ 	display: none;
 }
 
 /**
  * Always hide the noscript footer fallback on desktops
  */
 .wpdtrt-responsive-nav-footer {
-  display: none;
+ 	display: none;
 }
-
-/**
- * Mobile styles
- */
 
 // You may not @extend an outer selector from within @media.
 .wpdtrt-responsive-nav-toggle-text {
-  @extend .screen-reader-text;
+ 	@extend .screen-reader-text;
 }
 
 .wpdtrt-responsive-nav {
-    background: #000;
+    background-color: $responsive_nav_background_color_level_1;
     position: relative;
     font-family: sans-serif;
 
@@ -46,11 +42,7 @@
 
 	ul {
 	    position: relative;
-	    //height: 55px;
-
-		list-style: none;
-		padding: 0;
-		margin: 0;
+		@extend .list-reset;
 	}
 
 	li {
@@ -58,11 +50,11 @@
 	    position: relative;
 
 		&:last-child {
-		    border-right: 1px solid #4a4a4a;
+		    border-right: 1px solid $responsive_nav_divider_color_level_1;
 		}
 
-
-		&:hover {
+		&:hover,
+		&.hover {
 			.sub-menu {
 		    	display: block;
 		    }
@@ -71,15 +63,15 @@
 
 	a {
 	    display: block;
-	    color: #ddd;
 	    font-size: 16px;
-	    line-height: 55px;
 	    text-decoration: none;
-	    padding: 0 15px;
-	    border-left: 1px solid #4a4a4a;
+	    color: #ddd;
+	    padding: 16px 15px;
+	    border-left: 1px solid $responsive_nav_divider_color_level_1;
 
-	    &:hover { // and li.active a
-    		background-color: #3e4853;
+	    &:hover,
+	    &:focus {
+    		background-color: $responsive_nav_hover_color_level_1;
 	    }
 	}
 
@@ -87,29 +79,32 @@
 	    display: none;
 	    position: absolute;
 	    left: 0;
-	    top: 55px;
+	    top: 100%;
 	    z-index: 1;
 
 		li {
 		    float: none;
 
-			&:last-child a {
+		    a {
+			    background-color: $responsive_nav_background_color_level_2;
+			    font-size: 14px;
+			    white-space: nowrap;
+			    border-top: 1px solid $responsive_nav_shadow_color_level_1;
+			    border-bottom: 1px solid $responsive_nav_divider_color_level_1;
 			    border-left: none;
-			    border-right: none;
+
+			    &:hover,
+			    &:focus {
+					background-color: $responsive_nav_hover_color_level_2;
+			    }
+		    }
+
+			&:last-child {
+				a {
+			    	border-left: none;
+			    	border-right: none;
+			    }
 			}
 		}
-
-	    a {
-		    background: #3e3e3e;
-		    border-left: none;
-		    font-size: 14px;
-		    white-space: nowrap;
-		    border-top: 1px solid #222;
-		    border-bottom: 1px solid #4a4a4a;
-
-		    &:hover {
-				background: #222;
-		    }
-	    }
 	}
 }

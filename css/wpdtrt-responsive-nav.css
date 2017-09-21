@@ -38,6 +38,12 @@
   clear: both;
 }
 
+.list-reset, .wpdtrt-responsive-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /**
  * Styles for the public front-end, at the desktop breakpoint
  *
@@ -67,20 +73,14 @@
   display: none;
 }
 
-/**
- * Mobile styles
- */
 .wpdtrt-responsive-nav {
-  background: #000;
+  background-color: #000;
   position: relative;
   font-family: sans-serif;
 }
 
 .wpdtrt-responsive-nav ul {
   position: relative;
-  list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .wpdtrt-responsive-nav li {
@@ -89,35 +89,33 @@
 }
 
 .wpdtrt-responsive-nav li:last-child {
-  border-right: 1px solid #4a4a4a;
+  border-right: 1px solid #4d4d4d;
 }
 
-.wpdtrt-responsive-nav li:hover .sub-menu {
+.wpdtrt-responsive-nav li:hover .sub-menu, .wpdtrt-responsive-nav li.hover .sub-menu {
   display: block;
 }
 
 .wpdtrt-responsive-nav a {
   display: block;
-  color: #ddd;
   font-size: 16px;
   font-size: 1rem;
-  line-height: 55px;
   text-decoration: none;
-  padding: 0 15px;
-  padding: 0 0.9375rem;
-  border-left: 1px solid #4a4a4a;
+  color: #ddd;
+  padding: 16px 15px;
+  padding: 1rem 0.9375rem;
+  border-left: 1px solid #4d4d4d;
 }
 
-.wpdtrt-responsive-nav a:hover {
-  background-color: #3e4853;
+.wpdtrt-responsive-nav a:hover, .wpdtrt-responsive-nav a:focus {
+  background-color: #262626;
 }
 
 .wpdtrt-responsive-nav .sub-menu {
   display: none;
   position: absolute;
   left: 0;
-  top: 55px;
-  top: 3.4375rem;
+  top: 100%;
   z-index: 1;
 }
 
@@ -125,21 +123,21 @@
   float: none;
 }
 
-.wpdtrt-responsive-nav .sub-menu li:last-child a {
-  border-left: none;
-  border-right: none;
-}
-
-.wpdtrt-responsive-nav .sub-menu a {
-  background: #3e3e3e;
-  border-left: none;
+.wpdtrt-responsive-nav .sub-menu li a {
+  background-color: #121212;
   font-size: 14px;
   font-size: 0.875rem;
   white-space: nowrap;
-  border-top: 1px solid #222;
-  border-bottom: 1px solid #4a4a4a;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #4d4d4d;
+  border-left: none;
 }
 
-.wpdtrt-responsive-nav .sub-menu a:hover {
-  background: #222;
+.wpdtrt-responsive-nav .sub-menu li a:hover, .wpdtrt-responsive-nav .sub-menu li a:focus {
+  background-color: #333333;
+}
+
+.wpdtrt-responsive-nav .sub-menu li:last-child a {
+  border-left: none;
+  border-right: none;
 }
