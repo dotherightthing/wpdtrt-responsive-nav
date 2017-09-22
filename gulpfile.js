@@ -21,7 +21,6 @@ var autoprefixer = require('autoprefixer');
 var phplint = require('gulp-phplint');
 var postcss = require('gulp-postcss');
 var pxtorem = require('postcss-pxtorem');
-var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 
 // parent theme source directories

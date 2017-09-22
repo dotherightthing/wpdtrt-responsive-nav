@@ -12,7 +12,6 @@
     "generator-wp-theme-boilerplate": "git+https://github.com/dotherightthing/generator-wp-theme-boilerplate.git",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
-    "gulp-importjs": "^0.1.8",
     "gulp-phplint": "^0.3.4",
     "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",

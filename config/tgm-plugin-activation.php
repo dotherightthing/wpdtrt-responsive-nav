@@ -64,6 +64,7 @@ function wpdtrt_responsive_nav_register_required_plugins() {
 	      	'slug'          => 'wordpress-admin-style',
       		'source'        => 'https://github.com/bueltge/wordpress-admin-style/archive/master.zip',
       		'external_url'  => 'https://github.com/bueltge/wordpress-admin-style',
+      		'required' 		=> false
 	    )
 
 	);

@@ -3,7 +3,5 @@ generators
 logs
 node_modules
 tests
-vendor/WordPress-Admin-Style
-vendor/wp-skeleton-plugin
 composer.phar
 .DS_Store
