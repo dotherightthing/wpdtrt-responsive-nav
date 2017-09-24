@@ -232,6 +232,12 @@ function wpdtrt_responsive_nav_options_page_field( $type, $name, $label, $tip=nu
    * e.g. $name="wpdtrt_responsive_nav_toggle_label" => $wpdtrt_responsive_nav_toggle_label => ('Open menu', 'wpdtrt-responsive-nav')
    * @see http://php.net/manual/en/language.variables.variable.php
    */
+
+  // if the option doesn't exist yet, don't output it
+  if ( ! isset( ${$name} ) ) {
+    return;
+  }
+
   $value = ${$name};
 
   /**
