@@ -1,4 +1,14 @@
 <?php
+/**
+ * Admin Notices
+ *
+ * This file contains PHP.
+ *
+ * @since       0.1.0
+ *
+ * @package     Wpdtrt_Responsive_Nav
+ * @subpackage  Wpdtrt_Responsive_Nav/app
+ */
 
 /**
  * Display any error messages below the H1

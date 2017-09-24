@@ -95,6 +95,7 @@ if( ! defined( 'WPDTRT_RESPONSIVE_NAV_URL' ) ) {
  * The register_activation_hook function registers a plugin function
  * to be run when the plugin is activated.
  * @see https://codex.wordpress.org/Function_Reference/register_activation_hook
+ * @todo https://github.com/dotherightthing/generator-wp-plugin-boilerplate/issues/18
  */
 
   register_activation_hook(__FILE__, 'wpdtrt_responsive_nav_activate');

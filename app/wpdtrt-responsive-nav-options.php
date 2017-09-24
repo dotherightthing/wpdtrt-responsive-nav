@@ -37,56 +37,59 @@ if ( !function_exists( 'wpdtrt_responsive_nav_menu' ) ) {
 
 }
 
-/**
- * Create the default plugin options
- *  This is called when the plugin is activated,
- *  so that it is available to all functions including shortcodes.
- */
-function wpdtrt_responsive_nav_options_create() {
+if ( !function_exists( 'wpdtrt_responsive_nav_options_create' ) ) {
 
   /**
-   * Set option defaults
+   * Create the default plugin options
+   *  This is called when the plugin is activated,
+   *  so that it is available to all functions including shortcodes.
    */
-  $wpdtrt_responsive_nav_options_default = array(
-    'wpdtrt_responsive_nav_menu_label'              => __('Menu', 'wpdtrt-responsive-nav'),
-    'wpdtrt_responsive_nav_menu_open_label'         => __('Open menu', 'wpdtrt-responsive-nav'),
-    'wpdtrt_responsive_nav_menu_close_label'        => __('Close menu', 'wpdtrt-responsive-nav'),
-    'wpdtrt_responsive_nav_dropdown_expand_label'   => __('Open sub menu', 'wpdtrt-responsive-nav'),
-    'wpdtrt_responsive_nav_dropdown_collapse_label' => __('Close sub menu', 'wpdtrt-responsive-nav'),
-    'wpdtrt_responsive_nav_header_nav_id'           => 'main-nav',
-    'wpdtrt_responsive_nav_footer_nav_id'           => 'footer-nav',
-    'wpdtrt_responsive_nav_toggle_class'            => 'navigation',
-    'wpdtrt_responsive_nav_toggle_class_active'     => 'navigation-active',
-    'wpdtrt_responsive_nav_slidedown'               => '1',
-    'wpdtrt_responsive_nav_reveal_labels'           => '',
-    'wpdtrt_responsive_nav_responsive_breakpoint'   => '480px',
-  );
+  function wpdtrt_responsive_nav_options_create() {
 
-  /**
-   * Load any existing options, falling back to an empty array if they don't exist yet
-   * @see https://developer.wordpress.org/reference/functions/get_option/#parameters
-   */
-  $wpdtrt_responsive_nav_options = get_option( 'wpdtrt_responsive_nav', array() );
+    /**
+     * Set option defaults
+     */
+    $wpdtrt_responsive_nav_options_default = array(
+      'wpdtrt_responsive_nav_menu_label'              => __('Menu', 'wpdtrt-responsive-nav'),
+      'wpdtrt_responsive_nav_menu_open_label'         => __('Open menu', 'wpdtrt-responsive-nav'),
+      'wpdtrt_responsive_nav_menu_close_label'        => __('Close menu', 'wpdtrt-responsive-nav'),
+      'wpdtrt_responsive_nav_dropdown_expand_label'   => __('Open sub menu', 'wpdtrt-responsive-nav'),
+      'wpdtrt_responsive_nav_dropdown_collapse_label' => __('Close sub menu', 'wpdtrt-responsive-nav'),
+      'wpdtrt_responsive_nav_header_nav_id'           => 'main-nav',
+      'wpdtrt_responsive_nav_footer_nav_id'           => 'footer-nav',
+      'wpdtrt_responsive_nav_toggle_class'            => 'navigation',
+      'wpdtrt_responsive_nav_toggle_class_active'     => 'navigation-active',
+      'wpdtrt_responsive_nav_slidedown'               => '1',
+      'wpdtrt_responsive_nav_reveal_labels'           => '',
+      'wpdtrt_responsive_nav_responsive_breakpoint'   => '480px',
+    );
 
-  /**
-   * Merge defaults with existing options
-   * This overwrites the defaults with any user specified values
-   */
-  $wpdtrt_responsive_nav_options_combined = array_merge ( $wpdtrt_responsive_nav_options_default, $wpdtrt_responsive_nav_options );
+    /**
+     * Load any existing options, falling back to an empty array if they don't exist yet
+     * @see https://developer.wordpress.org/reference/functions/get_option/#parameters
+     */
+    $wpdtrt_responsive_nav_options = get_option( 'wpdtrt_responsive_nav', array() );
 
-  /**
-   * Save options objectback to database
-   *
-   * Update the plugin data stored in the WP Options table
-   * This function may be used in place of add_option, although it is not as flexible.
-   * update_option will check to see if the option already exists.
-   * If it does not, it will be added with add_option('option_name', 'option_value').
-   * Unless you need to specify the optional arguments of add_option(),
-   * update_option() is a useful catch-all for both adding and updating options.
-   * @example update_option( string $option, mixed $value, string|bool $autoload = null )
-   * @see https://codex.wordpress.org/Function_Reference/update_option
-   */
-  update_option( 'wpdtrt_responsive_nav', $wpdtrt_responsive_nav_options_combined, null );
+    /**
+     * Merge defaults with existing options
+     * This overwrites the defaults with any user specified values
+     */
+    $wpdtrt_responsive_nav_options_combined = array_merge ( $wpdtrt_responsive_nav_options_default, $wpdtrt_responsive_nav_options );
+
+    /**
+     * Save options objectback to database
+     *
+     * Update the plugin data stored in the WP Options table
+     * This function may be used in place of add_option, although it is not as flexible.
+     * update_option will check to see if the option already exists.
+     * If it does not, it will be added with add_option('option_name', 'option_value').
+     * Unless you need to specify the optional arguments of add_option(),
+     * update_option() is a useful catch-all for both adding and updating options.
+     * @example update_option( string $option, mixed $value, string|bool $autoload = null )
+     * @see https://codex.wordpress.org/Function_Reference/update_option
+     */
+    update_option( 'wpdtrt_responsive_nav', $wpdtrt_responsive_nav_options_combined, null );
+  }
 }
 
 /**
@@ -95,7 +98,7 @@ function wpdtrt_responsive_nav_options_create() {
 if ( !function_exists( 'wpdtrt_responsive_nav_options_page' ) ) {
 
   /**
-   * Render the appropriate UI on Settings > DTRT Responsive Nav
+   * Render the appropriate UI on Settings > Responsive Nav
    *
    *    1. Take the user's options (from the form input)
    *    2. Store the user's options
@@ -117,67 +120,87 @@ if ( !function_exists( 'wpdtrt_responsive_nav_options_page' ) ) {
      */
     global $wpdtrt_responsive_nav_options;
 
-    if ( ! isset( $_POST['wpdtrt_responsive_nav_form_submitted'] ) ) {
+    /**
+     * Load existing options
+     */
+    $wpdtrt_responsive_nav_options = get_option( 'wpdtrt_responsive_nav' );
 
-      /**
-       * Load existing options
-       */
-      $wpdtrt_responsive_nav_options = get_option( 'wpdtrt_responsive_nav' );
-
-      // Create variables
-      $wpdtrt_responsive_nav_menu_label = null;
-      $wpdtrt_responsive_nav_menu_open_label = null;
-      $wpdtrt_responsive_nav_menu_close_label = null;
-      $wpdtrt_responsive_nav_dropdown_expand_label = null;
-      $wpdtrt_responsive_nav_dropdown_collapse_label = null;
-      $wpdtrt_responsive_nav_header_nav_id = null;
-      $wpdtrt_responsive_nav_footer_nav_id = null;
-      $wpdtrt_responsive_nav_toggle_class = null;
-      $wpdtrt_responsive_nav_toggle_class_active = null;
-      $wpdtrt_responsive_nav_slidedown = null;
-      $wpdtrt_responsive_nav_reveal_labels = null;
-      $wpdtrt_responsive_nav_responsive_breakpoint = null;
-
-      // Assign values to variables
-      extract( $wpdtrt_responsive_nav_options, EXTR_IF_EXISTS );
-
-
-      update_option( 'wpdtrt_responsive_nav', $wpdtrt_responsive_nav_options, null );
-    }
-    else {
+    /**
+     * If the form was submitted, update the options
+     */
+    if ( isset( $_POST['wpdtrt_responsive_nav_form_submitted'] ) ) {
 
       // check that the form submission was legitimate
       $hidden_field = esc_html( $_POST['wpdtrt_responsive_nav_form_submitted'] );
 
-      if ( $hidden_field === 'Y' ) {
+      if ( $hidden_field !== 'Y' ) {
+        return;
+      }
 
-        // Load existing options
-        $wpdtrt_responsive_nav_options = get_option( 'wpdtrt_responsive_nav' );
+      /**
+       * Save default/user values from form submission
+       * @see https://stackoverflow.com/a/13461680/6850747
+       * @todo https://github.com/dotherightthing/generator-wp-plugin-boilerplate/issues/16
+       * @todo https://github.com/dotherightthing/generator-wp-plugin-boilerplate/issues/17
+       */
+      foreach( $wpdtrt_responsive_nav_options as $key => $value ) {
 
-        /**
-         * Save default/user values from form submission
-         * @see https://stackoverflow.com/a/13461680/6850747
-         */
-        foreach( $wpdtrt_responsive_nav_options as $key => $value ) {
-
-          // if a value was submitted
-          if ( !empty( $_POST[ $key ] ) ) {
-            // overwrite the existing value
-            $wpdtrt_responsive_nav_options[ $key ] = $_POST[ $key ];
+        // if a value was submitted
+        if ( !empty( $_POST[ $key ] ) ) {
+          // overwrite the existing value
+          $wpdtrt_responsive_nav_options[ $key ] = esc_html( $_POST[ $key ] );
+        }
+        else {
+          // if a checkbox's unchecked option
+          // value="1"
+          if ( ( $key === 'wpdtrt_responsive_nav_slidedown' ) || ( $key === 'wpdtrt_responsive_nav_reveal_labels') ) {
+            // also overwrite the existing value
+            $wpdtrt_responsive_nav_options[ $key ] = '';
           }
-          else {
-            // if a checkbox
-            if ( ( $key === 'wpdtrt_responsive_nav_slidedown' ) || ( $key == 'wpdtrt_responsive_nav_reveal_labels') ) {
-              // also overwrite the existing value
-              $wpdtrt_responsive_nav_options[ $key ] = $_POST[ $key ];
-            }
+          // if a select's default option
+          // value=""
+          if ( $key === 'wpdtrt_responsive_nav_datatype' ) {
+            // also overwrite the existing value
+            $wpdtrt_responsive_nav_options[ $key ] = '';
           }
         }
-
-        // Update options object in database
-        update_option( 'wpdtrt_responsive_nav', $wpdtrt_responsive_nav_options, null );
       }
+
+      // Update options object in database
+      update_option( 'wpdtrt_responsive_nav', $wpdtrt_responsive_nav_options, null );
     }
+
+    /**
+     * Use the options to get the data
+     */
+    if ( function_exists('wpdtrt_responsive_nav_api_request') ) {
+
+      // Call API and store response in options object
+      $wpdtrt_responsive_nav_options['wpdtrt_responsive_nav_data'] = wpdtrt_responsive_nav_api_request();
+
+      // Store timestamp in options object
+      $wpdtrt_responsive_nav_options['last_updated'] = time(); // UNIX timestamp for the current time
+
+      // Update options object in database
+      update_option( 'wpdtrt_responsive_nav', $wpdtrt_responsive_nav_options, null );
+    }
+
+    // Create variables from options
+    $wpdtrt_responsive_nav_menu_label = null;
+    $wpdtrt_responsive_nav_menu_open_label = null;
+    $wpdtrt_responsive_nav_menu_close_label = null;
+    $wpdtrt_responsive_nav_dropdown_expand_label = null;
+    $wpdtrt_responsive_nav_dropdown_collapse_label = null;
+    $wpdtrt_responsive_nav_header_nav_id = null;
+    $wpdtrt_responsive_nav_footer_nav_id = null;
+    $wpdtrt_responsive_nav_toggle_class = null;
+    $wpdtrt_responsive_nav_toggle_class_active = null;
+    $wpdtrt_responsive_nav_slidedown = null;
+    $wpdtrt_responsive_nav_reveal_labels = null;
+    $wpdtrt_responsive_nav_responsive_breakpoint = null;
+
+    // Assign values to variables
+    extract( $wpdtrt_responsive_nav_options, EXTR_IF_EXISTS );
 
     /**
      * Load the HTML template
@@ -188,6 +211,10 @@ if ( !function_exists( 'wpdtrt_responsive_nav_options_page' ) ) {
 
 }
 
+/**
+ * Form field templating for the options page
+ * @since 0.5.0
+ */
 function wpdtrt_responsive_nav_options_page_field( $type, $name, $label, $tip=null ) {
 
   /**

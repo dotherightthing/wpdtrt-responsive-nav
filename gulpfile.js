@@ -8,8 +8,6 @@
  *
  * This file contains JavaScript.
  *
- * @link        https://github.com/dotherightthing/wpdtrt-responsive-nav
- * @see         https://codex.wordpress.org/AJAX_in_Plugins
  * @since       0.1.0
  *
  * @package     Wpdtrt_Responsive_Nav

@@ -6,7 +6,6 @@
  * This file contains PHP, and HTML from the WordPress_Admin_Style plugin.
  *
  * @link        https://github.com/dotherightthing/wpdtrt-responsive-nav
- * @link        /wp-admin/admin.php?page=WordPress_Admin_Style#twocolumnlayout2
  * @since       0.1.0
  *
  * @package     WPDTRT_Responsive_Nav
@@ -159,7 +158,7 @@
         $text = __('Save Changes', 'wpdtrt-responsive-nav'),
         $type = 'primary',
         $name = 'wpdtrt_responsive_nav_submit',
-        $wrap = true,
+        $wrap = true, // wrap in paragraph
         $other_attributes = null
       );
     ?>
