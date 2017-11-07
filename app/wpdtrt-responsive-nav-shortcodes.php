@@ -8,8 +8,8 @@
  * @link        https://generatewp.com/shortcodes/
  * @since       0.1.0
  *
- * @example     [wpdtrt_responsive_nav location="header" header_nav_id="header-nav" footer_nav_id="footer-nav" slidedown="false"]
- * @example     do_shortcode( '[wpdtrt_responsive_nav location="header" header_nav_id="header-nav" footer_nav_id="footer-nav" slidedown="false"]' );
+ * @example     [wpdtrt_responsive_nav location="header"]
+ * @example     do_shortcode( '[wpdtrt_responsive_nav location="header"]' );
  *
  * @package     Wpdtrt_Responsive_Nav
  * @subpackage  Wpdtrt_Responsive_Nav/app
@@ -27,6 +27,7 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
    * @since       0.1.0
    * @uses        ../../../../wp-includes/shortcodes.php
    * @see         https://codex.wordpress.org/Function_Reference/add_shortcode
+   * @see         https://codex.wordpress.org/Shortcode_API#Enclosing_vs_self-closing_shortcodes
    * @see         http://php.net/manual/en/function.ob-start.php
    * @see         http://php.net/manual/en/function.ob-get-clean.php
    */
@@ -34,6 +35,13 @@ if ( !function_exists( 'wpdtrt_responsive_nav_shortcode' ) ) {
 
     // post object to get info about the post in which the shortcode appears
     global $post;
+
+    // predeclare wp variables
+    $before_widget = null;
+    $before_title = null;
+    $title = null;
+    $after_title = null;
+    $after_widget = null;
 
     // predeclare shortcode option variables
     $location = null;
