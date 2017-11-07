@@ -56,6 +56,12 @@ var wpdtrt_responsive_nav_ui = {
       return;
     }
 
+    var $header_nav_wrapper = $('#header-nav-wrapper');
+
+    if ( ! $header_nav_wrapper.length ) {
+      $custom_toggle_wrapper.add( $header_nav ).wrapAll('<div id="header-nav-wrapper"></div>');
+    }
+
     var $footer_nav = $('#' + wpdtrt_responsive_nav_options.footer_nav_id );
     var $root = $('html');
     var $custom_toggle = $custom_toggle_wrapper.find('.nav-toggle'); // noscript link to footer nav
