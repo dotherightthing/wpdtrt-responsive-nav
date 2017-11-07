@@ -29,16 +29,16 @@ if ( !function_exists( 'wpdtrt_responsive_nav_hardcode_options' ) ) {
 
       $wpdtrt_responsive_nav_options = array(
         'wpdtrt_responsive_nav_menu_label'              => __('Menu', 'wpdtrt-responsive-nav'),
-        'wpdtrt_responsive_nav_menu_open_label'         => __('Open menu', 'wpdtrt-responsive-nav'),
+        'wpdtrt_responsive_nav_menu_open_label'         => __('Menu', 'wpdtrt-responsive-nav'),
         'wpdtrt_responsive_nav_menu_close_label'        => __('Close menu', 'wpdtrt-responsive-nav'),
-        'wpdtrt_responsive_nav_dropdown_expand_label'   => __('Open sub menu', 'wpdtrt-responsive-nav'),
+        'wpdtrt_responsive_nav_dropdown_expand_label'   => __('Sub menu', 'wpdtrt-responsive-nav'),
         'wpdtrt_responsive_nav_dropdown_collapse_label' => __('Close sub menu', 'wpdtrt-responsive-nav'),
         'wpdtrt_responsive_nav_header_nav_id'           => 'main-nav',
         'wpdtrt_responsive_nav_footer_nav_id'           => 'footer-nav',
         'wpdtrt_responsive_nav_toggle_class'            => 'navigation',
         'wpdtrt_responsive_nav_toggle_class_active'     => 'navigation-active',
-        'wpdtrt_responsive_nav_slidedown'               => '1',
-        'wpdtrt_responsive_nav_reveal_labels'           => '1',
+        'wpdtrt_responsive_nav_slidedown'               => 0,
+        'wpdtrt_responsive_nav_reveal_labels'           => 1,
         'wpdtrt_responsive_nav_responsive_breakpoint'   => '480px',
       );
 

@@ -11,6 +11,10 @@
  * @package     WPDTRT_Responsive_Nav
  * @subpackage  WPDTRT_Responsive_Nav/templates
  */
+
+    $theme = wp_get_theme();
+    $TextDomain = $theme->get( 'TextDomain' );
+    $is_handsoflight = ( $TextDomain === 'wpdtrt-handsoflight' );
 ?>
 
 <div class="wrap">
@@ -20,6 +24,14 @@
     <?php esc_attr_e( 'DTRT Responsive Nav', 'wpdtrt-responsive-nav' ); ?>
     <span class="wpdtrt-responsive-nav-version"><?php echo WPDTRT_RESPONSIVE_NAV_VERSION; ?></span>
   </h1>
+
+  <?php if ( $is_handsoflight ): ?>
+
+    <div class="notice notice-error">
+      <p>Note: Options are disabled while this plugin is being redeveloped.</p>
+    </div>
+
+  <?php endif; ?>
 
   <form name="wpdtrt_responsive_nav_data_form" method="post" action="">
 
