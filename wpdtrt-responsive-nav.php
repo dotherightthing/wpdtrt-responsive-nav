@@ -3,7 +3,7 @@
 Plugin Name:  DTRT Responsive Nav
 Plugin URI:   https://github.com/dotherightthing/wpdtrt-responsive-nav
 Description:  A plugin wrapper for responsive-nav.js
-Version:      0.4.0
+Version:      0.5.0
 Author:       Dan Smith
 Author URI:   http://dotherightthing.co.nz
 License:      GPLv2 or later
@@ -41,7 +41,7 @@ Domain Path:  /languages
  * @link https://wordpress.stackexchange.com/questions/18268/i-want-to-get-a-plugin-version-number-dynamically
  */
 if( ! defined( 'WPDTRT_RESPONSIVE_NAV_VERSION' ) ) {
-  define( 'WPDTRT_RESPONSIVE_NAV_VERSION', '0.4.0' );
+  define( 'WPDTRT_RESPONSIVE_NAV_VERSION', '0.5.0' );
 }
 
 /**
