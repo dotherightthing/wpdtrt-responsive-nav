@@ -12,6 +12,42 @@
  * @subpackage  WPDTRT_Responsive_Nav/app
  */
 
+if ( !function_exists( 'wpdtrt_responsive_nav_hardcode_options' ) ) {
+
+  /**
+   * Monkey Patch for Hands Of Light
+   *
+   * @since       0.4.1
+   */
+  function wpdtrt_responsive_nav_hardcode_options() {
+
+    $theme = wp_get_theme();
+    $TextDomain = $theme->get( 'TextDomain' );
+    $is_handsoflight = ( $TextDomain === 'wpdtrt-handsoflight' );
+
+    if ( $is_handsoflight ) {
+
+      $wpdtrt_responsive_nav_options = array(
+        'wpdtrt_responsive_nav_menu_label'              => __('Menu', 'wpdtrt-responsive-nav'),
+        'wpdtrt_responsive_nav_menu_open_label'         => __('Open menu', 'wpdtrt-responsive-nav'),
+        'wpdtrt_responsive_nav_menu_close_label'        => __('Close menu', 'wpdtrt-responsive-nav'),
+        'wpdtrt_responsive_nav_dropdown_expand_label'   => __('Open sub menu', 'wpdtrt-responsive-nav'),
+        'wpdtrt_responsive_nav_dropdown_collapse_label' => __('Close sub menu', 'wpdtrt-responsive-nav'),
+        'wpdtrt_responsive_nav_header_nav_id'           => 'main-nav',
+        'wpdtrt_responsive_nav_footer_nav_id'           => 'footer-nav',
+        'wpdtrt_responsive_nav_toggle_class'            => 'navigation',
+        'wpdtrt_responsive_nav_toggle_class_active'     => 'navigation-active',
+        'wpdtrt_responsive_nav_slidedown'               => '1',
+        'wpdtrt_responsive_nav_reveal_labels'           => '1',
+        'wpdtrt_responsive_nav_responsive_breakpoint'   => '480px',
+      );
+
+    }
+
+    update_option( 'wpdtrt_responsive_nav', $wpdtrt_responsive_nav_options, null );
+  }
+}
+
 if ( !function_exists( 'wpdtrt_responsive_nav_menu' ) ) {
 
 
@@ -23,6 +59,8 @@ if ( !function_exists( 'wpdtrt_responsive_nav_menu' ) ) {
    * @see         https://developer.wordpress.org/reference/functions/add_options_page/
    */
   function wpdtrt_responsive_nav_menu() {
+
+    wpdtrt_responsive_nav_hardcode_options();
 
     add_options_page(
       'DTRT Responsive Nav', // <title>
