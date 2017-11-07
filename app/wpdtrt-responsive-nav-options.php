@@ -125,6 +125,10 @@ if ( !function_exists( 'wpdtrt_responsive_nav_options_page' ) ) {
      */
     $wpdtrt_responsive_nav_options = get_option( 'wpdtrt_responsive_nav' );
 
+    if ( ! $wpdtrt_responsive_nav_options ) {
+      $wpdtrt_responsive_nav_options = array();
+    }
+
     /**
      * If the form was submitted, update the options
      */
@@ -221,6 +225,10 @@ function wpdtrt_responsive_nav_options_page_field( $type, $name, $label, $tip=nu
    * Load options array
    */
   $wpdtrt_responsive_nav_options = get_option( 'wpdtrt_responsive_nav' );
+
+  if ( ! $wpdtrt_responsive_nav_options ) {
+    $wpdtrt_responsive_nav_options = array();
+  }
 
   /**
    * Create variables and values fro the array items
