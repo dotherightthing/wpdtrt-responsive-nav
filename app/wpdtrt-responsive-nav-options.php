@@ -243,10 +243,11 @@ function wpdtrt_responsive_nav_options_page_field( $type, $name, $label, $tip=nu
 
   // if the option doesn't exist yet, don't output it
   if ( ! isset( ${$name} ) ) {
-    return;
+    $value = "";
   }
-
-  $value = ${$name};
+  else {
+    $value = ${$name};
+  }
 
   /**
    * Load the HTML template
