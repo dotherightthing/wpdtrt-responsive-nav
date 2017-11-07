@@ -40,7 +40,7 @@ if ( is_array( $options ) ) {
    */
   extract($options, EXTR_IF_EXISTS);
 
-  $wpdtrt_responsive_nav_label_class = ( $wpdtrt_responsive_nav_reveal_labels === '1' ? 'wpdtrt-responsive-nav-show-labels' : 'wpdtrt-responsive-nav-hide-labels' );
+  $wpdtrt_responsive_nav_label_class = ( $wpdtrt_responsive_nav_reveal_labels === 1 ? 'wpdtrt-responsive-nav-show-labels' : 'wpdtrt-responsive-nav-hide-labels' );
 }
 
 ?>
