@@ -43,12 +43,6 @@ var wpdtrt_responsive_nav_ui = {
 
     "use strict";
 
-    // WordPress plugin configuration object
-    if ( typeof wpdtrt_responsive_nav_options !== 'object' ) {
-      console.warn("DTRT Responsive Nav cannot be initialised: JavaScript config object missing");
-      return;
-    }
-
     // check for the shortcode HTML
     var $custom_toggle_wrapper = $('#wpdtrt-responsive-nav-toggle-wrapper');
 
@@ -198,6 +192,12 @@ var wpdtrt_responsive_nav_ui = {
 jQuery(document).ready(function($) {
 
   "use strict";
+
+  // WordPress plugin configuration object
+  if ( typeof wpdtrt_responsive_nav_options !== 'object' ) {
+    console.warn("DTRT Responsive Nav cannot be initialised: JavaScript config object missing");
+    return;
+  }
 
   enquire.register('screen and (max-width:' + wpdtrt_responsive_nav_options.responsive_breakpoint + ')', {
 
